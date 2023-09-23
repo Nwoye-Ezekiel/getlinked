@@ -66,7 +66,11 @@ export default function Layout() {
             </h1>
           </Link>
           <div className="lg:hidden" onClick={() => setOpenMenu(true)}>
-            Hamburger
+            <div className="flex flex-col space-y-0.5 w-5">
+              <span className="bg-white w-1/2 h-[3px] rounded-full mr-auto"></span>
+              <span className="bg-white w-full h-[3px] rounded-full"></span>
+              <span className="bg-white w-1/2 h-[3px] rounded-full ml-auto"></span>
+            </div>
           </div>
           <div className="hidden lg:block">
             <NavigationLinks />

@@ -56,6 +56,7 @@
   box-sizing: border-box;
   font-family: 'montserrat';
   -webkit-tap-highlight-color: transparent;
+  font-weight: medium;
 }
 
 html,

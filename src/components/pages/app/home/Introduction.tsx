@@ -3,13 +3,13 @@ import Idea from 'assets/images/idea.png';
 const Introduction = () => {
   return (
     <div className="border-t border-t-solid border-t-white/[0.18]">
-      <div className="mx-14 lgMd:px-14 mt-16 mb-20">
-        <div className="max-w-6xl mx-auto flex flex-col lgMd:flex-row items-center gap-24">
-          <div className="w-full lgMd:w-1/2">
+      <div className="mx-14 lg:px-14 mt-12 lg:mt-16 mb-20">
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+          <div className="w-full lg:w-1/2 max-w-lg mx-auto lg:max-w-none">
             <img src={Idea} alt="idea" />
           </div>
-          <div className="w-full lgMd:w-1/2 space-y-2 text-center lgMd:text-left">
-            <div className="-space-y-2 text-mdMd lgMd:text-lgMd">
+          <div className="w-full lg:w-1/2 space-y-2 text-center lg:text-left">
+            <div className="text-mdMd lg:text-lgMd">
               <h1>Introduction to getlinked</h1>
               <h1 className="text-primary">tech Hackathon 1.0</h1>
             </div>

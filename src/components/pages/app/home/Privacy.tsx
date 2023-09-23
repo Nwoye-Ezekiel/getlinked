@@ -4,10 +4,10 @@ import Button from 'components/button';
 
 const Privacy = () => {
   return (
-    <div className="border-t border-t-solid border-t-white/[0.18] pt-16 pb-20">
+    <div className="border-t border-t-solid border-t-white/[0.18] pt-16 pb-56">
       <div className="mx-14">
         <div className="max-w-6xl mx-auto flex flex-col lgMd:flex-row items-center gap-20">
-          <div className="w-full lgMd:w-[55%] space-y-16 text-center lgMd:text-left">
+          <div className="w-full lgMd:w-[50%] space-y-16 text-center lgMd:text-left">
             <div className="space-y-7">
               <div className="space-y-4">
                 <div className="-space-y-2 text-mdMd lgMd:text-lgMd">
