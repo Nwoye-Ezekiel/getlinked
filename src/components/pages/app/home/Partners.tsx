@@ -1,4 +1,4 @@
-import AllPartners from 'assets/images/partners.png';
+import AllPartners from 'assets/images/all-partners.png';
 
 const Partners = () => {
   return (
