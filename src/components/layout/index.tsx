@@ -23,38 +23,40 @@ const navigationLinks = [
   },
 ];
 
-export default function Layout() {
-  const [openMenu, setOpenMenu] = useState(false);
-
-  const NavigationLinks = () => {
-    return (
-      <div className="flex flex-col lg:flex-row gap-8 lg:gap-20 lgMd:gap-[120px] lg:items-center">
-        <div className="flex flex-col lg:flex-row gap-5 lg:gap-10 lgMd:gap-14 w-fit">
-          {navigationLinks.map((link) => (
-            <NavLink
-              to={link.path}
-              key={link.name}
-              end={link.name === 'Home'}
-              onClick={() => setOpenMenu(false)}
-            >
-              {({ isActive }) => (
-                <span
-                  className={`text-base font-inter lg:font-montserrat ${
-                    isActive ? 'text-primary' : 'text-white'
-                  }`}
-                >
-                  {link.name}
-                </span>
-              )}
-            </NavLink>
-          ))}
-        </div>
-        <Link to="/register" className="w-fit" onClick={() => setOpenMenu(false)}>
-          <Button size="large">Register</Button>
-        </Link>
+const NavigationLinks = ({ onClick }: { onClick?: () => void }) => {
+  return (
+    <div className="flex flex-col lg:flex-row gap-8 lg:gap-20 lgMd:gap-[120px] lg:items-center">
+      <div className="flex flex-col lg:flex-row gap-5 lg:gap-10 lgMd:gap-14 w-fit">
+        {navigationLinks.map((link) => (
+          <NavLink
+            to={link.path}
+            key={link.name}
+            end={false}
+            onClick={() => {
+              onClick?.();
+            }}
+          >
+            {({ isActive }) => (
+              <span
+                className={`text-base font-inter lg:font-montserrat ${
+                  isActive ? 'text-primary' : 'text-white'
+                }`}
+              >
+                {link.name}
+              </span>
+            )}
+          </NavLink>
+        ))}
       </div>
-    );
-  };
+      <Link to="/register" className="w-fit" onClick={() => onClick?.()}>
+        <Button size="large">Register</Button>
+      </Link>
+    </div>
+  );
+};
+
+const Layout = () => {
+  const [openMenu, setOpenMenu] = useState(false);
 
   return (
     <div>
@@ -95,10 +97,12 @@ export default function Layout() {
           <div className="flex justify-end">
             <CloseIcon onClick={() => setOpenMenu(false)} />
           </div>
-          <NavigationLinks />
+          <NavigationLinks onClick={() => setOpenMenu(false)} />
         </Drawer>
       </div>
       <Outlet />
     </div>
   );
 }
+
+export default Layout;
