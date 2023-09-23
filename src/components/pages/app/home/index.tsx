@@ -7,7 +7,7 @@ import Rules from './Rules';
 import Prizes from './Prizes';
 import Partners from './Partners';
 import Privacy from './Privacy';
-// import Footer from './Footer';
+import Footer from './Footer';
 
 const Home = () => {
   return (
@@ -21,7 +21,7 @@ const Home = () => {
       <Prizes />
       <Partners />
       <Privacy />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
