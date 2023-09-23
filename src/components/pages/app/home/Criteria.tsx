@@ -4,7 +4,7 @@ import Button from 'components/button';
 const Criteria = () => {
   return (
     <div className="border-t border-t-solid border-t-white/[0.18] lg:pt-8 lg:pb-20">
-      <div className="m-12 lg:mb-20">
+      <div className="m-12 lg:mb-8">
         <div className="max-w-tablet lg:max-w-6xl mx-auto flex flex-col lg:flex-row items-center lg:gap-24">
           <div className="w-full max-w-sm lg:max-w-none lg:w-1/2">
             <img

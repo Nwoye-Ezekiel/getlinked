@@ -12,7 +12,7 @@ const Hero = () => {
     <div className="flex border-t border-t-solid border-white/[.18] overflow-hidden">
       <div className="lg:mx-12 w-full">
         <div className="w-full h-full max-w-desktop mx-auto">
-          <div className="flex w-fit mx-auto relative justify-center lg:mx-0 lg:ml-auto mt-8">
+          <div className="flex w-fit mx-auto relative justify-center lg:mx-0 lg:ml-auto lg:-mr-10 mt-8">
             <i className="text-base lg:text-lgMd font-bold whitespace-nowrap">
               Igniting a Revolution in HR Innovation
             </i>

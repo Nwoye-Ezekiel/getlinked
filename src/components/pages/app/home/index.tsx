@@ -1,6 +1,6 @@
 // import Timeline from './Timeline';
 import Criteria from './Criteria';
-// import FAQs from './FAQs';
+import FAQs from './FAQs';
 import Hero from './Hero';
 import Introduction from './Introduction';
 import Rules from './Rules';
@@ -16,7 +16,7 @@ const Home = () => {
       <Introduction />
       <Rules />
       <Criteria />
-      {/* <FAQs /> */}
+      <FAQs />
       {/* <Timeline /> */}
       {/* <Prizes /> */}
       {/* <Partners /> */}
