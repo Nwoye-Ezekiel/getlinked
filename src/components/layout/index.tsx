@@ -28,8 +28,8 @@ export default function Layout() {
 
   const NavigationLinks = () => {
     return (
-      <div className="flex flex-col lg:flex-row gap-7 lg:gap-20 lgMd:gap-[120px] lg:items-center">
-        <div className="flex flex-col lg:flex-row gap-4 lg:gap-10 lgMd:gap-14 w-fit">
+      <div className="flex flex-col lg:flex-row gap-8 lg:gap-20 lgMd:gap-[120px] lg:items-center">
+        <div className="flex flex-col lg:flex-row gap-5 lg:gap-10 lgMd:gap-14 w-fit">
           {navigationLinks.map((link) => (
             <NavLink
               to={link.path}
@@ -83,11 +83,18 @@ export default function Layout() {
           open={openMenu}
           anchor="left"
           onClose={() => setOpenMenu(false)}
+          sx={{
+            '& .MuiDrawer-paper': {
+              backgroundColor: 'var(--color-background)',
+            },
+          }}
           PaperProps={{
-            className: 'bg-background py-10 px-12 gap-14 flex flex-col w-[90vw]',
+            className: 'py-8 px-12 gap-14 flex flex-col w-full max-w-[350px]',
           }}
         >
-          <CloseIcon onClick={() => setOpenMenu(false)} />
+          <div className="flex justify-end">
+            <CloseIcon onClick={() => setOpenMenu(false)} />
+          </div>
           <NavigationLinks />
         </Drawer>
       </div>
