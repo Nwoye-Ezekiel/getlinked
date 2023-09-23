@@ -4,13 +4,13 @@ import Button from 'components/button';
 
 const Privacy = () => {
   return (
-    <div className="border-t border-t-solid border-t-white/[0.18] pt-16 pb-56">
-      <div className="mx-14">
-        <div className="max-w-6xl mx-auto flex flex-col lgMd:flex-row items-center gap-20">
-          <div className="w-full lgMd:w-[50%] space-y-16 text-center lgMd:text-left">
+    <div className="border-t border-t-solid border-t-white/[0.18] lg:pt-10 lg:pb-56">
+      <div className="m-12">
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-14 lg:gap-16">
+          <div className="w-full lg:w-[50%] space-y-10 lg:space-y-16 text-center lg:text-left">
             <div className="space-y-7">
               <div className="space-y-4">
-                <div className="-space-y-2 text-mdMd lgMd:text-lgMd">
+                <div className="text-mdMd lg:text-lgMd">
                   <h1>Privacy Policy and</h1>
                   <h1 className="text-primary">Terms</h1>
                 </div>
@@ -25,7 +25,7 @@ const Privacy = () => {
                 </p>
               </div>
             </div>
-            <div className="w-full flex flex-col items-center px-14 py-14 border border-solid border-primary rounded-lg bg-primary/[.02]">
+            <div className="w-full flex flex-col items-center p-10 lg:p-14 border border-solid border-primary rounded-lg bg-primary/[.02] max-w-lg lg:max-w-none mx-auto">
               <p className="text-smMd leading-loose">
                 At getlinked tech Hackathon 1.0, we value your privacy and are committed to
                 protecting your personal information. This Privacy Policy outlines how we collect,
@@ -58,8 +58,8 @@ const Privacy = () => {
               <Button>Read More</Button>
             </div>
           </div>
-          <div className="w-full lgMd:w-[50%]">
-            <img src={ManWithKey} alt="ManWithKey" className='scale-[1.35] mt-36' />
+          <div className="w-full max-w-sm lg:max-w-none mx-auto lg:w-[50%]">
+            <img src={ManWithKey} alt="ManWithKey" className='lg:scale-[1.35] lg:mt-36 lg:ml-0' />
           </div>
         </div>
       </div>

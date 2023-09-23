@@ -6,7 +6,7 @@ import Introduction from './Introduction';
 import Rules from './Rules';
 import Prizes from './Prizes';
 import Partners from './Partners';
-// import Privacy from './Privacy';
+import Privacy from './Privacy';
 // import Footer from './Footer';
 
 const Home = () => {
@@ -20,7 +20,7 @@ const Home = () => {
       <Timeline />
       <Prizes />
       <Partners />
-      {/* <Privacy /> */}
+      <Privacy />
       {/* <Footer /> */}
     </div>
   );
