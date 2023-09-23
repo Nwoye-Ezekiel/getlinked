@@ -4,6 +4,7 @@ export const theme = {
   colors: {
     white: '#fff',
     black: '#000',
+    pink: '#FF26B9',
     success: '#109c3f',
     primary: '#D434FE',
     secondary: '#903AFF',

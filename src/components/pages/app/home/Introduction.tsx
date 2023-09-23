@@ -8,7 +8,7 @@ const Introduction = () => {
           <div className="w-full lg:w-1/2 max-w-sm mx-auto lg:max-w-none">
             <img src={Idea} alt="idea" />
           </div>
-          <div className="w-full lg:w-1/2 space-y-4 text-center lg:text-left">
+          <div className="w-full lg:w-1/2 space-y-3 lg:space-y-4 text-center lg:text-left">
             <div className="text-mdMd lg:text-lgMd">
               <h1>Introduction to getlinked</h1>
               <h1 className="text-primary">tech Hackathon 1.0</h1>
