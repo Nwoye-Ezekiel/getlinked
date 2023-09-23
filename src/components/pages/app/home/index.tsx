@@ -1,4 +1,4 @@
-// import Timeline from './Timeline';
+import Timeline from './Timeline';
 import Criteria from './Criteria';
 import FAQs from './FAQs';
 import Hero from './Hero';
@@ -17,7 +17,7 @@ const Home = () => {
       <Rules />
       <Criteria />
       <FAQs />
-      {/* <Timeline /> */}
+      <Timeline />
       {/* <Prizes /> */}
       {/* <Partners /> */}
       {/* <Privacy /> */}
