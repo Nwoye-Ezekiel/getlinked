@@ -2,7 +2,7 @@
 import { useMediaQuery } from '@mui/material';
 
 const Timeline = () => {
-  const isMobile = useMediaQuery('(max-width: 1023px)');
+  const isDesktop = useMediaQuery('(min-width: 1024px)');
 
   const timelines = [
     {
@@ -43,22 +43,22 @@ const Timeline = () => {
   ];
 
   return (
-    <div className="border-t border-t-solid border-t-white/[0.18] lg:pt-6 lg:pb-20">
-      <div className="m-12 lg:mb-32">
+    <div className="border-t border-t-solid border-t-white/[0.18] lg:pt-6 lg:pb-10">
+      <div className="m-12">
         <div className="max-w-tablet lg:max-w-6xl mx-auto flex flex-col justify-center space-y-14 lg:space-y-40">
-          <div className="flex flex-col justify-center items-center text-center space-y-2">
+          <div className="flex flex-col justify-center items-center text-center space-y-3 lg:space-y-4">
             <h1 className="text-mdMd lg:text-lgMd">Timeline</h1>
             <p className="text-smMd lg:text-base max-w-[40ch] leading-loose">
               Here is the breakdown of the time we anticipate using for the upcoming event.
             </p>
           </div>
           <div className="relative flex flex-col lg:items-center space-y-5 lg:space-y-14">
-            {!isMobile && (
-              <div className="absolute -top-20 left-1/2 transform -translate-x-1/2 h-[calc(100%+50px)] w-1 bg-primary"></div>
+            {isDesktop && (
+              <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary"></div>
             )}
             {timelines.map((timeline, index) => (
               <div key={index} className="z-10">
-                {isMobile ? (
+                {!isDesktop ? (
                   <div className="flex space-x-2 ml-7">
                     <div className="relative flex flex-col justify-between space-y-1 pb-2.5 min-h-[120px]">
                       <div className="absolute h-[calc(100%-10px)] bottom-0 -left-5 transform -translate-x-1/2 w-0.5 bg-primary"></div>

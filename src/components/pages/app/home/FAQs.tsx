@@ -6,7 +6,7 @@ const FAQs = () => {
       <div className="m-12 mb-6 lg:mb-16">
         <div className="max-w-tablet lg:max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-28 lg:gap-24">
           <div className="w-full lg:w-[40%] space-y-12 lg:space-y-14 text-center lg:text-left">
-            <div className="space-y-4">
+            <div className="space-y-3 lg:space-y-4">
               <div className="text-mdMd lg:text-lgMd">
                 <h1>Frequently Asked</h1>
                 <h1 className="text-primary">Questions</h1>
