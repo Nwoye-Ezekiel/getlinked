@@ -8,8 +8,8 @@ const Prizes = () => {
   const isDesktop = useMediaQuery('(min-width: 1024px)');
 
   return (
-    <div className="border-t border-t-solid border-t-white/[0.18] lg:pt-6 lg:pb-20">
-      <div className="m-12 lg:mb-32">
+    <div className="border-t border-t-solid border-t-white/[0.18] lg:pt-6 pb-2 lg:pb-14">
+      <div className="m-12">
         <div className="max-w-tablet lg:max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-24">
           {isDesktop && (
             <div className="w-[40%]">

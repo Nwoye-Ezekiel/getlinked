@@ -5,7 +5,7 @@ import Hero from './Hero';
 import Introduction from './Introduction';
 import Rules from './Rules';
 import Prizes from './Prizes';
-// import Partners from './Partners';
+import Partners from './Partners';
 // import Privacy from './Privacy';
 // import Footer from './Footer';
 
@@ -19,7 +19,7 @@ const Home = () => {
       <FAQs />
       <Timeline />
       <Prizes />
-      {/* <Partners /> */}
+      <Partners />
       {/* <Privacy /> */}
       {/* <Footer /> */}
     </div>
