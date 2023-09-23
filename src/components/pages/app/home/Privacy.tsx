@@ -25,7 +25,7 @@ const Privacy = () => {
                 </p>
               </div>
             </div>
-            <div className="w-full flex flex-col items-center p-10 lg:p-14 border border-solid border-primary rounded-lg bg-primary/[.02] max-w-lg lg:max-w-none mx-auto">
+            <div className="w-full flex flex-col items-center px-5 py-10 lg:p-14 border border-solid border-primary rounded-lg bg-primary/[.02] max-w-lg lg:max-w-none mx-auto">
               <p className="text-smMd leading-loose">
                 At getlinked tech Hackathon 1.0, we value your privacy and are committed to
                 protecting your personal information. This Privacy Policy outlines how we collect,
@@ -59,7 +59,11 @@ const Privacy = () => {
             </div>
           </div>
           <div className="w-full max-w-sm lg:max-w-none mx-auto lg:w-[50%]">
-            <img src={ManWithKey} alt="ManWithKey" className='lg:scale-[1.35] lg:mt-36 lg:ml-0' />
+            <img
+              src={ManWithKey}
+              alt="ManWithKey"
+              className="lg:scale-[1.35] lg:mt-36 -ml-[7%] lg:ml-0"
+            />
           </div>
         </div>
       </div>

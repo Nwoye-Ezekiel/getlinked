@@ -61,7 +61,7 @@ export default function Layout() {
       <div className="mx-12">
         <div className="flex justify-between items-center mx-auto mt-8 lg:mt-14 mb-5 lg:mb-8 max-w-desktop">
           <Link to="/">
-            <h1 className="text-sm md:text-md lg:text-lg lgMd:text-lgMax font-bold">
+            <h1 className="lg:text-lgMax font-bold">
               get<span className="text-primary font-clashDisplay font-bold">linked</span>
             </h1>
           </Link>
