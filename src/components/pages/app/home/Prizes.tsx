@@ -13,7 +13,7 @@ const Prizes = () => {
         <div className="max-w-tablet lg:max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-24">
           {isDesktop && (
             <div className="w-[40%]">
-              <img src={Trophy} className="scale-[1.4] mt-24" alt="trophy" />
+              <img src={Trophy} className="lg:scale-[1.3] lg:ml-6 lgMax:scale-[1.4] lgMax:ml-0 mt-24" alt="trophy" />
             </div>
           )}
           <div className="w-full lg:w-[60%] lg:space-y-64">
@@ -33,11 +33,11 @@ const Prizes = () => {
             )}
             <div className="flex justify-center mt-28 lg:mt-0 space-x-3 lg:space-x-7">
               <div className="relative flex h-[120px] lg:h-[280px] w-1/3 max-w-[90px]  lg:max-w-[208px] border border-solid border-primary rounded-lg bg-primary/[.1]">
-                  <img
-                    src={SilverMedal}
-                    className="absolute scale-[0.9] -top-[35%] left-1/2 transform -translate-x-1/2"
-                    alt="silver-medal"
-                  />
+                <img
+                  src={SilverMedal}
+                  className="absolute scale-[0.9] -top-[35%] left-1/2 transform -translate-x-1/2"
+                  alt="silver-medal"
+                />
                 <div className="h-full flex flex-col w-full justify-end items-center lg:px-6 py-4 lg:py-8 space-y-1">
                   <div className="text-center -space-y-1 lg:-space-y-2">
                     <p className="text-xs lg:text-lgMax font-bold">2nd</p>
@@ -47,11 +47,11 @@ const Prizes = () => {
                 </div>
               </div>
               <div className="relative flex h-[125px] lg:h-[290px] w-1/3 max-w-[90px]  lg:max-w-[208px] border border-solid border-secondary rounded-lg bg-secondary/[.1] mt-3">
-                  <img
-                    src={GoldMedal}
-                    className="absolute scale-[1.4] -top-[50%] left-1/2 transform -translate-x-1/2"
-                    alt="gold-medal"
-                  />
+                <img
+                  src={GoldMedal}
+                  className="absolute scale-[1.4] -top-[50%] left-1/2 transform -translate-x-1/2"
+                  alt="gold-medal"
+                />
                 <div className="h-full flex flex-col w-full justify-end items-center lg:px-6 py-4 lg:py-8 space-y-1">
                   <div className="text-center -space-y-1 lg:-space-y-2">
                     <p className="text-xs lg:text-lgMax font-bold">1st</p>
@@ -61,11 +61,11 @@ const Prizes = () => {
                 </div>
               </div>
               <div className="relative flex h-[120px] lg:h-[280px] w-1/3 max-w-[90px]  lg:max-w-[208px] border border-solid border-primary rounded-lg bg-primary/[.1]">
-                  <img
-                    src={BronzeMedal}
-                    className="absolute scale-[0.9] -top-[35%] left-1/2 transform -translate-x-1/2"
-                    alt="bronze-medal"
-                  />
+                <img
+                  src={BronzeMedal}
+                  className="absolute scale-[0.9] -top-[35%] left-1/2 transform -translate-x-1/2"
+                  alt="bronze-medal"
+                />
                 <div className="h-full flex flex-col w-full justify-end items-center lg:px-6 py-4 lg:py-8 space-y-1">
                   <div className="text-center -space-y-1 lg:-space-y-2">
                     <p className="text-xs lg:text-lgMax font-bold">3rd</p>
