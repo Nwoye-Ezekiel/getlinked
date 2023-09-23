@@ -28,7 +28,8 @@ export const theme = {
       default: 'cubic-bezier(0.5, 0, 0.5, 1)',
     },
     maxWidth: {
-      container: '1256px',
+      tablet: '600px',
+      desktop: '1200px',
     },
     transitionProperty: {
       width: 'width',
