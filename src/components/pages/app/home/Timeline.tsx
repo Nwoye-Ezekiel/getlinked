@@ -45,7 +45,7 @@ const Timeline = () => {
         <div className="max-w-6xl mx-auto flex flex-col justify-center space-y-48">
           <div className="flex flex-col justify-center items-center text-center">
             <h1 className="text-mdMd lgMd:text-lgMd">Timeline</h1>
-            <p className="text-smMd max-w-[40ch]">
+            <p className="max-w-[40ch]">
               Here is the breakdown of the time we anticipate using for the upcoming event.
             </p>
           </div>
@@ -58,7 +58,7 @@ const Timeline = () => {
                     <>
                       <div className="space-y-2 text-right w-1/2">
                         <p className="text-primary text-mdMax font-bold">{timeline.title}</p>
-                        <p className="text-smMd max-w-[65ch]">{timeline.description}</p>
+                        <p className="max-w-[70ch]">{timeline.description}</p>
                       </div>
                       <div className="w-[76px] h-[76px] rounded-full bg-horizontalGradient border-[12px] border-solid border-background flex justify-center items-center text-mdMax font-bold flex-shrink-0">
                         {index + 1}
@@ -75,7 +75,7 @@ const Timeline = () => {
                       </div>
                       <div className="space-y-2 w-1/2">
                         <p className="text-primary text-mdMax font-bold">{timeline.title}</p>
-                        <p className="text-smMd max-w-[65ch]">{timeline.description}</p>
+                        <p className="max-w-[70ch]">{timeline.description}</p>
                       </div>
                     </>
                   )}
