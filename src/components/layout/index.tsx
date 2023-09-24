@@ -20,7 +20,7 @@ const scrollToSection = (sectionId: string) => {
 const NavigationLinks = ({ onClick }: { onClick?: () => void }) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [isContactLinkActive, setIsContactLinkActive] = useState(false);
+  const [activeLink, setActiveLink] = useState('');
 
   const handleNavigation = (link: string) => {
     onClick?.();
@@ -35,10 +35,11 @@ const NavigationLinks = ({ onClick }: { onClick?: () => void }) => {
   };
 
   useEffect(() => {
-    if (location.pathname === '/contact') {
-      setIsContactLinkActive(true);
+    const activePaths = ['/contact', '/register'];
+    if (activePaths.includes(location.pathname)) {
+      setActiveLink(location.pathname);
     } else {
-      setIsContactLinkActive(false);
+      setActiveLink('');
     }
   }, [location.pathname]);
 
@@ -71,7 +72,7 @@ const NavigationLinks = ({ onClick }: { onClick?: () => void }) => {
         >
           <span
             className={`text-base font-inter lg:font-montserrat lg:p-2 lg:rounded transition-all duration-100 lg:hover:text-primary ${
-              isContactLinkActive ? 'text-primary' : 'text-white'
+              activeLink === '/contact' ? 'text-primary' : 'text-white'
             }`}
           >
             Contact
@@ -79,7 +80,9 @@ const NavigationLinks = ({ onClick }: { onClick?: () => void }) => {
         </Link>
       </div>
       <Link to="/register" className="w-fit" onClick={() => onClick?.()}>
-        <Button size="large">Register</Button>
+        <Button size="large" variant={activeLink === '/register' ? 'secondary' : 'primary'}>
+          Register
+        </Button>
       </Link>
     </div>
   );
