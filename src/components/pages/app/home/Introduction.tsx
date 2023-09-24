@@ -2,7 +2,7 @@ import Idea from 'assets/images/idea.png';
 
 const Introduction = () => {
   return (
-    <div className="border-t border-t-solid border-t-white/[0.18]">
+    <div id="overview" className="border-t border-t-solid border-t-white/[0.18]">
       <div className="m-12 lg:mb-20">
         <div className="max-w-tablet lg:max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
           <div className="w-full lg:w-1/2 max-w-sm mx-auto lg:max-w-none">

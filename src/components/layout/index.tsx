@@ -1,52 +1,82 @@
 import { Drawer } from '@mui/material';
 import Button from 'components/button';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ReactComponent as CloseIcon } from 'assets/icons/close.svg';
-import { Link, NavLink, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Link as ScrollLink } from 'react-scroll';
+import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 
-const navigationLinks = [
-  {
-    name: 'Timeline',
-    path: '/timeline',
-  },
-  {
-    name: 'Overview',
-    path: '/overview',
-  },
-  {
-    name: 'FAQs',
-    path: '/faqs',
-  },
-  {
-    name: 'Contact',
-    path: '/contact',
-  },
-];
+const navigationLinks = ['Timeline', 'Overview', 'FAQs'];
+
+const scrollToSection = (sectionId: string) => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  setTimeout(() => {
+    const element = document.getElementById(sectionId);
+    element?.scrollIntoView({ behavior: 'smooth' });
+  }, 300);
+};
 
 const NavigationLinks = ({ onClick }: { onClick?: () => void }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [isContactLinkActive, setIsContactLinkActive] = useState(false);
+
+  const handleNavigation = (link: string) => {
+    onClick?.();
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        scrollToSection(link.toLowerCase());
+      }, 100);
+    } else {
+      scrollToSection(link.toLowerCase());
+    }
+  };
+
+  useEffect(() => {
+    if (location.pathname === '/contact') {
+      setIsContactLinkActive(true);
+    } else {
+      setIsContactLinkActive(false);
+    }
+  }, [location.pathname]);
+
   return (
-    <div className="flex flex-col lg:flex-row gap-8 lg:gap-20 lgMd:gap-[120px] lg:items-center">
-      <div className="flex flex-col lg:flex-row gap-5 lg:gap-10 lgMd:gap-14 w-fit">
-        {navigationLinks.map((link) => (
-          <NavLink
-            to={link.path}
-            key={link.name}
-            end={false}
+    <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 lgMd:gap-20 lg:items-center">
+      <div className="flex flex-col lg:flex-row gap-5 lg:gap-8 lgMd:gap-12 w-fit">
+        {navigationLinks.map((link, index) => (
+          <ScrollLink
+            key={index}
+            to={link.toLowerCase()}
+            spy={true}
+            smooth={true}
+            duration={500}
             onClick={() => {
-              onClick?.();
+              handleNavigation(link);
             }}
           >
-            {({ isActive }) => (
-              <span
-                className={`text-base font-inter lg:font-montserrat ${
-                  isActive ? 'text-primary' : 'text-white'
-                }`}
-              >
-                {link.name}
-              </span>
-            )}
-          </NavLink>
+            <span
+              className={`text-base font-inter lg:font-montserrat cursor-pointer lg:p-2 lg:rounded transition-all duration-100 lg:hover:text-primary text-white`}
+            >
+              {link}
+            </span>
+          </ScrollLink>
         ))}
+        <Link
+          to="/contact"
+          onClick={() => {
+            onClick?.();
+          }}
+        >
+          <span
+            className={`text-base font-inter lg:font-montserrat lg:p-2 lg:rounded transition-all duration-100 lg:hover:text-primary ${
+              isContactLinkActive ? 'text-primary' : 'text-white'
+            }`}
+          >
+            Contact
+          </span>
+        </Link>
       </div>
       <Link to="/register" className="w-fit" onClick={() => onClick?.()}>
         <Button size="large">Register</Button>
@@ -57,9 +87,20 @@ const NavigationLinks = ({ onClick }: { onClick?: () => void }) => {
 
 const Layout = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const [showButton, setShowButton] = useState(false);
+
+  const handleScroll = () => {
+    if (window.scrollY >= window.innerHeight) setShowButton(true);
+    else setShowButton(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <div>
+    <div id="home">
       <div className="mx-12">
         <div className="flex justify-between items-center mx-auto mt-8 lg:mt-14 mb-5 lg:mb-8 max-w-desktop">
           <Link to="/">
@@ -100,9 +141,23 @@ const Layout = () => {
           <NavigationLinks onClick={() => setOpenMenu(false)} />
         </Drawer>
       </div>
+      <div
+        className={`fixed bottom-0 right-0 p-4 lg:p-5 z-30 transition-opacity duration-500 ${
+          showButton ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        <div
+          className="bg-horizontalGradient p-2 rounded-full shadow-md hover:shadow-lg duration-150 cursor-pointer"
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+        >
+          <KeyboardDoubleArrowDownIcon className="text-white text-3xl rotate-180" />
+        </div>
+      </div>
       <Outlet />
     </div>
   );
-}
+};
 
 export default Layout;

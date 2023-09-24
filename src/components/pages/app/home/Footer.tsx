@@ -5,6 +5,8 @@ import { ReactComponent as FacebookIcon } from 'assets/icons/facebook.svg';
 import { ReactComponent as LinkedInIcon } from 'assets/icons/linkedin.svg';
 import { ReactComponent as PhoneIcon } from 'assets/icons/phone.svg';
 import { ReactComponent as LocationIcon } from 'assets/icons/location.svg';
+import { Link as ScrollLink } from 'react-scroll';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -31,36 +33,73 @@ const Footer = () => {
           </div>
           <div className="md:w-[30%] flex lg:justify-center">
             <div className="space-y-4">
-              <ol className="space-y-3">
-                <li className="text-smMd font-semibold text-primary">Useful Links</li>
-                <li className="text-xs font-medium">Overview</li>
-                <li className="text-xs font-medium">Timeline</li>
-                <li className="text-xs font-medium">FAQs</li>
-                <li className="text-xs font-medium">Register</li>
-              </ol>
+              <div className="space-y-3">
+                <p className="text-smMd font-semibold text-primary">Useful Links</p>
+                <div>
+                  <ScrollLink to="overview" spy={true} smooth={true} duration={500}>
+                    <p className="text-xs font-medium cursor-pointer hover:text-primary transition-all duration-100 w-fit">
+                      Overview
+                    </p>
+                  </ScrollLink>
+                </div>
+                <div>
+                  <ScrollLink to="timeline" spy={true} smooth={true} duration={500}>
+                    <p className="text-xs font-medium cursor-pointer hover:text-primary transition-all duration-100 w-fit">
+                      Timeline
+                    </p>
+                  </ScrollLink>
+                </div>
+                <div>
+                  <ScrollLink to="faqs" spy={true} smooth={true} duration={500}>
+                    <p className="text-xs font-medium cursor-pointer hover:text-primary transition-all duration-100 w-fit">
+                      FAQs
+                    </p>
+                  </ScrollLink>
+                </div>
+                <div>
+                  <Link to="/register">
+                    <p className="text-xs font-medium cursor-pointer hover:text-primary transition-all duration-100 w-fit">
+                      Register
+                    </p>
+                  </Link>
+                </div>
+              </div>
               <div className="flex items-center space-x-3">
                 <span className="text-primary text-xs font-medium">Follow us</span>
-                <InstagramIcon />
-                <TwitterIcon />
-                <FacebookIcon />
-                <LinkedInIcon />
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                  <InstagramIcon className="hover:text-primary cursor-pointer transition-all duration-100 hover:scale-125" />
+                </a>
+                <a href="https://www.x.com" target="_blank" rel="noopener noreferrer">
+                  <TwitterIcon className="hover:text-primary cursor-pointer transition-all duration-100 hover:scale-125" />
+                </a>
+                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                  <FacebookIcon className="hover:text-primary cursor-pointer transition-all duration-100 hover:scale-125" />
+                </a>
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+                  <LinkedInIcon className="hover:text-primary cursor-pointer transition-all duration-100 hover:scale-125" />
+                </a>
               </div>
             </div>
           </div>
           <div className="md:w-[30%] flex lg:justify-center">
-            <ol className="space-y-4">
-              <li className="text-smMd font-semibold text-primary">Contact Us</li>
-              <li className="text-xs flex items-center space-x-3">
+            <div className="space-y-4">
+              <p className="text-smMd font-semibold text-primary">Contact Us</p>
+              <p className="text-xs flex items-center space-x-3">
                 <PhoneIcon />
-                <span className="font-medium">+234 6707653444</span>
-              </li>
-              <li className="text-xs flex items-center space-x-3">
+                <a
+                  href="tel:+2346707653444"
+                  className="font-medium hover:text-primary transition-all duration-100"
+                >
+                  +234 6707653444
+                </a>
+              </p>
+              <p className="text-xs flex items-center space-x-3">
                 <LocationIcon />
-                <span className="font-medium max-w-[12ch]">
+                <span className="font-medium max-w-[12ch] hover:text-primary transition-all duration-100 cursor-default">
                   27,Alara Street Yaba 100012 Lagos State
                 </span>
-              </li>
-            </ol>
+              </p>
+            </div>
           </div>
         </div>
         <p className="text-xs font-medium">All rights reserved. © getlinked Ltd.</p>

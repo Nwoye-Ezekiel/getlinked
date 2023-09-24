@@ -2,7 +2,7 @@ import ManThinking from 'assets/images/man-thinking.png';
 
 const FAQs = () => {
   return (
-    <div className="border-t border-t-solid border-t-white/[0.18] lg:pt-4 lg:pb-20">
+    <div id="faqs" className="border-t border-t-solid border-t-white/[0.18] lg:pt-4 lg:pb-20">
       <div className="m-12 mb-6 lg:mb-16">
         <div className="max-w-tablet lg:max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-28 lg:gap-24">
           <div className="w-full lg:w-[40%] space-y-12 lg:space-y-14 text-center lg:text-left">

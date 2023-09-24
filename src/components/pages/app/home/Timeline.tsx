@@ -43,7 +43,7 @@ const Timeline = () => {
   ];
 
   return (
-    <div className="border-t border-t-solid border-t-white/[0.18] lg:pt-6 lg:pb-10">
+    <div id="timeline" className="border-t border-t-solid border-t-white/[0.18] lg:pt-6 lg:pb-10">
       <div className="m-12">
         <div className="max-w-tablet lg:max-w-6xl mx-auto flex flex-col justify-center space-y-14 lg:space-y-40">
           <div className="flex flex-col justify-center items-center text-center space-y-3 lg:space-y-4">
