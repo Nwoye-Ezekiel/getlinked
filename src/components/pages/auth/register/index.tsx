@@ -1,5 +1,306 @@
+// import ManOnComputer from 'assets/images/man-on-computer.png';
+import { ReactComponent as ManAndWomanWalking } from 'assets/icons/man-and-woman-walking.svg';
+import {
+  // Alert,
+  Autocomplete,
+  Checkbox,
+  CircularProgress,
+  TextField as MUITextField,
+} from '@mui/material';
+import Button from 'components/button';
+import { Formik } from 'formik';
+import * as yup from 'yup';
+import { useState } from 'react';
+import TextField from 'components/text-filed';
+import { CheckBox, CheckBoxOutlineBlankOutlined } from '@mui/icons-material';
+import { useCategories } from 'data';
+import ErrorFallback from 'components/error-fallback';
+import { registerUser } from 'apis/registration';
+
+const validationSchema = yup.object().shape({
+  team_name: yup.string().required('Enter your team name'),
+  phone: yup.string().required('Enter your phone number'),
+  email: yup.string().required('Enter your email'),
+  project_topic: yup.string().required('Enter your project topic'),
+  category: yup.string().required('Enter your category'),
+  group_size: yup.string().required('Enter your group size'),
+});
+
 const Register = () => {
-  return <div>Register</div>;
+  // const [error, setError] = useState('');
+  const [privacyPolicyAccepted, setPrivacyPolicyAccepted] = useState(false);
+  const { data: categories, isLoading, isError, refetch } = useCategories();
+
+  const handleSubmit = async (values: any, resetForm: () => void) => {
+    try {
+      // setError('');
+      resetForm();
+      await registerUser({
+        email: values.email,
+        phone_number: values.phone,
+        team_name: values.team_name,
+        group_size: Number(values.group_size),
+        project_topic: values.project_topic,
+        category: categories?.find((category) => category.name === values.category)?.id ?? 1,
+        privacy_poclicy_accepted: privacyPolicyAccepted,
+      });
+
+      // setModalState({
+      //   open: true,
+      //   isSuccess: true,
+      //   titleText: 'Message Sent!',
+      //   description: 'Your message has been sent successfully.',
+      //   callToActionText: 'Okay',
+      //   primaryAction: () => handleModalClose(),
+      // });
+    } catch (error: any) {
+      // setError(error.message);
+    }
+  };
+  return (
+    <div className="border-t border-t-solid border-t-white/[0.18] lg:pt-10 lg:pb-20">
+      {isLoading && !categories ? (
+        <div
+          className="flex flex-col items-center justify-center h-full"
+          data-test-id="loading-purchased-assets"
+        >
+          <CircularProgress />
+        </div>
+      ) : isError ? (
+        <ErrorFallback
+          message="Something went wrong!"
+          description="We encountered an error while fetching your purchased assets"
+          reset={refetch}
+        />
+      ) : (
+        <div className="m-12">
+          <div className="max-w-tablet lg:max-w-6xl mx-auto flex flex-col lg:flex-row justify-center space-y-10 lg:space-y-20">
+            {/* <div className="w-[40%] border border-primary border-solid">
+              <img
+                src={ManOnComputer}
+                className="w-full max-w-sm mx-auto lg:max-w-none"
+                alt="man on computer"
+              />
+            </div> */}
+            <div className="w-[60%] border border-primary border-solid bg-white/[.05] p-20 pt-14">
+              <div className="mb-7">
+                <h1 className="text-lgMd text-primary font-semibold mb-5">Register</h1>
+                <div className="flex items-end space-x-1 mb-5">
+                  <p className="text-smMd">Be part of this movement!</p>
+                  <div className="w-24 border-b border-dashed border-primary mb-1 flex justify-center">
+                    <ManAndWomanWalking />
+                  </div>
+                </div>
+                <p className="text-mdMax font-medium">CREATE YOUR ACCOUNT</p>
+              </div>
+              <div>
+                <Formik
+                  initialValues={{
+                    team_name: '',
+                    phone: '',
+                    email: '',
+                    project_topic: '',
+                    category: '',
+                    group_size: '',
+                  }}
+                  onSubmit={(values, { resetForm }) => handleSubmit(values, resetForm)}
+                  validationSchema={validationSchema}
+                >
+                  {({
+                    values,
+                    touched,
+                    errors,
+                    handleChange,
+                    handleBlur,
+                    handleSubmit,
+                    isSubmitting,
+                    setFieldValue,
+                    // isValid,
+                    // dirty,
+                  }) => (
+                    <form onSubmit={handleSubmit}>
+                      {/* <Alert
+                        onClose={() => {
+                          setError('');
+                        }}
+                        className={`mt-4 text-white ${!error ? 'hidden' : ''}`}
+                        severity="error"
+                        variant="filled"
+                        data-test-id="login-server-error"
+                      >
+                        {error}
+                      </Alert> */}
+                      <div className="flex flex-col space-y-6">
+                        <div className="flex gap-10">
+                          <TextField
+                            values={values}
+                            errors={errors}
+                            handleChange={handleChange}
+                            handleBlur={handleBlur}
+                            touched={touched}
+                            type="text"
+                            name="team_name"
+                            label="Team's Name"
+                            placeholder="Enter the name of your group"
+                          />
+                          <TextField
+                            values={values}
+                            errors={errors}
+                            handleChange={handleChange}
+                            handleBlur={handleBlur}
+                            touched={touched}
+                            type="tel"
+                            name="phone"
+                            label="Phone"
+                            placeholder="Enter your phone number"
+                          />
+                        </div>
+                        <div className="flex gap-10">
+                          <TextField
+                            values={values}
+                            errors={errors}
+                            handleChange={handleChange}
+                            handleBlur={handleBlur}
+                            touched={touched}
+                            type="email"
+                            name="email"
+                            label="Email"
+                            placeholder="Enter your email address"
+                          />
+                          <TextField
+                            values={values}
+                            errors={errors}
+                            handleChange={handleChange}
+                            handleBlur={handleBlur}
+                            touched={touched}
+                            type="text"
+                            name="project_topic"
+                            label="Project Topic"
+                            placeholder="What is your group project topic"
+                          />
+                        </div>
+                        <div className="flex gap-10">
+                          <div className="space-y-2 w-full">
+                            <label className="text-smMd font-medium">Category</label>
+                            <Autocomplete
+                              fullWidth
+                              options={categories?.map((category) => category.name) ?? []} // Pass an array of category names
+                              placeholder="Select your category"
+                              sx={{
+                                '& .MuiInputBase-root': {
+                                  '& fieldset': {
+                                    borderColor: 'var(--color-gray)',
+                                  },
+                                  '&:hover fieldset': {
+                                    borderColor: 'white',
+                                  },
+                                  '&.Mui-focused fieldset': {
+                                    borderColor: 'white',
+                                  },
+                                },
+                                '& .MuiAutocomplete-inputRoot': {
+                                  '& .MuiAutocomplete-input': {
+                                    color: 'white',
+                                  },
+                                },
+                              }}
+                              onChange={(_, value) => {
+                                setFieldValue('category', value);
+                              }}
+                              value={values.category}
+                              renderInput={(params) => (
+                                <MUITextField
+                                  {...params}
+                                  variant="outlined"
+                                  placeholder="Select your category"
+                                  error={touched.category && !!errors.category}
+                                  helperText={touched.category ? errors.category : ''}
+                                />
+                              )}
+                            />
+                          </div>
+                          <div className="space-y-2 w-full">
+                            <label className="text-smMd font-medium">Group Size</label>
+                            <Autocomplete
+                              fullWidth
+                              options={['1', '2', '3', '4', '5']}
+                              placeholder="Select your group size"
+                              sx={{
+                                '& .MuiInputBase-root': {
+                                  '& fieldset': {
+                                    borderColor: 'var(--color-gray)',
+                                  },
+                                  '&:hover fieldset': {
+                                    borderColor: 'white',
+                                  },
+                                  '&.Mui-focused fieldset': {
+                                    borderColor: 'white',
+                                  },
+                                },
+                                '& .MuiAutocomplete-inputRoot': {
+                                  '& .MuiAutocomplete-input': {
+                                    color: 'white',
+                                  },
+                                },
+                                '& .MuiAutocomplete-listbox': {
+                                  '& .MuiAutocomplete-option': {
+                                    color: 'white',
+                                  },
+                                },
+                              }}
+                              onChange={(_, value) => {
+                                setFieldValue('group_size', value);
+                              }}
+                              value={values.group_size}
+                              renderInput={(params) => (
+                                <MUITextField
+                                  {...params}
+                                  variant="outlined"
+                                  placeholder="Select your group size"
+                                  error={touched.group_size && !!errors.group_size}
+                                  helperText={touched.group_size ? errors.group_size : ''}
+                                />
+                              )}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="mt-5">
+                        <i className="text-xs text-pink">
+                          Please review your registration details before submitting
+                        </i>
+                      </div>
+                      <div className="mb-2">
+                        <Checkbox
+                          icon={<CheckBoxOutlineBlankOutlined className="text-gray-200 w-4 h-4" />}
+                          checkedIcon={<CheckBox className="text-primary w-4 h-4" />}
+                          checked={privacyPolicyAccepted}
+                          onChange={(e) => setPrivacyPolicyAccepted(e.target.checked)}
+                        />
+                        <span className="text-xs font-medium">
+                          I agreed with the event terms and conditions and privacy policy
+                        </span>
+                      </div>
+                      <Button type="submit" size="large" fullWidth>
+                        {isSubmitting ? (
+                          <>
+                            <CircularProgress color="inherit" className="text-white" size={22} />
+                            <span className="sr-only">Submitting</span>
+                          </>
+                        ) : (
+                          'Register Now'
+                        )}
+                      </Button>
+                    </form>
+                  )}
+                </Formik>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default Register;

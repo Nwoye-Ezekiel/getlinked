@@ -3,11 +3,18 @@ import { ReactNode } from 'react';
 interface ButtonProps {
   children: ReactNode;
   fullWidth?: boolean;
+  type?: 'button' | 'submit';
   variant?: 'primary' | 'secondary';
   size?: 'small' | 'medium' | 'large';
 }
 
-const Button = ({ size = 'medium', variant = 'primary', children, fullWidth }: ButtonProps) => {
+const Button = ({
+  size = 'medium',
+  variant = 'primary',
+  type = 'button',
+  children,
+  fullWidth,
+}: ButtonProps) => {
   const buttonSizes = {
     small: { width: 97, height: 32 },
     medium: { width: 152, height: 47 },
@@ -26,6 +33,7 @@ const Button = ({ size = 'medium', variant = 'primary', children, fullWidth }: B
 
   return (
     <button
+      type={type}
       className={`rounded transition-all duration-300 ${fullWidth ? 'w-full' : ''} ${
         variant === 'primary'
           ? 'bg-[100%_auto] bg-horizontalGradient hover:bg-[300%_auto]'

@@ -14,7 +14,7 @@ const scrollToSection = (sectionId: string) => {
   setTimeout(() => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: 'smooth' });
-  }, 300);
+  }, 500);
 };
 
 const NavigationLinks = ({ onClick }: { onClick?: () => void }) => {
