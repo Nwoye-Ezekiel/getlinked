@@ -14,7 +14,7 @@ import { sendMessage } from 'apis/contact';
 const validationSchema = yup.object().shape({
   first_name: yup.string().required('Enter your first name'),
   phone_number: yup.string().required('Enter your phone number'),
-  email: yup.string().required('Enter your email address'),
+  email: yup.string().required('Enter your email address').email('Enter a valid email address'),
   message: yup.string().required('Enter your message'),
 });
 
@@ -34,8 +34,6 @@ const Contact = () => {
       setShowSuccessModal(true);
       resetForm();
     } catch (error: any) {
-      // eslint-disable-next-line no-console
-      console.log(error.message);
       setError('An error occurred, please try again');
     }
   };

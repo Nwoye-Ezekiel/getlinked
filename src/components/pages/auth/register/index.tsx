@@ -23,7 +23,7 @@ import { registerUser } from 'apis/registration';
 const validationSchema = yup.object().shape({
   team_name: yup.string().required('Enter your team name'),
   phone: yup.string().required('Enter your phone number'),
-  email: yup.string().required('Enter your email'),
+  email: yup.string().required('Enter your email address').email('Enter a valid email address'),
   project_topic: yup.string().required('Enter your project topic'),
   category: yup.string().required('Enter your category'),
   group_size: yup.string().required('Enter your group size'),
@@ -109,6 +109,8 @@ const Register = () => {
                   handleSubmit,
                   isSubmitting,
                   setFieldValue,
+                  isValid,
+                  dirty,
                 }) => (
                   <form onSubmit={handleSubmit}>
                     {error && (
@@ -178,7 +180,7 @@ const Register = () => {
                           <label className="text-smMax lg:text-smMd font-medium">Category</label>
                           <Autocomplete
                             fullWidth
-                            options={categories?.map((category) => category.name) ?? []} // Pass an array of category names
+                            options={categories?.map((category) => category.name) ?? []}
                             placeholder="Select your category"
                             sx={{
                               '& .MuiInputBase-root': {
@@ -277,7 +279,7 @@ const Register = () => {
                     </div>
                     <Button
                       type="submit"
-                      disabled={isSubmitting || !privacyPolicyAccepted}
+                      disabled={isSubmitting || !isValid || !dirty || !privacyPolicyAccepted}
                       size="large"
                       fullWidth
                     >
