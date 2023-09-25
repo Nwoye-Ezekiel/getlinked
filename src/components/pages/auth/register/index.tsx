@@ -191,6 +191,9 @@ const Register = () => {
                             value={values.category}
                             popupIcon={<KeyboardArrowDown />}
                             placeholder="Select your category"
+                            classes={{
+                              listbox: 'bg-horizontalGradient',
+                            }}
                             options={categories?.map((category) => category.name) ?? []}
                             onChange={(_, value) => {
                               setFieldValue('category', value);
@@ -230,6 +233,9 @@ const Register = () => {
                             fullWidth
                             value={values.group_size}
                             popupIcon={<KeyboardArrowDown />}
+                            classes={{
+                              listbox: 'bg-horizontalGradient',
+                            }}
                             placeholder="Select your group size"
                             options={['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']}
                             onChange={(_, value) => {

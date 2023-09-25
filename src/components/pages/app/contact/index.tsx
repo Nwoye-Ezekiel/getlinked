@@ -1,21 +1,18 @@
-import images from 'assets/images/index.json';
-import { ReactComponent as InstagramIcon } from 'assets/icons/instagram.svg';
-import { ReactComponent as TwitterIcon } from 'assets/icons/twitter.svg';
-import { ReactComponent as FacebookIcon } from 'assets/icons/facebook.svg';
-import { ReactComponent as LinkedInIcon } from 'assets/icons/linkedin.svg';
-import { Alert, CircularProgress, Dialog, DialogContent } from '@mui/material';
-import Button from 'components/button';
-import { Formik } from 'formik';
 import * as yup from 'yup';
-import { useEffect, useState } from 'react';
-import TextField from 'components/text-filed';
+import { Formik } from 'formik';
+import Button from 'components/button';
 import { sendMessage } from 'apis/contact';
+import { useEffect, useState } from 'react';
+import images from 'assets/images/index.json';
+import TextField from 'components/text-filed';
+import { socials } from 'data/socials';
+import { Alert, CircularProgress, Dialog, DialogContent } from '@mui/material';
 
 const validationSchema = yup.object().shape({
+  message: yup.string().required('Enter your message'),
   first_name: yup.string().required('Enter your first name'),
   phone_number: yup.string().required('Enter your phone number'),
   email: yup.string().required('Enter your email address').email('Enter a valid email address'),
-  message: yup.string().required('Enter your message'),
 });
 
 const Contact = () => {
@@ -27,9 +24,9 @@ const Contact = () => {
       setError('');
       await sendMessage({
         email: values.email,
-        phone_number: values.phone_number,
-        first_name: values.first_name,
         message: values.message,
+        first_name: values.first_name,
+        phone_number: values.phone_number,
       });
       setShowSuccessModal(true);
       resetForm();
@@ -72,18 +69,11 @@ const Contact = () => {
             <div className="flex flex-col space-y-2">
               <p className="text-primary font-medium">Share on</p>
               <div className="flex items-center space-x-3">
-                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-                  <InstagramIcon className="hover:text-primary cursor-pointer transition-all duration-100 hover:scale-125" />
-                </a>
-                <a href="https://www.x.com" target="_blank" rel="noopener noreferrer">
-                  <TwitterIcon className="hover:text-primary cursor-pointer transition-all duration-100 hover:scale-125" />
-                </a>
-                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-                  <FacebookIcon className="hover:text-primary cursor-pointer transition-all duration-100 hover:scale-125" />
-                </a>
-                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
-                  <LinkedInIcon className="hover:text-primary cursor-pointer transition-all duration-100 hover:scale-125" />
-                </a>
+                {socials.map((social) => (
+                  <a href={social.link} target="_blank" rel="noopener noreferrer">
+                    <social.icon className="hover:text-primary cursor-pointer transition-all duration-100 hover:scale-125" />
+                  </a>
+                ))}
               </div>
             </div>
           </div>
@@ -200,30 +190,11 @@ const Contact = () => {
                     <div className="flex flex-col items-center space-y-2 mt-10 lg:hidden">
                       <p className="text-primary font-medium text-smMd">Share on</p>{' '}
                       <div className="flex items-center space-x-3">
-                        <a
-                          href="https://www.instagram.com/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <InstagramIcon className="hover:text-primary cursor-pointer transition-all duration-100 hover:scale-125" />
-                        </a>
-                        <a href="https://www.x.com" target="_blank" rel="noopener noreferrer">
-                          <TwitterIcon className="hover:text-primary cursor-pointer transition-all duration-100 hover:scale-125" />
-                        </a>
-                        <a
-                          href="https://www.facebook.com"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <FacebookIcon className="hover:text-primary cursor-pointer transition-all duration-100 hover:scale-125" />
-                        </a>
-                        <a
-                          href="https://www.linkedin.com"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <LinkedInIcon className="hover:text-primary cursor-pointer transition-all duration-100 hover:scale-125" />
-                        </a>
+                        {socials.map((social) => (
+                          <a href={social.link} target="_blank" rel="noopener noreferrer">
+                            <social.icon className="hover:text-primary cursor-pointer transition-all duration-100 hover:scale-125" />
+                          </a>
+                        ))}
                       </div>
                     </div>
                   </form>

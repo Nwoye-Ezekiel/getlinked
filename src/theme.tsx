@@ -39,8 +39,6 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           color: 'white',
-          background:
-            'linear-gradient(to left, #903aff 0%, #d434fe 56.42%, #ff26b9 99.99%, #fe34b9 100%)',
         },
       },
     },
