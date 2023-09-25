@@ -36,8 +36,8 @@ const Register = () => {
   const {
     data: categories,
     isLoading: isLoadingCategories,
-    // isError: loadingCategoriesError,
-    // refetch: refetchCategories,
+    isError: loadingCategoriesError,
+    refetch: refetchCategories,
   } = useCategories();
 
   const handleSubmit = async (values: any, resetForm: () => void) => {
@@ -187,7 +187,6 @@ const Register = () => {
                             fullWidth
                             options={categories?.map((category) => category.name) ?? []}
                             placeholder="Select your category"
-                            disabled={isLoadingCategories}
                             onChange={(_, value) => {
                               setFieldValue('category', value);
                             }}
@@ -206,6 +205,17 @@ const Register = () => {
                                     Fetching categories...
                                   </div>
                                 )}
+                                {loadingCategoriesError && (
+                                  <div className="flex space-x-1 text-xs mt-1">
+                                    <span className="text-white/[.5]">An error occurred.</span>
+                                    <span
+                                      className="text-error font-medium cursor-pointer"
+                                      onClick={() => refetchCategories()}
+                                    >
+                                      Retry
+                                    </span>
+                                  </div>
+                                )}
                               </div>
                             )}
                           />
@@ -220,14 +230,6 @@ const Register = () => {
                               setFieldValue('group_size', value);
                             }}
                             value={values.group_size}
-                            renderOption={(props, option) => (
-                              <li
-                                {...props}
-                                className="text-white px-5 py-2 hover:bg-black/[.1] cursor-pointer font-medium text-smMax lg:text-smMd"
-                              >
-                                {option}
-                              </li>
-                            )}
                             renderInput={(params) => (
                               <MUITextField
                                 {...params}
