@@ -92,24 +92,24 @@ const Contact = () => {
             <div>
               <Formik
                 initialValues={{
-                  first_name: '',
-                  phone_number: '',
                   email: '',
                   message: '',
+                  first_name: '',
+                  phone_number: '',
                 }}
-                onSubmit={(values, { resetForm }) => handleSubmit(values, resetForm)}
                 validationSchema={validationSchema}
+                onSubmit={(values, { resetForm }) => handleSubmit(values, resetForm)}
               >
                 {({
-                  values,
-                  touched,
-                  errors,
-                  handleChange,
-                  handleBlur,
-                  handleSubmit,
-                  isSubmitting,
-                  isValid,
                   dirty,
+                  values,
+                  errors,
+                  isValid,
+                  touched,
+                  handleBlur,
+                  isSubmitting,
+                  handleChange,
+                  handleSubmit,
                 }) => (
                   <form onSubmit={handleSubmit}>
                     {error && (
@@ -117,65 +117,65 @@ const Contact = () => {
                         onClose={() => {
                           setError('');
                         }}
-                        className="-mt-2 mb-8 text-white"
                         severity="error"
                         variant="filled"
+                        className="-mt-2 mb-8 text-white"
                       >
                         {error}
                       </Alert>
                     )}
                     <div className="flex flex-col space-y-8">
                       <TextField
-                        values={values}
-                        errors={errors}
-                        handleChange={handleChange}
-                        handleBlur={handleBlur}
-                        touched={touched}
-                        shrinkLabel
                         type="text"
                         name="first_name"
                         label="First Name"
-                      />
-                      <TextField
-                        values={values}
-                        errors={errors}
                         handleChange={handleChange}
                         handleBlur={handleBlur}
                         touched={touched}
+                        values={values}
+                        errors={errors}
                         shrinkLabel
+                      />
+                      <TextField
                         type="tel"
                         name="phone_number"
                         label="Phone Number"
-                      />
-                      <TextField
-                        values={values}
-                        errors={errors}
                         handleChange={handleChange}
                         handleBlur={handleBlur}
                         touched={touched}
+                        values={values}
+                        errors={errors}
                         shrinkLabel
+                      />
+                      <TextField
                         type="email"
                         name="email"
                         label="Email"
-                      />
-                      <TextField
-                        values={values}
-                        errors={errors}
                         handleChange={handleChange}
                         handleBlur={handleBlur}
                         touched={touched}
+                        values={values}
+                        errors={errors}
                         shrinkLabel
-                        multiline
+                      />
+                      <TextField
                         type="text"
                         name="message"
                         label="Message"
+                        handleChange={handleChange}
+                        handleBlur={handleBlur}
+                        touched={touched}
+                        values={values}
+                        errors={errors}
+                        shrinkLabel
+                        multiline
                       />
                     </div>
                     <div className="flex justify-center mt-8">
                       <Button
+                        size="large"
                         type="submit"
                         disabled={isSubmitting || !isValid || !dirty}
-                        size="large"
                       >
                         {isSubmitting ? (
                           <>

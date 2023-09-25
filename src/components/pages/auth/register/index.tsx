@@ -127,9 +127,9 @@ const Register = () => {
                         onClose={() => {
                           setError('');
                         }}
-                        className="mb-4 text-white"
                         severity="error"
                         variant="filled"
+                        className="mb-4 text-white"
                       >
                         {error}
                       </Alert>

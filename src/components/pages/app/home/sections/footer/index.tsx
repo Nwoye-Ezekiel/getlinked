@@ -1,12 +1,8 @@
-import React from 'react';
-import { ReactComponent as InstagramIcon } from 'assets/icons/instagram.svg';
-import { ReactComponent as TwitterIcon } from 'assets/icons/twitter.svg';
-import { ReactComponent as FacebookIcon } from 'assets/icons/facebook.svg';
-import { ReactComponent as LinkedInIcon } from 'assets/icons/linkedin.svg';
 import { ReactComponent as PhoneIcon } from 'assets/icons/phone.svg';
 import { ReactComponent as LocationIcon } from 'assets/icons/location.svg';
 import { Link as ScrollLink } from 'react-scroll';
 import { Link } from 'react-router-dom';
+import { socials } from 'data/socials';
 
 const Footer = () => {
   return (
@@ -66,18 +62,11 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <span className="text-primary text-xs font-medium">Follow us</span>
-                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-                  <InstagramIcon className="hover:text-primary cursor-pointer transition-all duration-100 hover:scale-125" />
-                </a>
-                <a href="https://www.x.com" target="_blank" rel="noopener noreferrer">
-                  <TwitterIcon className="hover:text-primary cursor-pointer transition-all duration-100 hover:scale-125" />
-                </a>
-                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-                  <FacebookIcon className="hover:text-primary cursor-pointer transition-all duration-100 hover:scale-125" />
-                </a>
-                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
-                  <LinkedInIcon className="hover:text-primary cursor-pointer transition-all duration-100 hover:scale-125" />
-                </a>
+                {socials.map((social) => (
+                  <a href={social.link} target="_blank" rel="noopener noreferrer">
+                    <social.icon className="hover:text-primary cursor-pointer transition-all duration-100 hover:scale-125" />
+                  </a>
+                ))}
               </div>
             </div>
           </div>
