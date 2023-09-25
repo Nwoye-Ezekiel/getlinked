@@ -12,3 +12,10 @@ export interface RegistrationPayload {
   category: number;
   privacy_poclicy_accepted: boolean;
 }
+
+export interface MessagePayload {
+  email: string;
+  phone_number: string;
+  first_name: string;
+  message: string;
+}

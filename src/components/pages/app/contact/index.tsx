@@ -1,4 +1,3 @@
-import { ReactComponent as WinkEmoji } from 'assets/icons/wink-emoji.svg';
 import Congratulations from 'assets/images/congratulation.png';
 import { ReactComponent as InstagramIcon } from 'assets/icons/instagram.svg';
 import { ReactComponent as TwitterIcon } from 'assets/icons/twitter.svg';
@@ -15,6 +14,7 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useEffect, useState } from 'react';
 import TextField from 'components/text-filed';
+import { sendMessage } from 'apis/contact';
 
 const validationSchema = yup.object().shape({
   first_name: yup.string().required('Enter your first name'),
@@ -30,6 +30,12 @@ const Contact = () => {
   const handleSubmit = async (values: any, resetForm: () => void) => {
     try {
       // setError('');
+      sendMessage({
+        email: values.email,
+        phone_number: values.phone_number,
+        first_name: values.first_name,
+        message: values.message,
+      });
       setShowSuccessModal(true);
       resetForm();
     } catch (error: any) {
@@ -241,21 +247,10 @@ const Contact = () => {
             <img src={Congratulations} alt="congratulations" className="w-[80%]" />
             <div className="space-y-6 lg:space-y-8 w-full">
               <div className="space-y-2">
-                <div>
-                  <p className="font-bold text-base lg:text-lgMd text-white">Congratulations!</p>
-                  <p className="font-bold text-base lg:text-lgMd text-white lg:whitespace-nowrap">
-                    You have successfully Registered
-                  </p>
-                </div>
-                <div className="space-y-1">
-                  <p className="text-xs lg:text-smMd text-white">
-                    Yes, it was easy and you did it!
-                  </p>
-                  <p className="text-xs lg:text-smMd text-white flex justify-center items-center">
-                    <span>check your mail box for next step</span>
-                    <WinkEmoji />
-                  </p>
-                </div>
+                <p className="font-bold text-base lg:text-lgMd text-white">Message Sent!</p>
+                <p className="text-xs lg:text-smMd text-white">
+                  Your message was sent successfully
+                </p>
               </div>
               <Button onClick={() => setShowSuccessModal(false)} size="large" fullWidth>
                 Back
