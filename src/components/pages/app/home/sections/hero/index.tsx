@@ -1,6 +1,6 @@
+import Button from 'components/button';
 import images from 'assets/images/index.json';
 import { useNavigate } from 'react-router-dom';
-import Button from 'components/button';
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -8,8 +8,8 @@ const Hero = () => {
   return (
     <div className="relative flex border-t border-t-solid border-white/[.18] overflow-hidden">
       <img
-        src={images['pattern']}
         alt="pattern"
+        src={images['pattern']}
         className="hidden lg:block absolute right-0 bottom-0"
       />
       <div className="lg:mx-12 w-full">
@@ -19,8 +19,8 @@ const Hero = () => {
               Igniting a Revolution in HR Innovation
             </i>
             <img
-              src={images['arc']}
               alt="arc"
+              src={images['arc']}
               className="w-[118px] lg:w-[225px] absolute right-1 -bottom-2 lg:-bottom-3"
             />
           </div>
@@ -31,8 +31,8 @@ const Hero = () => {
                   <div className="-space-y-1 lg:-space-y-6">
                     <div className="relative">
                       <img
-                        src={images['bulb']}
                         alt="bulb"
+                        src={images['bulb']}
                         className="absolute w-5 right-[47px] -top-[12px] lg:-top-[36px] lg:right-[149px]"
                       />
                       <h1 className="font-bold text-lgMd lg:text-2xl ">getlinked Tech</h1>
@@ -44,13 +44,13 @@ const Hero = () => {
                       </span>
                       <div className="flex">
                         <img
-                          src={images['chain']}
                           alt="chain"
+                          src={images['chain']}
                           className="w-10 lg:w-full mb-1.5 -ml-2 lg:-ml-1 lg:mb-4"
                         />
                         <img
-                          src={images['explosion']}
                           alt="explosion"
+                          src={images['explosion']}
                           className="w-7 lg:w-full mb-1.5 lg:mb-4"
                         />
                       </div>

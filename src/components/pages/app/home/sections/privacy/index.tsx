@@ -1,6 +1,6 @@
+import Button from 'components/button';
 import images from 'assets/images/index.json';
 import { ReactComponent as CheckIcon } from 'assets/icons/check.svg';
-import Button from 'components/button';
 
 const Privacy = () => {
   return (

@@ -1,3 +1,4 @@
+import { faqs } from 'data/static/faqs';
 import images from 'assets/images/index.json';
 
 const FAQs = () => {
@@ -17,58 +18,15 @@ const FAQs = () => {
               </p>
             </div>
             <div className="flex flex-col space-y-5 leading-relaxed text-smMax lg:text-smMd">
-              <div className="flex flex-col space-y-2">
-                <div className="flex justify-between items-end lg:items-center space-x-4">
-                  <p className="font-medium text-left">
-                    Can I work on a project I started before the hackathon?
-                  </p>
-                  <span className="text-primary text-mdMax leading-none">+</span>
+              {faqs.map((item, index) => (
+                <div key={index} className="flex flex-col space-y-2">
+                  <div className="flex justify-between items-end lg:items-center space-x-4">
+                    <p className="font-medium text-left">{item.question}</p>
+                    <span className="text-primary text-mdMax leading-none">+</span>
+                  </div>
+                  <hr className="text-primary" />
                 </div>
-                <hr className="text-primary" />
-              </div>
-              <div className="flex flex-col space-y-2">
-                <div className="flex justify-between items-end lg:items-center space-x-4">
-                  <p className="font-medium text-left">
-                    What happens if I need help during the hackathon?
-                  </p>
-                  <span className="text-primary text-mdMax leading-none">+</span>
-                </div>
-                <hr className="text-primary" />
-              </div>
-              <div className="flex flex-col space-y-2">
-                <div className="flex justify-between items-end lg:items-center space-x-4">
-                  <p className="font-medium text-left">
-                    What happens if I don't have an idea for a project?
-                  </p>
-                  <span className="text-primary text-mdMax leading-none">+</span>
-                </div>
-                <hr className="text-primary" />
-              </div>
-              <div className="flex flex-col space-y-2">
-                <div className="flex justify-between items-end lg:items-center space-x-4">
-                  <p className="font-medium text-left">
-                    Can I join a team or do I have to come with one?
-                  </p>
-                  <span className="text-primary text-mdMax leading-none">+</span>
-                </div>
-                <hr className="text-primary" />
-              </div>
-              <div className="flex flex-col space-y-2">
-                <div className="flex justify-between items-end lg:items-center space-x-4">
-                  <p className="font-medium text-left">What happens after the hackathon ends?</p>
-                  <span className="text-primary text-mdMax leading-none">+</span>
-                </div>
-                <hr className="text-primary" />
-              </div>
-              <div className="flex flex-col space-y-2">
-                <div className="flex justify-between items-end lg:items-center space-x-4">
-                  <p className="font-medium text-left">
-                    Can I work on a project I started before the hackathon?
-                  </p>
-                  <span className="text-primary text-mdMax leading-none">+</span>
-                </div>
-                <hr className="text-primary" />
-              </div>
+              ))}
             </div>
           </div>
           <div className="w-full max-w-sm lg:max-w-none lg:w-[55%]">

@@ -5,7 +5,7 @@ import { sendMessage } from 'apis/contact';
 import { useEffect, useState } from 'react';
 import images from 'assets/images/index.json';
 import TextField from 'components/text-filed';
-import { socials } from 'data/socials';
+import { socials } from 'data/static/socials';
 import { Alert, CircularProgress, Dialog, DialogContent } from '@mui/material';
 
 const validationSchema = yup.object().shape({

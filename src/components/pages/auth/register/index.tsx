@@ -9,9 +9,9 @@ import {
 } from '@mui/material';
 import * as yup from 'yup';
 import { Formik } from 'formik';
-import { useCategories } from 'data';
 import Button from 'components/button';
 import { useEffect, useState } from 'react';
+import { useCategories } from 'data/dynamic';
 import images from 'assets/images/index.json';
 import TextField from 'components/text-filed';
 import { registerUser } from 'apis/registration';

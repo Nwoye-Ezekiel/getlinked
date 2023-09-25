@@ -1,8 +1,8 @@
+import { Link } from 'react-router-dom';
+import { socials } from 'data/static/socials';
+import { Link as ScrollLink } from 'react-scroll';
 import { ReactComponent as PhoneIcon } from 'assets/icons/phone.svg';
 import { ReactComponent as LocationIcon } from 'assets/icons/location.svg';
-import { Link as ScrollLink } from 'react-scroll';
-import { Link } from 'react-router-dom';
-import { socials } from 'data/socials';
 
 const Footer = () => {
   return (
