@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 interface ButtonProps {
   children: ReactNode;
   fullWidth?: boolean;
+  onClick?: () => void;
   type?: 'button' | 'submit';
   variant?: 'primary' | 'secondary';
   size?: 'small' | 'medium' | 'large';
@@ -12,6 +13,7 @@ const Button = ({
   size = 'medium',
   variant = 'primary',
   type = 'button',
+  onClick,
   children,
   fullWidth,
 }: ButtonProps) => {
@@ -33,6 +35,7 @@ const Button = ({
 
   return (
     <button
+      onClick={() => onClick?.()}
       type={type}
       className={`rounded transition-all duration-300 ${fullWidth ? 'w-full' : ''} ${
         variant === 'primary'

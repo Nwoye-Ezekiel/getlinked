@@ -1,16 +1,20 @@
 import ManOnComputer from 'assets/images/man-on-computer.png';
 import { ReactComponent as ManAndWomanWalking } from 'assets/icons/man-and-woman-walking.svg';
+import { ReactComponent as WinkEmoji } from 'assets/icons/wink-emoji.svg';
+import Congratulations from 'assets/images/congratulation.png';
 import {
   // Alert,
   Autocomplete,
   Checkbox,
   CircularProgress,
+  Dialog,
+  DialogContent,
   TextField as MUITextField,
 } from '@mui/material';
 import Button from 'components/button';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TextField from 'components/text-filed';
 import { CheckBox, CheckBoxOutlineBlankOutlined } from '@mui/icons-material';
 import { useCategories } from 'data';
@@ -29,12 +33,12 @@ const validationSchema = yup.object().shape({
 const Register = () => {
   // const [error, setError] = useState('');
   const [privacyPolicyAccepted, setPrivacyPolicyAccepted] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const { data: categories, isLoading, isError, refetch } = useCategories();
 
   const handleSubmit = async (values: any, resetForm: () => void) => {
     try {
       // setError('');
-      resetForm();
       await registerUser({
         email: values.email,
         phone_number: values.phone,
@@ -44,19 +48,23 @@ const Register = () => {
         category: categories?.find((category) => category.name === values.category)?.id ?? 1,
         privacy_poclicy_accepted: privacyPolicyAccepted,
       });
-
-      // setModalState({
-      //   open: true,
-      //   isSuccess: true,
-      //   titleText: 'Message Sent!',
-      //   description: 'Your message has been sent successfully.',
-      //   callToActionText: 'Okay',
-      //   primaryAction: () => handleModalClose(),
-      // });
+      setShowSuccessModal(true);
+      setPrivacyPolicyAccepted(false);
+      resetForm();
     } catch (error: any) {
       // setError(error.message);
     }
   };
+
+  useEffect(() => {
+    const layoutElement = document.getElementById('layout');
+    if (showSuccessModal && layoutElement) {
+      layoutElement.style.opacity = '0.1';
+    } else if (layoutElement) {
+      layoutElement.style.opacity = '1';
+    }
+  }, [showSuccessModal]);
+
   return (
     <div className="pt-5 pb-16 lg:pt-5 lg:pb-20">
       {isLoading && !categories ? (
@@ -302,6 +310,45 @@ const Register = () => {
           </div>
         </div>
       )}
+      <Dialog
+        open={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+        sx={{
+          '& .MuiPaper-root ': {
+            background: 'transparent',
+          },
+        }}
+        BackdropProps={{ invisible: true }}
+        fullScreen
+      >
+        <DialogContent className="flex justify-center items-center overflow-hidden">
+          <div className="flex flex-col justify-center items-center text-center p-7 pb-8 md:p-12 md:pt-5 rounded m-auto w-full max-w-2xl h-fit border border-solid border-primary">
+            <img src={Congratulations} alt="congratulations" className="w-[80%]" />
+            <div className="space-y-6 lg:space-y-8 w-full">
+              <div className="space-y-2">
+                <div>
+                  <p className="font-bold text-base lg:text-lgMd text-white">Congratulations!</p>
+                  <p className="font-bold text-base lg:text-lgMd text-white lg:whitespace-nowrap">
+                    You have successfully Registered
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <p className="text-xs lg:text-smMd text-white">
+                    Yes, it was easy and you did it!
+                  </p>
+                  <p className="text-xs lg:text-smMd text-white flex justify-center items-center">
+                    <span>check your mail box for next step</span>
+                    <WinkEmoji />
+                  </p>
+                </div>
+              </div>
+              <Button onClick={() => setShowSuccessModal(false)} size="large" fullWidth>
+                Back
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

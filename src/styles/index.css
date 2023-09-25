@@ -72,6 +72,7 @@ body {
   background-color: var(--color-background);
 }
 
+
 h1,
 h2,
 h3,
@@ -80,6 +81,10 @@ h5,
 h6 {
   font-family: 'clash-display';
   font-weight: bold;
+}
+
+#layout{
+  transition: opacity 0.5s ease-in-out;
 }
 
 ::-webkit-scrollbar {
