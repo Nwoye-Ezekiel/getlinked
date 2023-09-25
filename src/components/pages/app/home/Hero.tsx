@@ -3,11 +3,14 @@ import BoyOnGlasses from 'assets/images/boy-on-glasses.png';
 // import { ReactComponent as Chain } from 'assets/icons/chain.svg';
 // import { ReactComponent as Bulb } from 'assets/icons/bulb.svg';
 import { ReactComponent as Arc } from 'assets/icons/arc.svg';
+import { useNavigate } from 'react-router-dom';
 // import { ReactComponent as Explosion } from 'assets/icons/explosion.svg';
 // import Flare from 'assets/images/flare.png';
 // import { ReactComponent as Star } from 'assets/icons/star.svg';
 
 const Hero = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="flex border-t border-t-solid border-white/[.18] overflow-hidden">
       <div className="lg:mx-12 w-full">
@@ -42,7 +45,9 @@ const Hero = () => {
                     Participate in getlinked tech Hackathon 2023 stand a chance to win a Big prize
                   </p>
                 </div>
-                <Button size="large">Register</Button>
+                <Button onClick={() => navigate('/register')} size="large">
+                  Register
+                </Button>
               </div>
               <div className="flex space-x-7">
                 <div className="flex items-end">
