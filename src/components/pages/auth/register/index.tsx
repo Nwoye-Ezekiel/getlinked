@@ -13,7 +13,7 @@ import Button from 'components/button';
 import { useEffect, useState } from 'react';
 import { useCategories } from 'data/dynamic';
 import images from 'assets/images/index.json';
-import TextField from 'components/text-filed';
+import TextField from 'components/text-field';
 import { registerUser } from 'apis/registration';
 import { CheckBox, CheckBoxOutlineBlankOutlined, KeyboardArrowDown } from '@mui/icons-material';
 
