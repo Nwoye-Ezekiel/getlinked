@@ -28,7 +28,7 @@ const validationSchema = yup.object().shape({
 
 const Register = () => {
   const [error, setError] = useState('');
-  const [showSuccessModal, setShowSuccessModal] = useState(true);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [privacyPolicyAccepted, setPrivacyPolicyAccepted] = useState(false);
   const {
     data: categories,
