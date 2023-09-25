@@ -58,7 +58,7 @@ const Register = () => {
     }
   };
   return (
-    <div className="pt-10 pb-16 lg:pt-5 lg:pb-20">
+    <div className="pt-5 pb-16 lg:pt-5 lg:pb-20">
       {isLoading && !categories ? (
         <div
           className="flex flex-col items-center justify-center h-full"
@@ -75,24 +75,24 @@ const Register = () => {
       ) : (
         <div className="mx-12">
           <div className="max-w-tablet lg:max-w-desktop mx-auto flex flex-col lg:flex-row justify-center items-center gap-5 lg:gap-10">
-          <h1 className="lg:hidden max-w-tablet mr-auto text-primary font-semibold mb-5">Register</h1>
+            <h1 className="lg:hidden max-w-tablet mr-auto text-primary font-semibold mb-5">
+              Register
+            </h1>
             <div className="w-full lg:w-[40%] max-w-sm mx-auto lg:max-w-none">
-              <img
-                src={ManOnComputer}
-                className="lg:scale-[1.45] lg:-ml-3"
-                alt="man on computer"
-              />
+              <img src={ManOnComputer} className="lg:scale-[1.45] lg:-ml-3" alt="man on computer" />
             </div>
             <div className="w-full max-w-tablet lg:max-w-none lg:w-[60%] rounded-xl lg:bg-white/[.03] lg:p-12 lg:pt-8 lgMax:p-20 lgMax:pt-14">
               <div className="mb-6">
-                <h1 className="hidden lg:block text-lgMd text-primary font-semibold mb-5">Register</h1>
+                <h1 className="hidden lg:block text-lgMd text-primary font-semibold mb-5">
+                  Register
+                </h1>
                 <div className="flex items-end space-x-1 mb-3">
                   <p className="text-xs lg:text-smMd">Be part of this movement!</p>
                   <div className="w-24 border-b border-dashed border-primary mb-1 flex justify-center">
                     <ManAndWomanWalking />
                   </div>
                 </div>
-                <p className="text-mdMd lg:text-mdMax font-medium">CREATE YOUR ACCOUNT</p>
+                <p className="text-mdMd lg:text-mdMax font-semibold">CREATE YOUR ACCOUNT</p>
               </div>
               <div>
                 <Formik
@@ -221,7 +221,9 @@ const Register = () => {
                             />
                           </div>
                           <div className="space-y-2 w-full">
-                            <label className="text-smMax lg:text-smMd font-medium">Group Size</label>
+                            <label className="text-smMax lg:text-smMd font-medium">
+                              Group Size
+                            </label>
                             <Autocomplete
                               fullWidth
                               options={['1', '2', '3', '4', '5']}
@@ -266,15 +268,15 @@ const Register = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="mt-4">
+                      <div className="mt-2 lg:mt-4">
                         <i className="text-xsMax lg:text-xs text-pink">
                           Please review your registration details before submitting
                         </i>
                       </div>
-                      <div className="mb-2">
+                      <div className="flex items-center mb-3">
                         <Checkbox
-                          icon={<CheckBoxOutlineBlankOutlined className="text-gray-200 w-4 h-4" />}
-                          checkedIcon={<CheckBox className="text-primary w-4 h-4" />}
+                          icon={<CheckBoxOutlineBlankOutlined className="text-white w-4 h-4" />}
+                          checkedIcon={<CheckBox className="text-pink w-4 h-4" />}
                           checked={privacyPolicyAccepted}
                           onChange={(e) => setPrivacyPolicyAccepted(e.target.checked)}
                         />
