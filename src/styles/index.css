@@ -39,9 +39,9 @@
 }
 
 :root {
+  --color-gray: #bdbbc3;
   --color-black: #000000;
   --color-white: #ffffff;
-  --color-gray: #bdbbc3;
   --color-primary: #d434fe;
   --color-background: #150e28;
   --color-scrollbar-background: #d634fe26;
@@ -52,10 +52,10 @@
   margin: 0;
   padding: 0;
   font-weight: 400;
+  font-weight: medium;
   box-sizing: border-box;
   font-family: 'montserrat';
   -webkit-tap-highlight-color: transparent;
-  font-weight: medium;
 }
 
 html,
@@ -66,9 +66,9 @@ body,
 
 body {
   height: 100%;
+  overflow-x: hidden;
   scroll-behavior: smooth;
   color: var(--color-white);
-  overflow-x: hidden;
   background-color: var(--color-background);
 }
 
@@ -78,8 +78,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'clash-display';
   font-weight: bold;
+  font-family: 'clash-display';
 }
 
 #layout {
