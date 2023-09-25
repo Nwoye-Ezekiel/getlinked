@@ -72,7 +72,7 @@ const TextField = ({
         />
       </div>
       {hasError && (
-        <p className="text-smMd font-proximaNovaM text-error font-normal mt-0.5">{errors[name]}</p>
+        <p className="text-smMax font-proximaNovaM text-error font-normal mt-0.5">{errors[name]}</p>
       )}
     </div>
   );

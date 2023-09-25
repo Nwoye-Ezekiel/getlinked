@@ -205,7 +205,7 @@ const Register = () => {
                                   helperText={touched.category ? errors.category : ''}
                                 />
                                 {isLoadingCategories && (
-                                  <div className="text-white/[.5] text-xs mt-1 animate-pulse">
+                                  <div className="text-white/[.5] text-smMax mt-1 animate-pulse">
                                     Fetching categories...
                                   </div>
                                 )}

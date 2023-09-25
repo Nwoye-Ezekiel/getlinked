@@ -1,17 +1,17 @@
-import Timeline from './Timeline';
-import Criteria from './Criteria';
-import FAQs from './FAQs';
-import Hero from './Hero';
-import Introduction from './Introduction';
-import Rules from './Rules';
-import Prizes from './Prizes';
-import Partners from './Partners';
-import Privacy from './Privacy';
-import Footer from './Footer';
+import FAQs from './sections/faqs';
+import Hero from './sections/hero';
+import Rules from './sections/rules';
+import Prizes from './sections/prizes';
+import Footer from './sections/footer';
+import Privacy from './sections/privacy';
+import Timeline from './sections/timeline';
+import Criteria from './sections/criteria';
+import Partners from './sections/partners';
+import Introduction from './sections/introduction';
 
 const Home = () => {
   return (
-    <div>
+    <>
       <Hero />
       <Introduction />
       <Rules />
@@ -22,7 +22,7 @@ const Home = () => {
       <Partners />
       <Privacy />
       <Footer />
-    </div>
+    </>
   );
 };
 

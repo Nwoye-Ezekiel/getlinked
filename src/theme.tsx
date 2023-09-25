@@ -44,6 +44,13 @@ const theme = createTheme({
         },
       },
     },
+    MuiFormHelperText: {
+      styleOverrides: {
+        contained: {
+          fontSize: '13px',
+        },
+      },
+    },
   },
 });
 
