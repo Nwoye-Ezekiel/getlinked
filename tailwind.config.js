@@ -7,6 +7,7 @@ export const theme = {
     pink: '#FF26B9',
     error: '#d3302f',
     success: '#109c3f',
+    temp: '#1c162f',
     primary: '#D434FE',
     secondary: '#903AFF',
     background: '#150E28',
