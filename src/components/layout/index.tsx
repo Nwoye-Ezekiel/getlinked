@@ -105,7 +105,7 @@ const Layout = () => {
   return (
     <div id="home">
       <div className="mx-12">
-        <div className="flex justify-between items-center mx-auto my-5 lg:my-8 max-w-desktop">
+        <div className="flex justify-between items-center mx-auto mt-6 mb-5 lg:mt-10 lg:mb-8 max-w-desktop">
           <Link to="/">
             <h1 className="lg:text-lgMax font-bold">
               get<span className="text-primary font-clashDisplay font-bold">linked</span>

@@ -1,4 +1,4 @@
-// import ManOnComputer from 'assets/images/man-on-computer.png';
+import ManOnComputer from 'assets/images/man-on-computer.png';
 import { ReactComponent as ManAndWomanWalking } from 'assets/icons/man-and-woman-walking.svg';
 import {
   // Alert,
@@ -58,7 +58,7 @@ const Register = () => {
     }
   };
   return (
-    <div className="border-t border-t-solid border-t-white/[0.18] lg:pt-10 lg:pb-20">
+    <div className="pt-10 pb-16 lg:pt-5 lg:pb-20">
       {isLoading && !categories ? (
         <div
           className="flex flex-col items-center justify-center h-full"
@@ -73,25 +73,26 @@ const Register = () => {
           reset={refetch}
         />
       ) : (
-        <div className="m-12">
-          <div className="max-w-tablet lg:max-w-6xl mx-auto flex flex-col lg:flex-row justify-center space-y-10 lg:space-y-20">
-            {/* <div className="w-[40%] border border-primary border-solid">
+        <div className="mx-12">
+          <div className="max-w-tablet lg:max-w-desktop mx-auto flex flex-col lg:flex-row justify-center items-center gap-5 lg:gap-10">
+          <h1 className="lg:hidden max-w-tablet mr-auto text-primary font-semibold mb-5">Register</h1>
+            <div className="w-full lg:w-[40%] max-w-sm mx-auto lg:max-w-none">
               <img
                 src={ManOnComputer}
-                className="w-full max-w-sm mx-auto lg:max-w-none"
+                className="lg:scale-[1.45] lg:-ml-3"
                 alt="man on computer"
               />
-            </div> */}
-            <div className="w-[60%] border border-primary border-solid bg-white/[.05] p-20 pt-14">
-              <div className="mb-7">
-                <h1 className="text-lgMd text-primary font-semibold mb-5">Register</h1>
-                <div className="flex items-end space-x-1 mb-5">
-                  <p className="text-smMd">Be part of this movement!</p>
+            </div>
+            <div className="w-full max-w-tablet lg:max-w-none lg:w-[60%] rounded-xl lg:bg-white/[.03] lg:p-12 lg:pt-8 lgMax:p-20 lgMax:pt-14">
+              <div className="mb-6">
+                <h1 className="hidden lg:block text-lgMd text-primary font-semibold mb-5">Register</h1>
+                <div className="flex items-end space-x-1 mb-3">
+                  <p className="text-xs lg:text-smMd">Be part of this movement!</p>
                   <div className="w-24 border-b border-dashed border-primary mb-1 flex justify-center">
                     <ManAndWomanWalking />
                   </div>
                 </div>
-                <p className="text-mdMax font-medium">CREATE YOUR ACCOUNT</p>
+                <p className="text-mdMd lg:text-mdMax font-medium">CREATE YOUR ACCOUNT</p>
               </div>
               <div>
                 <Formik
@@ -130,8 +131,8 @@ const Register = () => {
                       >
                         {error}
                       </Alert> */}
-                      <div className="flex flex-col space-y-6">
-                        <div className="flex gap-10">
+                      <div className="flex flex-col space-y-4 lg:space-y-6">
+                        <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
                           <TextField
                             values={values}
                             errors={errors}
@@ -155,7 +156,7 @@ const Register = () => {
                             placeholder="Enter your phone number"
                           />
                         </div>
-                        <div className="flex gap-10">
+                        <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
                           <TextField
                             values={values}
                             errors={errors}
@@ -179,9 +180,9 @@ const Register = () => {
                             placeholder="What is your group project topic"
                           />
                         </div>
-                        <div className="flex gap-10">
+                        <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
                           <div className="space-y-2 w-full">
-                            <label className="text-smMd font-medium">Category</label>
+                            <label className="text-smMax lg:text-smMd font-medium">Category</label>
                             <Autocomplete
                               fullWidth
                               options={categories?.map((category) => category.name) ?? []} // Pass an array of category names
@@ -220,7 +221,7 @@ const Register = () => {
                             />
                           </div>
                           <div className="space-y-2 w-full">
-                            <label className="text-smMd font-medium">Group Size</label>
+                            <label className="text-smMax lg:text-smMd font-medium">Group Size</label>
                             <Autocomplete
                               fullWidth
                               options={['1', '2', '3', '4', '5']}
@@ -265,8 +266,8 @@ const Register = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="mt-5">
-                        <i className="text-xs text-pink">
+                      <div className="mt-4">
+                        <i className="text-xsMax lg:text-xs text-pink">
                           Please review your registration details before submitting
                         </i>
                       </div>
@@ -277,7 +278,7 @@ const Register = () => {
                           checked={privacyPolicyAccepted}
                           onChange={(e) => setPrivacyPolicyAccepted(e.target.checked)}
                         />
-                        <span className="text-xs font-medium">
+                        <span className="text-xsMd lg:text-xs font-medium">
                           I agreed with the event terms and conditions and privacy policy
                         </span>
                       </div>

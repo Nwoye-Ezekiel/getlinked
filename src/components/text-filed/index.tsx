@@ -31,7 +31,7 @@ const TextField = ({
       <div className="space-y-2">
         <label
           htmlFor={name}
-          className={`text-smMd font-medium ${hasError ? 'text-error' : 'text-white'}`}
+          className={`text-smMax lg:text-smMd font-medium ${hasError ? 'text-error' : 'text-white'}`}
         >
           {label}
         </label>
@@ -40,7 +40,7 @@ const TextField = ({
           value={values[name]}
           name={name}
           type={type}
-          className={`block text-smMd text-white w-full h-14 px-3 border outline-none rounded caret-white bg-transparent peer secondary-scrollbar ${
+          className={`block text-smMax lg:text-smMd text-white w-full h-14 px-3 border outline-none rounded caret-white bg-transparent peer secondary-scrollbar ${
             hasError
               ? 'border-error/[.7] hover:border-error focus:border-red'
               : 'border-white/[.7] hover:border-white focus:border-white'
