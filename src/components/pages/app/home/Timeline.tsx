@@ -1,4 +1,3 @@
-// import WomanHoldingChart from 'assets/images/woman-holding-chart.png';
 import { useMediaQuery } from '@mui/material';
 
 const Timeline = () => {

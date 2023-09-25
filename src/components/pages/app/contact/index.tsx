@@ -1,4 +1,4 @@
-import Congratulations from 'assets/images/congratulation.png';
+import images from 'assets/images/index.json';
 import { ReactComponent as InstagramIcon } from 'assets/icons/instagram.svg';
 import { ReactComponent as TwitterIcon } from 'assets/icons/twitter.svg';
 import { ReactComponent as FacebookIcon } from 'assets/icons/facebook.svg';
@@ -246,7 +246,7 @@ const Contact = () => {
       >
         <DialogContent className="flex justify-center items-center overflow-hidden">
           <div className="flex flex-col justify-center items-center text-center p-7 pb-8 md:p-12 md:pt-5 rounded m-auto w-full max-w-2xl h-fit border border-solid border-primary bg-white/[.01]">
-            <img src={Congratulations} alt="congratulations" className="w-[80%]" />
+            <img src={images['congratulations']} alt="congratulations" className="w-[80%]" />
             <div className="space-y-6 lg:space-y-8 w-full">
               <div className="space-y-2">
                 <p className="font-bold text-base lg:text-lgMd text-white">Message Sent!</p>

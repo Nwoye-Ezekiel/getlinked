@@ -1,4 +1,4 @@
-import ManThinking from 'assets/images/man-thinking.png';
+import images from 'assets/images/index.json';
 
 const FAQs = () => {
   return (
@@ -72,7 +72,7 @@ const FAQs = () => {
             </div>
           </div>
           <div className="w-full max-w-sm lg:max-w-none lg:w-[55%]">
-            <img src={ManThinking} alt="ManThinking" className="scale-[1.2]" />
+            <img src={images['man_thinking']} alt="man_thinking" className="scale-[1.2]" />
           </div>
         </div>
       </div>

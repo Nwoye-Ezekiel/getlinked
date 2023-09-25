@@ -1,4 +1,4 @@
-import ManWithKey from 'assets/images/man-with-key.png';
+import images from 'assets/images/index.json';
 import { ReactComponent as CheckIcon } from 'assets/icons/check.svg';
 import Button from 'components/button';
 
@@ -60,8 +60,8 @@ const Privacy = () => {
           </div>
           <div className="w-full max-w-sm lg:max-w-none mx-auto lg:w-[50%]">
             <img
-              src={ManWithKey}
-              alt="ManWithKey"
+              src={images['man_holding_key']}
+              alt="man holding key"
               className="lg:scale-[1.35] lg:mt-36 -ml-[7%] lg:ml-0"
             />
           </div>

@@ -1,5 +1,5 @@
 import Button from 'components/button';
-import WomanHoldingChart from 'assets/images/woman-holding-chart.png';
+import images from 'assets/images/index.json';
 
 const Criteria = () => {
   const criteria = [
@@ -36,8 +36,8 @@ const Criteria = () => {
         <div className="max-w-tablet lg:max-w-6xl mx-auto flex flex-col lg:flex-row items-center lg:gap-24">
           <div className="w-full max-w-sm lg:max-w-none lg:w-1/2">
             <img
-              src={WomanHoldingChart}
-              alt="WomanHoldingChart"
+              src={images['woman_holding_chart']}
+              alt="woman holding chart"
               className="lg:scale-[1.18] lg:mt-24 lg:ml-4"
             />
           </div>

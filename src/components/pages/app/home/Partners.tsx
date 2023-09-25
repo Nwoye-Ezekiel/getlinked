@@ -1,4 +1,4 @@
-import AllPartners from 'assets/images/all-partners.png';
+import images from 'assets/images/index.json';
 
 const Partners = () => {
   return (
@@ -12,7 +12,11 @@ const Partners = () => {
               partners and sponsors
             </p>
           </div>
-          <img src={AllPartners} className="w-full max-w-sm mx-auto lg:max-w-none" alt="partners" />
+          <img
+            src={images['partners_and_sponsors']}
+            className="w-full max-w-sm mx-auto lg:max-w-none"
+            alt="partners and sponsors"
+          />
         </div>
       </div>
     </div>

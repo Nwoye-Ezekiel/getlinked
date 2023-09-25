@@ -5,13 +5,12 @@ import { HelmetProvider } from 'react-helmet-async';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+const queryClient = new QueryClient();
 const Layout = React.lazy(() => import('components/layout'));
 const Home = React.lazy(() => import('components/pages/app/home'));
 const NotFound = React.lazy(() => import('components/pages/not-found'));
 const Contact = React.lazy(() => import('components/pages/app/contact'));
 const Register = React.lazy(() => import('components/pages/auth/register'));
-
-const queryClient = new QueryClient();
 
 function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);

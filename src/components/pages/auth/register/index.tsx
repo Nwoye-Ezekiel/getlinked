@@ -1,5 +1,4 @@
-import ManOnComputer from 'assets/images/man-on-computer.png';
-import Congratulations from 'assets/images/congratulation.png';
+import images from 'assets/images/index.json';
 import { ReactComponent as WinkEmoji } from 'assets/icons/wink-emoji.svg';
 import { ReactComponent as ManAndWomanWalking } from 'assets/icons/man-and-woman-walking.svg';
 import {
@@ -77,7 +76,11 @@ const Register = () => {
             Register
           </h1>
           <div className="w-full lg:w-[40%] max-w-sm mx-auto lg:max-w-none">
-            <img src={ManOnComputer} className="lg:scale-[1.45] lg:-ml-3" alt="man on computer" />
+            <img
+              src={images['man_sitting']}
+              className="lg:scale-[1.45] lg:-ml-3"
+              alt="man sitting"
+            />
           </div>
           <div className="w-full max-w-tablet lg:max-w-none lg:w-[60%] rounded-xl lg:bg-white/[.03] lg:p-12 lg:pt-8 lgMax:p-20 lgMax:pt-14">
             <div className="mb-6">
@@ -295,7 +298,7 @@ const Register = () => {
       >
         <DialogContent className="flex justify-center items-center overflow-hidden">
           <div className="flex flex-col justify-center items-center text-center p-7 pb-8 md:p-12 md:pt-5 rounded m-auto w-full max-w-2xl h-fit border border-solid border-primary bg-white/[.01]">
-            <img src={Congratulations} alt="congratulations" className="w-[80%]" />
+            <img src={images['congratulations']} alt="congratulations" className="w-[80%]" />
             <div className="space-y-6 lg:space-y-8 w-full">
               <div className="space-y-2">
                 <div>

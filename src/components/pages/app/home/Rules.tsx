@@ -1,4 +1,4 @@
-import WomanSitting from 'assets/images/woman-sitting.png';
+import images from 'assets/images/index.json';
 
 const Rules = () => {
   return (
@@ -6,7 +6,7 @@ const Rules = () => {
       <div className="m-12 lg:mb-32">
         <div className="max-w-tablet lg:max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-24 lg:gap-32">
           <div className="w-full max-w-sm lg:max-w-none lg:w-[50%] -m-20 -mt-4 scale-[1.1] lg:order-2">
-            <img src={WomanSitting} alt="WomanSitting" />
+            <img src={images['woman_sitting']} alt="woman sitting" />
           </div>
           <div className="w-full lg:w-[50%] space-y-3 lg:space-y-4 text-center lg:text-left lg:order-1">
             <div className="text-mdMd lg:text-lgMd">

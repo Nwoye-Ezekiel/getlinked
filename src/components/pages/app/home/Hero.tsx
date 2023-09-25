@@ -1,11 +1,10 @@
-import Button from 'components/button';
-import BoyOnGlasses from 'assets/images/boy-on-glasses.png';
+import images from 'assets/images/index.json';
 // import { ReactComponent as Chain } from 'assets/icons/chain.svg';
 // import { ReactComponent as Bulb } from 'assets/icons/bulb.svg';
 import { ReactComponent as Arc } from 'assets/icons/arc.svg';
 import { useNavigate } from 'react-router-dom';
+import Button from 'components/button';
 // import { ReactComponent as Explosion } from 'assets/icons/explosion.svg';
-// import Flare from 'assets/images/flare.png';
 // import { ReactComponent as Star } from 'assets/icons/star.svg';
 
 const Hero = () => {
@@ -65,7 +64,7 @@ const Hero = () => {
               </div>
             </div>
             <div className="lg:absolute flex flex-col space-y-6 max-w-sm mx-auto lg:max-w-none lg:w-[60%] lg:scale-[1.07] -right-[95px] bottom-[155px]">
-              <img src={BoyOnGlasses} alt="hero" />
+              <img src={images['boy_on_vr_googles']} alt="boy on vr googles" />
             </div>
           </div>
         </div>
