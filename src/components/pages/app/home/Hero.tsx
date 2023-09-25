@@ -26,7 +26,11 @@ const Hero = () => {
                 <div className="flex flex-col items-center lg:items-start space-y-1 text-center lg:text-left">
                   <div className="-space-y-1 lg:-space-y-6">
                     <div className="relative">
-                      {/* <Bulb className="absolute -top-9 right-[14%]" /> */}
+                      <img
+                        src={images['bulb']}
+                        alt="bulb"
+                        className="absolute w-5 right-[47px] -top-[12px] lg:-top-[36px] lg:right-[149px]"
+                      />
                       <h1 className="font-bold text-lgMd lg:text-2xl ">getlinked Tech</h1>
                     </div>
                     <div className="flex items-end space-x-2">
@@ -35,8 +39,16 @@ const Hero = () => {
                         1.0
                       </span>
                       <div className="flex">
-                        {/* <Chain className="mb-4" />
-                        <Explosion className="mb-4" /> */}
+                        <img
+                          src={images['chain']}
+                          alt="chain"
+                          className="w-10 lg:w-full mb-1.5 -ml-2 lg:-ml-1 lg:mb-4"
+                        />
+                        <img
+                          src={images['explosion']}
+                          alt="explosion"
+                          className="w-7 lg:w-full mb-1.5 lg:mb-4"
+                        />
                       </div>
                     </div>
                   </div>
