@@ -29,6 +29,9 @@ const theme = createTheme({
               color: 'white',
             },
           },
+          '& .MuiAutocomplete-clearIndicator, & .MuiAutocomplete-popupIndicator': {
+            color: 'white',
+          },
         },
       },
     },

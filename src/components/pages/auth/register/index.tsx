@@ -18,7 +18,7 @@ import Button from 'components/button';
 import { useEffect, useState } from 'react';
 import TextField from 'components/text-filed';
 import { registerUser } from 'apis/registration';
-import { CheckBox, CheckBoxOutlineBlankOutlined } from '@mui/icons-material';
+import { CheckBox, CheckBoxOutlineBlankOutlined, KeyboardArrowDown } from '@mui/icons-material';
 
 const validationSchema = yup.object().shape({
   category: yup.string().required('Enter your category'),
@@ -185,6 +185,7 @@ const Register = () => {
                           <Autocomplete
                             fullWidth
                             value={values.category}
+                            popupIcon={<KeyboardArrowDown />}
                             placeholder="Select your category"
                             options={categories?.map((category) => category.name) ?? []}
                             onChange={(_, value) => {
@@ -224,6 +225,7 @@ const Register = () => {
                           <Autocomplete
                             fullWidth
                             value={values.group_size}
+                            popupIcon={<KeyboardArrowDown />}
                             placeholder="Select your group size"
                             options={['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']}
                             onChange={(_, value) => {
