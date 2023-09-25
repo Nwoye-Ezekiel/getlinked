@@ -1,17 +1,18 @@
 import images from 'assets/images/index.json';
-// import { ReactComponent as Chain } from 'assets/icons/chain.svg';
-// import { ReactComponent as Bulb } from 'assets/icons/bulb.svg';
 import { ReactComponent as Arc } from 'assets/icons/arc.svg';
 import { useNavigate } from 'react-router-dom';
 import Button from 'components/button';
-// import { ReactComponent as Explosion } from 'assets/icons/explosion.svg';
-// import { ReactComponent as Star } from 'assets/icons/star.svg';
 
 const Hero = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex border-t border-t-solid border-white/[.18] overflow-hidden">
+    <div className="relative flex border-t border-t-solid border-white/[.18] overflow-hidden">
+      <img
+        src={images['pattern']}
+        alt="pattern"
+        className="hidden lg:block absolute right-0 bottom-0"
+      />
       <div className="lg:mx-12 w-full">
         <div className="w-full h-full max-w-desktop mx-auto">
           <div className="flex w-fit mx-auto relative justify-center lg:mx-0 lg:ml-auto lg:-mr-10 mt-8">
