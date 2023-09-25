@@ -118,6 +118,8 @@ const Contact = () => {
                   handleBlur,
                   handleSubmit,
                   isSubmitting,
+                  isValid,
+                  dirty,
                 }) => (
                   <form onSubmit={handleSubmit}>
                     {error && (
@@ -181,7 +183,11 @@ const Contact = () => {
                       />
                     </div>
                     <div className="flex justify-center mt-8">
-                      <Button type="submit" disabled={isSubmitting} size="large">
+                      <Button
+                        type="submit"
+                        disabled={isSubmitting || !isValid || !dirty}
+                        size="large"
+                      >
                         {isSubmitting ? (
                           <>
                             <CircularProgress color="inherit" className="text-white" size={22} />

@@ -33,7 +33,12 @@ const Register = () => {
   const [error, setError] = useState('');
   const [privacyPolicyAccepted, setPrivacyPolicyAccepted] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const { data: categories } = useCategories();
+  const {
+    data: categories,
+    isLoading: isLoadingCategories,
+    // isError: loadingCategoriesError,
+    // refetch: refetchCategories,
+  } = useCategories();
 
   const handleSubmit = async (values: any, resetForm: () => void) => {
     try {
@@ -182,36 +187,26 @@ const Register = () => {
                             fullWidth
                             options={categories?.map((category) => category.name) ?? []}
                             placeholder="Select your category"
-                            sx={{
-                              '& .MuiInputBase-root': {
-                                '& fieldset': {
-                                  borderColor: 'var(--color-gray)',
-                                },
-                                '&:hover fieldset': {
-                                  borderColor: 'white',
-                                },
-                                '&.Mui-focused fieldset': {
-                                  borderColor: 'white',
-                                },
-                              },
-                              '& .MuiAutocomplete-inputRoot': {
-                                '& .MuiAutocomplete-input': {
-                                  color: 'white',
-                                },
-                              },
-                            }}
+                            disabled={isLoadingCategories}
                             onChange={(_, value) => {
                               setFieldValue('category', value);
                             }}
                             value={values.category}
                             renderInput={(params) => (
-                              <MUITextField
-                                {...params}
-                                variant="outlined"
-                                placeholder="Select your category"
-                                error={touched.category && !!errors.category}
-                                helperText={touched.category ? errors.category : ''}
-                              />
+                              <div>
+                                <MUITextField
+                                  {...params}
+                                  variant="outlined"
+                                  placeholder="Select your category"
+                                  error={touched.category && !!errors.category}
+                                  helperText={touched.category ? errors.category : ''}
+                                />
+                                {isLoadingCategories && (
+                                  <div className="text-white/[.5] text-xs mt-1 animate-pulse">
+                                    Fetching categories...
+                                  </div>
+                                )}
+                              </div>
                             )}
                           />
                         </div>
@@ -221,33 +216,18 @@ const Register = () => {
                             fullWidth
                             options={['1', '2', '3', '4', '5']}
                             placeholder="Select your group size"
-                            sx={{
-                              '& .MuiInputBase-root': {
-                                '& fieldset': {
-                                  borderColor: 'var(--color-gray)',
-                                },
-                                '&:hover fieldset': {
-                                  borderColor: 'white',
-                                },
-                                '&.Mui-focused fieldset': {
-                                  borderColor: 'white',
-                                },
-                              },
-                              '& .MuiAutocomplete-inputRoot': {
-                                '& .MuiAutocomplete-input': {
-                                  color: 'white',
-                                },
-                              },
-                              '& .MuiAutocomplete-listbox': {
-                                '& .MuiAutocomplete-option': {
-                                  color: 'white',
-                                },
-                              },
-                            }}
                             onChange={(_, value) => {
                               setFieldValue('group_size', value);
                             }}
                             value={values.group_size}
+                            renderOption={(props, option) => (
+                              <li
+                                {...props}
+                                className="text-white px-5 py-2 hover:bg-black/[.1] cursor-pointer font-medium text-smMax lg:text-smMd"
+                              >
+                                {option}
+                              </li>
+                            )}
                             renderInput={(params) => (
                               <MUITextField
                                 {...params}
