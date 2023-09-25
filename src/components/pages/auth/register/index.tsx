@@ -1,43 +1,43 @@
 import ManOnComputer from 'assets/images/man-on-computer.png';
-import { ReactComponent as ManAndWomanWalking } from 'assets/icons/man-and-woman-walking.svg';
-import { ReactComponent as WinkEmoji } from 'assets/icons/wink-emoji.svg';
 import Congratulations from 'assets/images/congratulation.png';
+import { ReactComponent as WinkEmoji } from 'assets/icons/wink-emoji.svg';
+import { ReactComponent as ManAndWomanWalking } from 'assets/icons/man-and-woman-walking.svg';
 import {
   Alert,
-  Autocomplete,
-  Checkbox,
-  CircularProgress,
   Dialog,
+  Checkbox,
+  Autocomplete,
   DialogContent,
+  CircularProgress,
   TextField as MUITextField,
 } from '@mui/material';
-import Button from 'components/button';
-import { Formik } from 'formik';
 import * as yup from 'yup';
+import { Formik } from 'formik';
+import { useCategories } from 'data';
+import Button from 'components/button';
 import { useEffect, useState } from 'react';
 import TextField from 'components/text-filed';
-import { CheckBox, CheckBoxOutlineBlankOutlined } from '@mui/icons-material';
-import { useCategories } from 'data';
 import { registerUser } from 'apis/registration';
+import { CheckBox, CheckBoxOutlineBlankOutlined } from '@mui/icons-material';
 
 const validationSchema = yup.object().shape({
-  team_name: yup.string().required('Enter your team name'),
-  phone: yup.string().required('Enter your phone number'),
-  email: yup.string().required('Enter your email address').email('Enter a valid email address'),
-  project_topic: yup.string().required('Enter your project topic'),
   category: yup.string().required('Enter your category'),
+  phone: yup.string().required('Enter your phone number'),
+  team_name: yup.string().required('Enter your team name'),
   group_size: yup.string().required('Enter your group size'),
+  project_topic: yup.string().required('Enter your project topic'),
+  email: yup.string().required('Enter your email address').email('Enter a valid email address'),
 });
 
 const Register = () => {
   const [error, setError] = useState('');
-  const [privacyPolicyAccepted, setPrivacyPolicyAccepted] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [privacyPolicyAccepted, setPrivacyPolicyAccepted] = useState(false);
   const {
     data: categories,
+    refetch: refetchCategories,
     isLoading: isLoadingCategories,
     isError: loadingCategoriesError,
-    refetch: refetchCategories,
   } = useCategories();
 
   const handleSubmit = async (values: any, resetForm: () => void) => {
@@ -47,14 +47,14 @@ const Register = () => {
         email: values.email,
         phone_number: values.phone,
         team_name: values.team_name,
-        group_size: Number(values.group_size),
         project_topic: values.project_topic,
-        category: categories?.find((category) => category.name === values.category)?.id ?? 1,
+        group_size: Number(values.group_size),
         privacy_poclicy_accepted: privacyPolicyAccepted,
+        category: categories?.find((category) => category.name === values.category)?.id ?? 1,
       });
+      resetForm();
       setShowSuccessModal(true);
       setPrivacyPolicyAccepted(false);
-      resetForm();
     } catch (error: any) {
       setError('An error occurred, please try again');
     }
@@ -95,27 +95,27 @@ const Register = () => {
             <div>
               <Formik
                 initialValues={{
-                  team_name: '',
                   phone: '',
                   email: '',
-                  project_topic: '',
                   category: '',
+                  team_name: '',
                   group_size: '',
+                  project_topic: '',
                 }}
                 onSubmit={(values, { resetForm }) => handleSubmit(values, resetForm)}
                 validationSchema={validationSchema}
               >
                 {({
+                  dirty,
                   values,
-                  touched,
                   errors,
-                  handleChange,
+                  touched,
+                  isValid,
                   handleBlur,
+                  handleChange,
                   handleSubmit,
                   isSubmitting,
                   setFieldValue,
-                  isValid,
-                  dirty,
                 }) => (
                   <form onSubmit={handleSubmit}>
                     {error && (
@@ -126,7 +126,6 @@ const Register = () => {
                         className="mb-4 text-white"
                         severity="error"
                         variant="filled"
-                        data-test-id="login-server-error"
                       >
                         {error}
                       </Alert>
@@ -134,50 +133,50 @@ const Register = () => {
                     <div className="flex flex-col space-y-4 lg:space-y-6">
                       <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
                         <TextField
-                          values={values}
-                          errors={errors}
-                          handleChange={handleChange}
-                          handleBlur={handleBlur}
-                          touched={touched}
                           type="text"
                           name="team_name"
                           label="Team's Name"
                           placeholder="Enter the name of your group"
-                        />
-                        <TextField
-                          values={values}
-                          errors={errors}
                           handleChange={handleChange}
                           handleBlur={handleBlur}
                           touched={touched}
+                          values={values}
+                          errors={errors}
+                        />
+                        <TextField
                           type="tel"
                           name="phone"
                           label="Phone"
                           placeholder="Enter your phone number"
+                          handleChange={handleChange}
+                          handleBlur={handleBlur}
+                          touched={touched}
+                          values={values}
+                          errors={errors}
                         />
                       </div>
                       <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
                         <TextField
-                          values={values}
-                          errors={errors}
-                          handleChange={handleChange}
-                          handleBlur={handleBlur}
-                          touched={touched}
                           type="email"
                           name="email"
                           label="Email"
                           placeholder="Enter your email address"
-                        />
-                        <TextField
-                          values={values}
-                          errors={errors}
                           handleChange={handleChange}
                           handleBlur={handleBlur}
                           touched={touched}
+                          values={values}
+                          errors={errors}
+                        />
+                        <TextField
                           type="text"
                           name="project_topic"
                           label="Project Topic"
                           placeholder="What is your group project topic"
+                          handleChange={handleChange}
+                          handleBlur={handleBlur}
+                          touched={touched}
+                          values={values}
+                          errors={errors}
                         />
                       </div>
                       <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
@@ -185,12 +184,12 @@ const Register = () => {
                           <label className="text-smMax lg:text-smMd font-medium">Category</label>
                           <Autocomplete
                             fullWidth
-                            options={categories?.map((category) => category.name) ?? []}
+                            value={values.category}
                             placeholder="Select your category"
+                            options={categories?.map((category) => category.name) ?? []}
                             onChange={(_, value) => {
                               setFieldValue('category', value);
                             }}
-                            value={values.category}
                             renderInput={(params) => (
                               <div>
                                 <MUITextField
@@ -224,12 +223,12 @@ const Register = () => {
                           <label className="text-smMax lg:text-smMd font-medium">Group Size</label>
                           <Autocomplete
                             fullWidth
-                            options={['1', '2', '3', '4', '5']}
+                            value={values.group_size}
                             placeholder="Select your group size"
+                            options={['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']}
                             onChange={(_, value) => {
                               setFieldValue('group_size', value);
                             }}
-                            value={values.group_size}
                             renderInput={(params) => (
                               <MUITextField
                                 {...params}
@@ -250,20 +249,20 @@ const Register = () => {
                     </div>
                     <div className="flex items-center mb-3">
                       <Checkbox
-                        icon={<CheckBoxOutlineBlankOutlined className="text-white w-4 h-4" />}
-                        checkedIcon={<CheckBox className="text-pink w-4 h-4" />}
                         checked={privacyPolicyAccepted}
+                        checkedIcon={<CheckBox className="text-pink w-4 h-4" />}
                         onChange={(e) => setPrivacyPolicyAccepted(e.target.checked)}
+                        icon={<CheckBoxOutlineBlankOutlined className="text-white w-4 h-4" />}
                       />
                       <span className="text-xsMd lg:text-xs font-medium">
                         I agreed with the event terms and conditions and privacy policy
                       </span>
                     </div>
                     <Button
+                      fullWidth
+                      size="large"
                       type="submit"
                       disabled={isSubmitting || !isValid || !dirty || !privacyPolicyAccepted}
-                      size="large"
-                      fullWidth
                     >
                       {isSubmitting ? (
                         <>

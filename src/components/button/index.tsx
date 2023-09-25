@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
 
 interface ButtonProps {
+  disabled?: boolean;
   children: ReactNode;
   fullWidth?: boolean;
-  disabled?: boolean;
   onClick?: () => void;
   type?: 'button' | 'submit';
   variant?: 'primary' | 'secondary';
@@ -11,13 +11,13 @@ interface ButtonProps {
 }
 
 const Button = ({
-  size = 'medium',
-  variant = 'primary',
-  type = 'button',
-  disabled,
   onClick,
   children,
+  disabled,
   fullWidth,
+  type = 'button',
+  size = 'medium',
+  variant = 'primary',
 }: ButtonProps) => {
   const buttonSizes = {
     small: { width: 97, height: 32 },

@@ -130,7 +130,6 @@ const Contact = () => {
                         className="-mt-2 mb-8 text-white"
                         severity="error"
                         variant="filled"
-                        data-test-id="login-server-error"
                       >
                         {error}
                       </Alert>

@@ -6,21 +6,20 @@ import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 
-const navigationLinks = ['Timeline', 'Overview', 'FAQs'];
-
-const scrollToSection = (sectionId: string) => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-
-  setTimeout(() => {
-    const element = document.getElementById(sectionId);
-    element?.scrollIntoView({ behavior: 'smooth' });
-  }, 500);
-};
-
 const NavigationLinks = ({ onClick }: { onClick?: () => void }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [activeLink, setActiveLink] = useState('');
+  const navigationLinks = ['Timeline', 'Overview', 'FAQs'];
+
+  const scrollToSection = (sectionId: string) => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      element?.scrollIntoView({ behavior: 'smooth' });
+    }, 500);
+  };
 
   const handleNavigation = (link: string) => {
     onClick?.();
@@ -48,11 +47,11 @@ const NavigationLinks = ({ onClick }: { onClick?: () => void }) => {
       <div className="flex flex-col lg:flex-row gap-5 lg:gap-8 lgMd:gap-12 w-fit">
         {navigationLinks.map((link, index) => (
           <ScrollLink
-            key={index}
-            to={link.toLowerCase()}
             spy={true}
+            key={index}
             smooth={true}
             duration={500}
+            to={link.toLowerCase()}
             onClick={() => {
               handleNavigation(link);
             }}
@@ -93,8 +92,11 @@ const Layout = () => {
   const [showButton, setShowButton] = useState(false);
 
   const handleScroll = () => {
-    if (window.scrollY >= window.innerHeight) setShowButton(true);
-    else setShowButton(false);
+    if (window.scrollY >= window.innerHeight) {
+      setShowButton(true);
+    } else {
+      setShowButton(false);
+    }
   };
 
   useEffect(() => {
@@ -123,7 +125,6 @@ const Layout = () => {
           </div>
         </div>
       </div>
-
       <div className="lg:hidden flex flex-col relative z-20">
         <Drawer
           open={openMenu}
