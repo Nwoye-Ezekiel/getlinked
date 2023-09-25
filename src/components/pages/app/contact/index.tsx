@@ -3,12 +3,7 @@ import { ReactComponent as InstagramIcon } from 'assets/icons/instagram.svg';
 import { ReactComponent as TwitterIcon } from 'assets/icons/twitter.svg';
 import { ReactComponent as FacebookIcon } from 'assets/icons/facebook.svg';
 import { ReactComponent as LinkedInIcon } from 'assets/icons/linkedin.svg';
-import {
-  // Alert,
-  CircularProgress,
-  Dialog,
-  DialogContent,
-} from '@mui/material';
+import { Alert, CircularProgress, Dialog, DialogContent } from '@mui/material';
 import Button from 'components/button';
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -24,13 +19,13 @@ const validationSchema = yup.object().shape({
 });
 
 const Contact = () => {
-  // const [error, setError] = useState('');
+  const [error, setError] = useState('');
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const handleSubmit = async (values: any, resetForm: () => void) => {
     try {
-      // setError('');
-      sendMessage({
+      setError('');
+      await sendMessage({
         email: values.email,
         phone_number: values.phone_number,
         first_name: values.first_name,
@@ -39,7 +34,9 @@ const Contact = () => {
       setShowSuccessModal(true);
       resetForm();
     } catch (error: any) {
-      // setError(error.message);
+      // eslint-disable-next-line no-console
+      console.log(error.message);
+      setError('An error occurred, please try again');
     }
   };
 
@@ -125,17 +122,19 @@ const Contact = () => {
                   isSubmitting,
                 }) => (
                   <form onSubmit={handleSubmit}>
-                    {/* <Alert
+                    {error && (
+                      <Alert
                         onClose={() => {
                           setError('');
                         }}
-                        className={`mt-4 text-white ${!error ? 'hidden' : ''}`}
+                        className="-mt-2 mb-8 text-white"
                         severity="error"
                         variant="filled"
                         data-test-id="login-server-error"
                       >
                         {error}
-                      </Alert> */}
+                      </Alert>
+                    )}
                     <div className="flex flex-col space-y-8">
                       <TextField
                         values={values}

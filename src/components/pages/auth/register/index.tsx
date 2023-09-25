@@ -3,7 +3,7 @@ import { ReactComponent as ManAndWomanWalking } from 'assets/icons/man-and-woman
 import { ReactComponent as WinkEmoji } from 'assets/icons/wink-emoji.svg';
 import Congratulations from 'assets/images/congratulation.png';
 import {
-  // Alert,
+  Alert,
   Autocomplete,
   Checkbox,
   CircularProgress,
@@ -31,14 +31,14 @@ const validationSchema = yup.object().shape({
 });
 
 const Register = () => {
-  // const [error, setError] = useState('');
+  const [error, setError] = useState('');
   const [privacyPolicyAccepted, setPrivacyPolicyAccepted] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const { data: categories, isLoading, isError, refetch } = useCategories();
 
   const handleSubmit = async (values: any, resetForm: () => void) => {
     try {
-      // setError('');
+      setError('');
       await registerUser({
         email: values.email,
         phone_number: values.phone,
@@ -52,7 +52,7 @@ const Register = () => {
       setPrivacyPolicyAccepted(false);
       resetForm();
     } catch (error: any) {
-      // setError(error.message);
+      setError('An error occurred, please try again');
     }
   };
 
@@ -126,17 +126,19 @@ const Register = () => {
                     setFieldValue,
                   }) => (
                     <form onSubmit={handleSubmit}>
-                      {/* <Alert
-                        onClose={() => {
-                          setError('');
-                        }}
-                        className={`mt-4 text-white ${!error ? 'hidden' : ''}`}
-                        severity="error"
-                        variant="filled"
-                        data-test-id="login-server-error"
-                      >
-                        {error}
-                      </Alert> */}
+                      {error && (
+                        <Alert
+                          onClose={() => {
+                            setError('');
+                          }}
+                          className="mb-4 text-white"
+                          severity="error"
+                          variant="filled"
+                          data-test-id="login-server-error"
+                        >
+                          {error}
+                        </Alert>
+                      )}
                       <div className="flex flex-col space-y-4 lg:space-y-6">
                         <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
                           <TextField
@@ -290,7 +292,7 @@ const Register = () => {
                           I agreed with the event terms and conditions and privacy policy
                         </span>
                       </div>
-                      <Button type="submit" disabled={isSubmitting} size="large" fullWidth>
+                      <Button type="submit" disabled={isSubmitting || !privacyPolicyAccepted} size="large" fullWidth>
                         {isSubmitting ? (
                           <>
                             <CircularProgress color="inherit" className="text-white" size={22} />
