@@ -2,6 +2,20 @@ import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   components: {
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          color: 'white',
+        },
+      },
+    },
+    MuiFormHelperText: {
+      styleOverrides: {
+        contained: {
+          fontSize: '13px',
+        },
+      },
+    },
     MuiAutocomplete: {
       styleOverrides: {
         root: {
@@ -32,20 +46,6 @@ const theme = createTheme({
           '& .MuiAutocomplete-clearIndicator, & .MuiAutocomplete-popupIndicator': {
             color: 'white',
           },
-        },
-      },
-    },
-    MuiPaper: {
-      styleOverrides: {
-        root: {
-          color: 'white',
-        },
-      },
-    },
-    MuiFormHelperText: {
-      styleOverrides: {
-        contained: {
-          fontSize: '13px',
         },
       },
     },

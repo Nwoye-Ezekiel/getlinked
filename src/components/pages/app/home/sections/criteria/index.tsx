@@ -1,6 +1,6 @@
 import Button from 'components/button';
 import images from 'assets/images/index.json';
-import { criteria } from 'data/static/criterias';
+import { criteria } from 'data/static/criteria';
 
 const Criteria = () => {
   return (
