@@ -1,6 +1,3 @@
-import images from 'assets/images/index.json';
-import { ReactComponent as WinkEmoji } from 'assets/icons/wink-emoji.svg';
-import { ReactComponent as ManAndWomanWalking } from 'assets/icons/man-and-woman-walking.svg';
 import {
   Alert,
   Dialog,
@@ -15,6 +12,7 @@ import { Formik } from 'formik';
 import { useCategories } from 'data';
 import Button from 'components/button';
 import { useEffect, useState } from 'react';
+import images from 'assets/images/index.json';
 import TextField from 'components/text-filed';
 import { registerUser } from 'apis/registration';
 import { CheckBox, CheckBoxOutlineBlankOutlined, KeyboardArrowDown } from '@mui/icons-material';
@@ -30,7 +28,7 @@ const validationSchema = yup.object().shape({
 
 const Register = () => {
   const [error, setError] = useState('');
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(true);
   const [privacyPolicyAccepted, setPrivacyPolicyAccepted] = useState(false);
   const {
     data: categories,
@@ -90,7 +88,10 @@ const Register = () => {
               <div className="flex items-end space-x-1 mb-3">
                 <p className="text-xs lg:text-smMd">Be part of this movement!</p>
                 <div className="w-24 border-b border-dashed border-primary mb-1 flex justify-center">
-                  <ManAndWomanWalking />
+                  <img
+                    src={images['man_and_woman_walking_emoji']}
+                    alt="man and woman walking emoji"
+                  />
                 </div>
               </div>
               <p className="text-mdMd lg:text-mdMax font-semibold">CREATE YOUR ACCOUNT</p>
@@ -313,7 +314,7 @@ const Register = () => {
                   </p>
                   <p className="text-xs lg:text-smMd text-white flex justify-center items-center">
                     <span>check your mail box for next step</span>
-                    <WinkEmoji />
+                    <img src={images['wink_emoji']} alt="wink emoji" className="ml-2" />
                   </p>
                 </div>
               </div>
