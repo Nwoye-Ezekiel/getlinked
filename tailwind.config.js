@@ -13,7 +13,6 @@ export const theme = {
     background: '#150E28',
     transparent: 'transparent',
   },
-
   extend: {
     backgroundImage: {
       verticalGradient:

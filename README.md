@@ -1,46 +1,48 @@
-# Getting Started with Create React App
+# GetLinked Tech Hackathon 2023
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to my submission for the GetLinked Tech Hackathon 2023! In this project, I've implemented a beautiful UI design into code on the frontend, following the guidelines provided in the Figma design file. My work includes creating a dynamic landing page with multiple engaging sections, a user-friendly contact page, and a seamless registration process.
 
-## Available Scripts
+## About the Hackathon
 
-In the project directory, you can run:
+Participating in the GetLinked Tech Hackathon 2023 gives me the opportunity to stand a chance to win a fantastic prize. This hackathon brings together visionaries from all corners, united by a common purpose: to shape the future. Whether it's coding wizardry, design innovation, or groundbreaking concepts, this event offers a platform to turn ideas into reality. We're here to solve real-world problems, push the boundaries of technology, and create solutions with the potential to change the world.
 
-### `npm start`
+## Project Setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This project was created with [Create React App]
+To clone this project, run the follow commands on your terminal
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```sh
+git clone https://github.com/Nwoye-Ezekiel/getlinked.git
+```
 
-### `npm test`
+navigate to the project's directory
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```sh
+cd getlinked
+```
 
-### `npm run build`
+Install all the project dependencies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```sh
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Start the development server to view the project on your browser
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```sh
+npm start
+```
 
-### `npm run eject`
+If your browser doesn't open the app automatically after it has loaded, you can simply type the server address shown on the terminal into your browser to open the app.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+You can as well view the app which is hosted on [Vercel] by clicking on this link 👉
+[Getlinked]
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## References
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Figma file: [Figma]
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[create react app]: https://create-react-app.dev
+[vercel]: https://www.vercel.com/
+[getlinked]: https://ezekiel-getlinked-clone.vercel.app/
+[figma]: https://www.figma.com/file/5WXTnOu1Yy7vjCDCGKSnib/Getlinked?type=design&node-id=0-1&mode=design&t=YfB0JBrgpquQFDwm-0
