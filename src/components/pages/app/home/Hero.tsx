@@ -1,5 +1,4 @@
 import images from 'assets/images/index.json';
-import { ReactComponent as Arc } from 'assets/icons/arc.svg';
 import { useNavigate } from 'react-router-dom';
 import Button from 'components/button';
 
@@ -19,7 +18,11 @@ const Hero = () => {
             <i className="text-base lg:text-lgMd font-bold whitespace-nowrap">
               Igniting a Revolution in HR Innovation
             </i>
-            <Arc className="w-[118px] lg:w-[225px] absolute right-1 -bottom-3" />
+            <img
+              src={images['arc']}
+              alt="arc"
+              className="w-[118px] lg:w-[225px] absolute right-1 -bottom-2 lg:-bottom-3"
+            />
           </div>
           <div className="relative h-full">
             <div className="self-start space-y-4 lg:space-y-16 lg:w-[70%] mt-12 lg:mt-20 flex flex-col items-center lg:items-start lg:pb-[70px]">
