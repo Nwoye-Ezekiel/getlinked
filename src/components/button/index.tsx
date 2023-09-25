@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 interface ButtonProps {
   children: ReactNode;
   fullWidth?: boolean;
+  disabled?: boolean;
   onClick?: () => void;
   type?: 'button' | 'submit';
   variant?: 'primary' | 'secondary';
@@ -13,6 +14,7 @@ const Button = ({
   size = 'medium',
   variant = 'primary',
   type = 'button',
+  disabled,
   onClick,
   children,
   fullWidth,
@@ -35,9 +37,12 @@ const Button = ({
 
   return (
     <button
+      disabled={disabled}
       onClick={() => onClick?.()}
       type={type}
-      className={`rounded transition-all duration-300 ${fullWidth ? 'w-full' : ''} ${
+      className={`rounded transition-all duration-300 ${
+        disabled ? 'cursor-not-allowed' : 'cursor-pointer'
+      } ${fullWidth ? 'w-full' : ''} ${
         variant === 'primary'
           ? 'bg-[100%_auto] bg-horizontalGradient hover:bg-[300%_auto]'
           : 'bg-[auto_100%] bg-verticalGradient hover:bg-[auto_300%]'

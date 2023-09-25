@@ -124,8 +124,6 @@ const Register = () => {
                     handleSubmit,
                     isSubmitting,
                     setFieldValue,
-                    // isValid,
-                    // dirty,
                   }) => (
                     <form onSubmit={handleSubmit}>
                       {/* <Alert
@@ -292,7 +290,7 @@ const Register = () => {
                           I agreed with the event terms and conditions and privacy policy
                         </span>
                       </div>
-                      <Button type="submit" size="large" fullWidth>
+                      <Button type="submit" disabled={isSubmitting} size="large" fullWidth>
                         {isSubmitting ? (
                           <>
                             <CircularProgress color="inherit" className="text-white" size={22} />
