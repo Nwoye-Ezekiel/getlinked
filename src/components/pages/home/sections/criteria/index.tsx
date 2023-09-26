@@ -1,8 +1,11 @@
 import Button from 'components/button';
 import images from 'assets/images/index.json';
 import { criteria } from 'data/static/criteria';
+import { useMediaQuery } from '@mui/material';
 
 const Criteria = () => {
+  const isDesktop = useMediaQuery('(min-width: 1024px)');
+
   return (
     <div className="border-t border-t-solid border-t-white/[0.18] lg:pt-8 lg:pb-20">
       <div className="m-12 lg:mb-8">
@@ -33,7 +36,7 @@ const Criteria = () => {
                 ))}
               </div>
             </div>
-            <Button>Read More</Button>
+            <Button size={`${isDesktop ? 'large' : 'small'}`}>Read More</Button>
           </div>
         </div>
       </div>

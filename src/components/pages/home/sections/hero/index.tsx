@@ -1,9 +1,11 @@
 import Button from 'components/button';
 import images from 'assets/images/index.json';
 import { useNavigate } from 'react-router-dom';
+import { useMediaQuery } from '@mui/material';
 
 const Hero = () => {
   const navigate = useNavigate();
+  const isDesktop = useMediaQuery('(min-width: 1024px)');
 
   return (
     <div className="relative flex border-t border-t-solid border-white/[.18] overflow-hidden">
@@ -60,7 +62,10 @@ const Hero = () => {
                     Participate in getlinked tech Hackathon 2023 stand a chance to win a Big prize
                   </p>
                 </div>
-                <Button onClick={() => navigate('/register')} size="large">
+                <Button
+                  onClick={() => navigate('/register')}
+                  size={`${isDesktop ? 'large' : 'medium'}`}
+                >
                   Register
                 </Button>
               </div>
