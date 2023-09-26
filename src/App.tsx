@@ -7,10 +7,10 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
 
 const queryClient = new QueryClient();
-const Home = React.lazy(() => import('components/pages/app/home'));
+const Home = React.lazy(() => import('components/pages/home'));
 const NotFound = React.lazy(() => import('components/pages/not-found'));
-const Contact = React.lazy(() => import('components/pages/app/contact'));
-const Register = React.lazy(() => import('components/pages/auth/register'));
+const Contact = React.lazy(() => import('components/pages/contact'));
+const Register = React.lazy(() => import('components/pages/register'));
 
 function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
