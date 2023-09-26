@@ -2,6 +2,7 @@ import Button from 'components/button';
 import images from 'assets/images/index.json';
 import { criteria } from 'data/static/criteria';
 import { useMediaQuery } from '@mui/material';
+import AnimateOnScroll from 'components/animate-on-scroll';
 
 const Criteria = () => {
   const isDesktop = useMediaQuery('(min-width: 1024px)');
@@ -20,23 +21,31 @@ const Criteria = () => {
           <div className="w-full lg:w-1/2 space-y-6 lg:space-y-11 text-center lg:text-left">
             <div className="space-y-4 lg:space-y-5">
               <div className="text-mdMd lg:text-lgMd">
-                <h1>Judging Criteria</h1>
-                <h1 className="text-primary">Key attributes</h1>
+                <AnimateOnScroll>
+                  <h1>Judging Criteria</h1>
+                </AnimateOnScroll>
+                <AnimateOnScroll>
+                  <h1 className="text-primary">Key attributes</h1>
+                </AnimateOnScroll>
               </div>
               <div className="flex flex-col space-y-5 leading-relaxed text-smMax lg:text-smMd">
                 {criteria.map((item, index) => (
                   <div key={index}>
-                    <p>
-                      <span className="text-pink font-bold text-smMd lg:text-base">
-                        {item.title}:
-                      </span>{' '}
-                      {item.description}
-                    </p>
+                    <AnimateOnScroll>
+                      <p>
+                        <span className="text-pink font-bold text-smMd lg:text-base">
+                          {item.title}:
+                        </span>{' '}
+                        {item.description}
+                      </p>
+                    </AnimateOnScroll>
                   </div>
                 ))}
               </div>
             </div>
-            <Button size={`${isDesktop ? 'large' : 'small'}`}>Read More</Button>
+            <AnimateOnScroll>
+              <Button size={`${isDesktop ? 'large' : 'small'}`}>Read More</Button>
+            </AnimateOnScroll>
           </div>
         </div>
       </div>

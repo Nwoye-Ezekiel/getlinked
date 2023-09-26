@@ -3,6 +3,7 @@ import { socials } from 'data/static/socials';
 import { Link as ScrollLink } from 'react-scroll';
 import { ReactComponent as PhoneIcon } from 'assets/icons/phone.svg';
 import { ReactComponent as LocationIcon } from 'assets/icons/location.svg';
+import AnimateOnScroll from 'components/animate-on-scroll';
 
 const Footer = () => {
   return (
@@ -12,86 +13,112 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row w-full gap-10">
           <div className="md:w-[60%] space-y-10 lg:space-y-16">
             <div className="flex flex-col space-y-1">
-              <h1 className="text-mdMd lg:text-lg font-bold">
-                get<span className="text-primary font-clashDisplay font-bold">linked</span>
-              </h1>
-              <p className="text-xs font-medium leading-loose max-w-[55ch]">
-                Getlinked Tech Hackathon is a technology innovation program established by a group
-                of organizations with the aim of showcasing young and talented individuals in the
-                field of technology
-              </p>
+              <AnimateOnScroll>
+                <h1 className="text-mdMd lg:text-lg font-bold">
+                  get<span className="text-primary font-clashDisplay font-bold">linked</span>
+                </h1>
+              </AnimateOnScroll>
+              <AnimateOnScroll>
+                <p className="text-xs font-medium leading-loose max-w-[55ch]">
+                  Getlinked Tech Hackathon is a technology innovation program established by a group
+                  of organizations with the aim of showcasing young and talented individuals in the
+                  field of technology
+                </p>
+              </AnimateOnScroll>
             </div>
-            <div className="space-x-2 text-xs">
-              <span className="font-medium">Terms of Use</span>
-              <span className="text-primary font-bold text-base">|</span>
-              <span className="font-medium">Privacy Policy</span>
-            </div>
+            <AnimateOnScroll>
+              <div className="space-x-2 text-xs">
+                <span className="font-medium">Terms of Use</span>
+                <span className="text-primary font-bold text-base">|</span>
+                <span className="font-medium">Privacy Policy</span>
+              </div>
+            </AnimateOnScroll>
           </div>
           <div className="md:w-[30%] flex lg:justify-center">
             <div className="space-y-4">
               <div className="space-y-3">
-                <p className="text-smMd font-semibold text-primary">Useful Links</p>
+                <AnimateOnScroll>
+                  <p className="text-smMd font-semibold text-primary">Useful Links</p>
+                </AnimateOnScroll>
                 <div>
-                  <ScrollLink to="overview" spy={true} smooth={true} duration={500}>
-                    <p className="text-xs font-medium cursor-pointer hover:text-primary transition-all duration-100 w-fit">
-                      Overview
-                    </p>
-                  </ScrollLink>
+                  <AnimateOnScroll>
+                    <ScrollLink to="overview" spy={true} smooth={true} duration={500}>
+                      <p className="text-xs font-medium cursor-pointer hover:text-primary transition-all duration-100 w-fit">
+                        Overview
+                      </p>
+                    </ScrollLink>
+                  </AnimateOnScroll>
                 </div>
                 <div>
-                  <ScrollLink to="timeline" spy={true} smooth={true} duration={500}>
-                    <p className="text-xs font-medium cursor-pointer hover:text-primary transition-all duration-100 w-fit">
-                      Timeline
-                    </p>
-                  </ScrollLink>
+                  <AnimateOnScroll>
+                    <ScrollLink to="timeline" spy={true} smooth={true} duration={500}>
+                      <p className="text-xs font-medium cursor-pointer hover:text-primary transition-all duration-100 w-fit">
+                        Timeline
+                      </p>
+                    </ScrollLink>
+                  </AnimateOnScroll>
                 </div>
                 <div>
-                  <ScrollLink to="faqs" spy={true} smooth={true} duration={500}>
-                    <p className="text-xs font-medium cursor-pointer hover:text-primary transition-all duration-100 w-fit">
-                      FAQs
-                    </p>
-                  </ScrollLink>
+                  <AnimateOnScroll>
+                    <ScrollLink to="faqs" spy={true} smooth={true} duration={500}>
+                      <p className="text-xs font-medium cursor-pointer hover:text-primary transition-all duration-100 w-fit">
+                        FAQs
+                      </p>
+                    </ScrollLink>
+                  </AnimateOnScroll>
                 </div>
                 <div>
-                  <Link to="/register">
-                    <p className="text-xs font-medium cursor-pointer hover:text-primary transition-all duration-100 w-fit">
-                      Register
-                    </p>
-                  </Link>
+                  <AnimateOnScroll>
+                    <Link to="/register">
+                      <p className="text-xs font-medium cursor-pointer hover:text-primary transition-all duration-100 w-fit">
+                        Register
+                      </p>
+                    </Link>
+                  </AnimateOnScroll>
                 </div>
               </div>
-              <div className="flex items-center space-x-3">
-                <span className="text-primary text-xs font-medium">Follow us</span>
-                {socials.map((social, index) => (
-                  <a key={index} href={social.link} target="_blank" rel="noopener noreferrer">
-                    <social.icon className="hover:text-primary cursor-pointer transition-all duration-100 hover:scale-125" />
-                  </a>
-                ))}
-              </div>
+              <AnimateOnScroll>
+                <div className="flex items-center space-x-3">
+                  <span className="text-primary text-xs font-medium">Follow us</span>
+                  {socials.map((social, index) => (
+                    <a key={index} href={social.link} target="_blank" rel="noopener noreferrer">
+                      <social.icon className="hover:text-primary cursor-pointer transition-all duration-100 hover:scale-125" />
+                    </a>
+                  ))}
+                </div>
+              </AnimateOnScroll>
             </div>
           </div>
           <div className="md:w-[30%] flex lg:justify-center">
             <div className="space-y-4">
-              <p className="text-smMd font-semibold text-primary">Contact Us</p>
-              <p className="text-xs flex items-center space-x-3">
-                <PhoneIcon />
-                <a
-                  href="tel:+2346707653444"
-                  className="font-medium hover:text-primary transition-all duration-100"
-                >
-                  +234 6707653444
-                </a>
-              </p>
-              <p className="text-xs flex items-center space-x-3">
-                <LocationIcon />
-                <span className="font-medium max-w-[12ch] hover:text-primary transition-all duration-100 cursor-default">
-                  27,Alara Street Yaba 100012 Lagos State
-                </span>
-              </p>
+              <AnimateOnScroll>
+                <p className="text-smMd font-semibold text-primary">Contact Us</p>
+              </AnimateOnScroll>
+              <AnimateOnScroll>
+                <p className="text-xs flex items-center space-x-3">
+                  <PhoneIcon />
+                  <a
+                    href="tel:+2346707653444"
+                    className="font-medium hover:text-primary transition-all duration-100"
+                  >
+                    +234 6707653444
+                  </a>
+                </p>
+              </AnimateOnScroll>
+              <AnimateOnScroll>
+                <p className="text-xs flex items-center space-x-3">
+                  <LocationIcon />
+                  <span className="font-medium max-w-[12ch] hover:text-primary transition-all duration-100 cursor-default">
+                    27,Alara Street Yaba 100012 Lagos State
+                  </span>
+                </p>
+              </AnimateOnScroll>
             </div>
           </div>
         </div>
-        <p className="text-xs font-medium">All rights reserved. © getlinked Ltd.</p>
+        <AnimateOnScroll>
+          <p className="text-xs font-medium">All rights reserved. © getlinked Ltd.</p>
+        </AnimateOnScroll>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import images from 'assets/images/index.json';
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from '@mui/material';
 import { useCountdown } from 'hooks';
+import AnimateOnScroll from 'components/animate-on-scroll';
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -19,9 +20,11 @@ const Hero = () => {
       <div className="lg:mx-12 w-full">
         <div className="w-full h-full max-w-desktop mx-auto">
           <div className="flex w-fit mx-auto relative justify-center lg:mx-0 lg:ml-auto lg:-mr-10 mt-8">
-            <i className="text-base lg:text-lgMd font-bold whitespace-nowrap">
-              Igniting a Revolution in HR Innovation
-            </i>
+            <AnimateOnScroll>
+              <i className="text-base lg:text-lgMd font-bold whitespace-nowrap">
+                Igniting a Revolution in HR Innovation
+              </i>
+            </AnimateOnScroll>
             <img
               alt="arc"
               src={images['arc']}
@@ -39,52 +42,64 @@ const Hero = () => {
                         src={images['bulb']}
                         className="absolute w-5 lg:w-auto right-[47px] -top-[12px] lg:-top-[36px] lg:right-[149px]"
                       />
-                      <h1 className="font-bold text-lgMd lg:text-2xl ">getlinked Tech</h1>
+                      <AnimateOnScroll>
+                        <h1 className="font-bold text-lgMd lg:text-2xl ">getlinked Tech</h1>
+                      </AnimateOnScroll>
                     </div>
-                    <div className="flex items-end space-x-2">
-                      <h1 className="flex items-end font-bold text-lgMd lg:text-2xl ">Hackathon</h1>
-                      <span className="font-clashDisplay font-bold text-lgMd lg:text-2xl text-primary">
-                        1.0
-                      </span>
-                      <div className="flex">
-                        <img
-                          alt="chain"
-                          src={images['chain']}
-                          className="w-10 lg:w-full mb-1.5 -ml-2 lg:-ml-1 lg:mb-4"
-                        />
-                        <img
-                          alt="explosion"
-                          src={images['explosion']}
-                          className="w-7 lg:w-full mb-1.5 lg:mb-4"
-                        />
+                    <AnimateOnScroll>
+                      <div className="flex items-end space-x-2">
+                        <h1 className="flex items-end font-bold text-lgMd lg:text-2xl ">
+                          Hackathon
+                        </h1>
+                        <span className="font-clashDisplay font-bold text-lgMd lg:text-2xl text-primary">
+                          1.0
+                        </span>
+                        <div className="flex">
+                          <img
+                            alt="chain"
+                            src={images['chain']}
+                            className="w-10 lg:w-full mb-1.5 -ml-2 lg:-ml-1 lg:mb-4"
+                          />
+                          <img
+                            alt="explosion"
+                            src={images['explosion']}
+                            className="w-7 lg:w-full mb-1.5 lg:mb-4"
+                          />
+                        </div>
                       </div>
-                    </div>
+                    </AnimateOnScroll>
                   </div>
-                  <p className="text-smMax lg:text-mdMd w-[80%] max-w-[40ch] leading-loose">
-                    Participate in getlinked tech Hackathon 2023 stand a chance to win a Big prize
-                  </p>
+                  <AnimateOnScroll>
+                    <p className="text-smMax lg:text-mdMd w-[80%] max-w-[40ch] leading-loose">
+                      Participate in getlinked tech Hackathon 2023 stand a chance to win a Big prize
+                    </p>
+                  </AnimateOnScroll>
                 </div>
-                <Button
-                  onClick={() => navigate('/register')}
-                  size={`${isDesktop ? 'large' : 'medium'}`}
-                >
-                  Register
-                </Button>
+                <AnimateOnScroll>
+                  <Button
+                    onClick={() => navigate('/register')}
+                    size={`${isDesktop ? 'large' : 'medium'}`}
+                  >
+                    Register
+                  </Button>
+                </AnimateOnScroll>
               </div>
-              <div className="flex space-x-7">
-                <div className="flex items-end">
-                  <p className="font-unicaOne text-xlMd lg:text-xlMax">{hours}</p>
-                  <span className="mb-4 lg:mb-5 text-smMd lg:text-base">H</span>
+              <AnimateOnScroll>
+                <div className="flex space-x-7">
+                  <div className="flex items-end">
+                    <p className="font-unicaOne text-xlMd lg:text-xlMax">{hours}</p>
+                    <span className="mb-4 lg:mb-5 text-smMd lg:text-base">H</span>
+                  </div>
+                  <div className="flex items-end">
+                    <p className="font-unicaOne text-xlMd lg:text-xlMax">{minutes}</p>
+                    <span className="mb-4 lg:mb-5 text-smMd lg:text-base">M</span>
+                  </div>
+                  <div className="flex items-end">
+                    <p className="font-unicaOne text-xlMd lg:text-xlMax">{seconds}</p>
+                    <span className="mb-4 lg:mb-5 text-smMd lg:text-base">S</span>
+                  </div>
                 </div>
-                <div className="flex items-end">
-                  <p className="font-unicaOne text-xlMd lg:text-xlMax">{minutes}</p>
-                  <span className="mb-4 lg:mb-5 text-smMd lg:text-base">M</span>
-                </div>
-                <div className="flex items-end">
-                  <p className="font-unicaOne text-xlMd lg:text-xlMax">{seconds}</p>
-                  <span className="mb-4 lg:mb-5 text-smMd lg:text-base">S</span>
-                </div>
-              </div>
+              </AnimateOnScroll>
             </div>
             <div className="lg:absolute flex flex-col space-y-6 max-w-sm mx-auto lg:max-w-none lg:w-[60%] lg:scale-[1.07] -right-[95px] bottom-[155px]">
               <img src={images['boy_on_vr_googles']} alt="boy on vr googles" />

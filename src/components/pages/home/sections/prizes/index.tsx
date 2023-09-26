@@ -1,5 +1,6 @@
 import images from 'assets/images/index.json';
 import { useMediaQuery } from '@mui/material';
+import AnimateOnScroll from 'components/animate-on-scroll';
 
 const Prizes = () => {
   const isDesktop = useMediaQuery('(min-width: 1024px)');
@@ -20,12 +21,18 @@ const Prizes = () => {
           <div className="w-full lg:w-[60%] lg:space-y-64">
             <div className="lg:ml-36 space-y-2 lg:space-y-3 text-center lg:text-left">
               <div className="text-mdMd lg:text-lgMd">
-                <h1>Prizes and</h1>
-                <h1 className="text-primary">Rewards</h1>
+                <AnimateOnScroll>
+                  <h1>Prizes and</h1>
+                </AnimateOnScroll>
+                <AnimateOnScroll>
+                  <h1 className="text-primary">Rewards</h1>
+                </AnimateOnScroll>
               </div>
-              <p className="text-smMd lg:text-base lg:max-w-[38ch] leading-loose">
-                Highlight of the prizes or rewards for winners and for participants.
-              </p>
+              <AnimateOnScroll>
+                <p className="text-smMd lg:text-base lg:max-w-[38ch] leading-loose">
+                  Highlight of the prizes or rewards for winners and for participants.
+                </p>
+              </AnimateOnScroll>
             </div>
             {!isDesktop && (
               <div className="w-full max-w-sm mx-auto mt-10 lg:mt-0">
