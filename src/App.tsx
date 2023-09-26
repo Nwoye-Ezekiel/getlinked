@@ -42,7 +42,7 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowHomePage(true);
-    }, 5000);
+    }, 3500);
 
     return () => {
       clearTimeout(timer);
@@ -52,7 +52,7 @@ function App() {
   if (!fontsLoaded || !showHomePage) {
     return (
       <div className="flex flex-col items-center justify-center h-screen bg-background">
-        <Player src={animations['linked']} autoplay={true} loop={false} />
+        <Player src={animations['linked']} autoplay={true} loop={false} speed={0.8} />
       </div>
     );
   }
