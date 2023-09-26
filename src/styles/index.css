@@ -105,3 +105,21 @@ input:-webkit-autofill:active {
   color: white !important;
   transition: background-color 5000s ease-in-out 0s;
 }
+
+@keyframes fade-in {
+  to {
+    opacity: 0.5;
+    visibility: visible;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 0.5;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

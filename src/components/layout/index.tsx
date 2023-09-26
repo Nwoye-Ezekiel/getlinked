@@ -1,4 +1,3 @@
-import { Drawer } from '@mui/material';
 import Button from 'components/button';
 import { useEffect, useState } from 'react';
 import { ReactComponent as CloseIcon } from 'assets/icons/close.svg';
@@ -126,24 +125,25 @@ const Layout = () => {
         </div>
       </div>
       <div className="lg:hidden flex flex-col relative z-20">
-        <Drawer
-          open={openMenu}
-          anchor="left"
-          onClose={() => setOpenMenu(false)}
-          sx={{
-            '& .MuiDrawer-paper': {
-              backgroundColor: 'var(--color-background)',
-            },
-          }}
-          PaperProps={{
-            className: 'py-8 px-12 gap-14 flex flex-col w-full max-w-[350px]',
-          }}
+        <div
+          className={`fixed top-0 left-0 h-full w-full opacity-0 z-0 bg-black invisible ${
+            openMenu !== null
+              ? openMenu
+                ? 'animate-[fade-in_0.5s_forwards]'
+                : 'animate-[fade-out_0.5s_forwards]'
+              : null
+          }`}
+        ></div>
+        <div
+          className={`fixed top-0 left-0 h-full bg-background py-8 px-12 gap-14 flex flex-col w-full max-w-[350px] transform -translate-x-full duration-500 ease-default ${
+            openMenu ? 'translate-x-[0%]' : ''
+          }`}
         >
           <div className="flex justify-end">
             <CloseIcon onClick={() => setOpenMenu(false)} />
           </div>
           <NavigationLinks onClick={() => setOpenMenu(false)} />
-        </Drawer>
+        </div>
       </div>
       <div
         className={`fixed bottom-0 right-0 p-4 lg:p-5 z-30 transition-opacity duration-500 ${
