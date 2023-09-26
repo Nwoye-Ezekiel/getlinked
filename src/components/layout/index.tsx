@@ -1,11 +1,12 @@
+import { Drawer } from '@mui/material';
 import Button from 'components/button';
+import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { ReactComponent as CloseIcon } from 'assets/icons/close.svg';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { Link as ScrollLink } from 'react-scroll';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 
-const NavigationLinks = ({ onClick }: { onClick?: () => void }) => {
+const NavigationLinks = ({ closeMenu }: { closeMenu?: () => void }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [activeLink, setActiveLink] = useState('');
@@ -21,7 +22,7 @@ const NavigationLinks = ({ onClick }: { onClick?: () => void }) => {
   };
 
   const handleNavigation = (link: string) => {
-    onClick?.();
+    closeMenu?.();
     if (location.pathname !== '/') {
       navigate('/');
       setTimeout(() => {
@@ -44,14 +45,11 @@ const NavigationLinks = ({ onClick }: { onClick?: () => void }) => {
   return (
     <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 lgMd:gap-20 lg:items-center">
       <div className="flex flex-col lg:flex-row gap-5 lg:gap-8 lgMd:gap-12 w-fit">
-        {navigationLinks.map((link, index) => (
-          <ScrollLink
-            spy={true}
-            key={index}
-            smooth={true}
-            duration={500}
+        {navigationLinks.map((link) => (
+          <NavLink
             to={link.toLowerCase()}
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               handleNavigation(link);
             }}
           >
@@ -60,12 +58,12 @@ const NavigationLinks = ({ onClick }: { onClick?: () => void }) => {
             >
               {link}
             </span>
-          </ScrollLink>
+          </NavLink>
         ))}
         <Link
           to="/contact"
           onClick={() => {
-            onClick?.();
+            closeMenu?.();
           }}
         >
           <span
@@ -77,7 +75,7 @@ const NavigationLinks = ({ onClick }: { onClick?: () => void }) => {
           </span>
         </Link>
       </div>
-      <Link to="/register" className="w-fit" onClick={() => onClick?.()}>
+      <Link to="/register" className="w-fit" onClick={() => closeMenu?.()}>
         <Button size="large" variant={activeLink === '/register' ? 'secondary' : 'primary'}>
           Register
         </Button>
@@ -125,25 +123,24 @@ const Layout = () => {
         </div>
       </div>
       <div className="lg:hidden flex flex-col relative z-20">
-        <div
-          className={`fixed top-0 left-0 h-full w-full opacity-0 z-0 bg-black invisible ${
-            openMenu !== null
-              ? openMenu
-                ? 'animate-[fade-in_0.5s_forwards]'
-                : 'animate-[fade-out_0.5s_forwards]'
-              : null
-          }`}
-        ></div>
-        <div
-          className={`fixed top-0 left-0 h-full bg-background py-8 px-12 gap-14 flex flex-col w-full max-w-[350px] transform -translate-x-full duration-500 ease-default ${
-            openMenu ? 'translate-x-[0%]' : ''
-          }`}
+        <Drawer
+          open={openMenu}
+          anchor="left"
+          onClose={() => setOpenMenu(false)}
+          sx={{
+            '& .MuiDrawer-paper': {
+              backgroundColor: 'var(--color-background)',
+            },
+          }}
+          PaperProps={{
+            className: 'py-8 px-12 gap-14 flex flex-col w-full max-w-[350px]',
+          }}
         >
           <div className="flex justify-end">
             <CloseIcon onClick={() => setOpenMenu(false)} />
           </div>
-          <NavigationLinks onClick={() => setOpenMenu(false)} />
-        </div>
+          <NavigationLinks closeMenu={() => setOpenMenu(false)} />
+        </Drawer>
       </div>
       <div
         className={`fixed bottom-0 right-0 p-4 lg:p-5 z-30 transition-opacity duration-500 ${

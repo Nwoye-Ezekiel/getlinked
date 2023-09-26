@@ -46,24 +46,23 @@ function App() {
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
-        <React.Suspense
-          fallback={
-            <div className="flex flex-col items-center justify-center h-screen bg-background">
-              <CircularProgress className="text-primary" />
-            </div>
-          }
-        >
-          <BrowserRouter>
+        <BrowserRouter>
+          <Layout />
+          <React.Suspense
+            fallback={
+              <div className="flex flex-col items-center justify-center h-screen bg-background">
+                <CircularProgress className="text-primary" />
+              </div>
+            }
+          >
             <Routes>
-              <Route element={<Layout />}>
-                <Route path="/" element={<Home />} />
-                <Route path="/contact/*" element={<Contact />} />
-                <Route path="/register/*" element={<Register />} />
-              </Route>
+              <Route path="/" element={<Home />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/register" element={<Register />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
-          </BrowserRouter>
-        </React.Suspense>
+          </React.Suspense>
+        </BrowserRouter>
       </QueryClientProvider>
     </HelmetProvider>
   );
