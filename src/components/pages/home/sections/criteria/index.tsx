@@ -20,11 +20,11 @@ const Criteria = () => {
                 <h1>Judging Criteria</h1>
                 <h1 className="text-primary">Key attributes</h1>
               </div>
-              <div className="flex flex-col space-y-5 leading-relaxed text-xs lg:text-smMd">
+              <div className="flex flex-col space-y-5 leading-relaxed text-smMax lg:text-smMd">
                 {criteria.map((item, index) => (
                   <div key={index}>
                     <p>
-                      <span className="text-pink font-bold text-smMax lg:text-base">
+                      <span className="text-pink font-bold text-smMd lg:text-base">
                         {item.title}:
                       </span>{' '}
                       {item.description}

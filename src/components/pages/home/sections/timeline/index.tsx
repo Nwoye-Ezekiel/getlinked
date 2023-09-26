@@ -24,14 +24,14 @@ const Timeline = () => {
                   <div className="flex space-x-2 ml-7">
                     <div className="relative flex flex-col justify-between space-y-1 pb-2.5 min-h-[120px]">
                       <div className="absolute h-[calc(100%-10px)] bottom-0 -left-5 transform -translate-x-1/2 w-0.5 bg-primary"></div>
-                      <div className="absolute -left-10 bottom-0 w-10 h-10 rounded-full bg-horizontalGradient border-8 border-solid border-background flex justify-center items-center text-xs font-bold flex-shrink-0 z-10">
+                      <div className="absolute -left-10 bottom-0 w-10 h-10 rounded-full bg-horizontalGradient border-8 border-solid border-background flex justify-center items-center text-smMax font-bold flex-shrink-0 z-10">
                         {index + 1}
                       </div>
                       <div className="space-y-1">
-                        <p className="text-primary text-xs font-bold">{timeline.title}</p>
-                        <p className="text-xs leading-5">{timeline.description}</p>
+                        <p className="text-primary text-smMax font-bold">{timeline.title}</p>
+                        <p className="text-smMax leading-[22px]">{timeline.description}</p>
                       </div>
-                      <p className="text-primary text-xs font-bold">{timeline.date}</p>
+                      <p className="text-primary text-smMax font-bold">{timeline.date}</p>
                     </div>
                   </div>
                 ) : (
