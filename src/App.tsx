@@ -1,6 +1,8 @@
 import FontFaceObserver from 'fontfaceobserver';
 import { CircularProgress } from '@mui/material';
 import { HelmetProvider } from 'react-helmet-async';
+import animations from 'assets/animations/index.json';
+import { Player } from '@lottiefiles/react-lottie-player';
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -15,6 +17,7 @@ const PageNotFound = lazy(() => import('components/pages/page-not-found'));
 
 function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
+  const [showHomePage, setShowHomePage] = useState(false);
 
   useEffect(() => {
     async function preloadFonts() {
@@ -36,10 +39,20 @@ function App() {
     preloadFonts();
   }, []);
 
-  if (!fontsLoaded) {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowHomePage(true);
+    }, 5000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
+  if (!fontsLoaded || !showHomePage) {
     return (
       <div className="flex flex-col items-center justify-center h-screen bg-background">
-        <CircularProgress />
+        <Player src={animations['linked']} autoplay={true} loop={false} />
       </div>
     );
   }
@@ -52,7 +65,7 @@ function App() {
           <Suspense
             fallback={
               <div className="flex flex-col items-center justify-center h-screen -mt-[68px] lg:-mt-[125px] bg-background">
-                <CircularProgress className="text-primary" />
+                <CircularProgress />
               </div>
             }
           >
