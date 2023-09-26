@@ -33,7 +33,7 @@ const Hero = () => {
                       <img
                         alt="bulb"
                         src={images['bulb']}
-                        className="absolute w-5 right-[47px] -top-[12px] lg:-top-[36px] lg:right-[149px]"
+                        className="absolute w-5 lg:w-auto right-[47px] -top-[12px] lg:-top-[36px] lg:right-[149px]"
                       />
                       <h1 className="font-bold text-lgMd lg:text-2xl ">getlinked Tech</h1>
                     </div>
