@@ -1,5 +1,4 @@
 import FontFaceObserver from 'fontfaceobserver';
-import { CircularProgress } from '@mui/material';
 import { HelmetProvider } from 'react-helmet-async';
 import animations from 'assets/animations/index.json';
 import { Player } from '@lottiefiles/react-lottie-player';
@@ -8,6 +7,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 const queryClient = new QueryClient();
+const Loader = lazy(() => import('components/loader'));
 const Layout = lazy(() => import('components/layout'));
 const Home = lazy(() => import('components/pages/home'));
 const Contact = lazy(() => import('components/pages/contact'));
@@ -62,13 +62,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Navigation />
-          <Suspense
-            fallback={
-              <div className="flex flex-col items-center justify-center h-screen -mt-[68px] lg:-mt-[125px] bg-background">
-                <CircularProgress />
-              </div>
-            }
-          >
+          <Suspense fallback={<Loader />}>
             <Routes>
               <Route element={<Layout />}>
                 <Route path="/" element={<Home />} />
