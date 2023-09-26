@@ -8,9 +8,9 @@ import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
 
 const queryClient = new QueryClient();
 const Home = React.lazy(() => import('components/pages/home'));
-const NotFound = React.lazy(() => import('components/pages/not-found'));
 const Contact = React.lazy(() => import('components/pages/contact'));
 const Register = React.lazy(() => import('components/pages/register'));
+const PageNotFound = React.lazy(() => import('components/pages/page-not-found'));
 
 function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
@@ -50,7 +50,7 @@ function App() {
           <Navigation />
           <React.Suspense
             fallback={
-              <div className="flex flex-col items-center justify-center h-screen bg-background">
+              <div className="flex flex-col items-center justify-center h-screen -mt-[68px] lg:-mt-[125px] bg-background">
                 <CircularProgress className="text-primary" />
               </div>
             }
@@ -66,7 +66,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/register" element={<Register />} />
-                <Route path="*" element={<NotFound />} />
+                <Route path="*" element={<PageNotFound />} />
               </Route>
             </Routes>
           </React.Suspense>
