@@ -2,10 +2,12 @@ import Button from 'components/button';
 import images from 'assets/images/index.json';
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from '@mui/material';
+import { useCountdown } from 'hooks';
 
 const Hero = () => {
   const navigate = useNavigate();
   const isDesktop = useMediaQuery('(min-width: 1024px)');
+  const { hours, minutes, seconds } = useCountdown(new Date('2023-09-30T12:00:00Z'));
 
   return (
     <div className="relative flex border-t border-t-solid border-white/[.18] overflow-hidden">
@@ -71,15 +73,15 @@ const Hero = () => {
               </div>
               <div className="flex space-x-7">
                 <div className="flex items-end">
-                  <p className="font-unicaOne text-xlMd lg:text-xlMax">00</p>
+                  <p className="font-unicaOne text-xlMd lg:text-xlMax">{hours}</p>
                   <span className="mb-4 lg:mb-5 text-smMd lg:text-base">H</span>
                 </div>
                 <div className="flex items-end">
-                  <p className="font-unicaOne text-xlMd lg:text-xlMax">00</p>
+                  <p className="font-unicaOne text-xlMd lg:text-xlMax">{minutes}</p>
                   <span className="mb-4 lg:mb-5 text-smMd lg:text-base">M</span>
                 </div>
                 <div className="flex items-end">
-                  <p className="font-unicaOne text-xlMd lg:text-xlMax">00</p>
+                  <p className="font-unicaOne text-xlMd lg:text-xlMax">{seconds}</p>
                   <span className="mb-4 lg:mb-5 text-smMd lg:text-base">S</span>
                 </div>
               </div>
