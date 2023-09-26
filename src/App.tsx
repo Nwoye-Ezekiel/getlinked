@@ -1,16 +1,17 @@
-import Navigation from 'components/navigation';
 import FontFaceObserver from 'fontfaceobserver';
 import { CircularProgress } from '@mui/material';
-import React, { useEffect, useState } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 const queryClient = new QueryClient();
-const Home = React.lazy(() => import('components/pages/home'));
-const Contact = React.lazy(() => import('components/pages/contact'));
-const Register = React.lazy(() => import('components/pages/register'));
-const PageNotFound = React.lazy(() => import('components/pages/page-not-found'));
+const Layout = lazy(() => import('components/layout'));
+const Home = lazy(() => import('components/pages/home'));
+const Contact = lazy(() => import('components/pages/contact'));
+const Navigation = lazy(() => import('components/navigation'));
+const Register = lazy(() => import('components/pages/register'));
+const PageNotFound = lazy(() => import('components/pages/page-not-found'));
 
 function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
@@ -48,7 +49,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Navigation />
-          <React.Suspense
+          <Suspense
             fallback={
               <div className="flex flex-col items-center justify-center h-screen -mt-[68px] lg:-mt-[125px] bg-background">
                 <CircularProgress className="text-primary" />
@@ -56,20 +57,14 @@ function App() {
             }
           >
             <Routes>
-              <Route
-                element={
-                  <div id="layout">
-                    <Outlet />
-                  </div>
-                }
-              >
+              <Route element={<Layout />}>
                 <Route path="/" element={<Home />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="*" element={<PageNotFound />} />
               </Route>
             </Routes>
-          </React.Suspense>
+          </Suspense>
         </BrowserRouter>
       </QueryClientProvider>
     </HelmetProvider>
