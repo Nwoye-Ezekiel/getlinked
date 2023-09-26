@@ -62,8 +62,8 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <span className="text-primary text-xs font-medium">Follow us</span>
-                {socials.map((social) => (
-                  <a href={social.link} target="_blank" rel="noopener noreferrer">
+                {socials.map((social, index) => (
+                  <a key={index} href={social.link} target="_blank" rel="noopener noreferrer">
                     <social.icon className="hover:text-primary cursor-pointer transition-all duration-100 hover:scale-125" />
                   </a>
                 ))}

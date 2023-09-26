@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { CircularProgress } from '@mui/material';
+import Navigation from 'components/navigation';
 import FontFaceObserver from 'fontfaceobserver';
+import { CircularProgress } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
 
 const queryClient = new QueryClient();
-const Layout = React.lazy(() => import('components/layout'));
 const Home = React.lazy(() => import('components/pages/app/home'));
 const NotFound = React.lazy(() => import('components/pages/not-found'));
 const Contact = React.lazy(() => import('components/pages/app/contact'));
@@ -47,7 +47,7 @@ function App() {
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-          <Layout />
+          <Navigation />
           <React.Suspense
             fallback={
               <div className="flex flex-col items-center justify-center h-screen bg-background">
@@ -56,10 +56,18 @@ function App() {
             }
           >
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="*" element={<NotFound />} />
+              <Route
+                element={
+                  <div id="layout">
+                    <Outlet />
+                  </div>
+                }
+              >
+                <Route path="/" element={<Home />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="*" element={<NotFound />} />
+              </Route>
             </Routes>
           </React.Suspense>
         </BrowserRouter>

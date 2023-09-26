@@ -37,10 +37,11 @@ const Contact = () => {
 
   useEffect(() => {
     const layoutElement = document.getElementById('layout');
-    if (showSuccessModal && layoutElement) {
-      layoutElement.style.opacity = '0.1';
-    } else if (layoutElement) {
-      layoutElement.style.opacity = '1';
+    const navigationElement = document.getElementById('navigation');
+    if (layoutElement && navigationElement) {
+      const opacity = showSuccessModal ? '0.1' : '1';
+      layoutElement.style.opacity = opacity;
+      navigationElement.style.opacity = opacity;
     }
   }, [showSuccessModal]);
 
