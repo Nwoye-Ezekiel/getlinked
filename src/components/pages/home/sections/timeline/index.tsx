@@ -27,7 +27,7 @@ const Timeline = () => {
               <div key={index} className="z-10">
                 {!isDesktop ? (
                   <AnimateOnScroll>
-                    <div className="flex space-x-2 ml-7">
+                    <div className="flex space-x-2 ml-8">
                       <div className="relative flex flex-col justify-between space-y-1 pb-2.5 min-h-[120px]">
                         <div className="absolute h-[calc(100%-10px)] bottom-0 -left-5 transform -translate-x-1/2 w-0.5 bg-primary"></div>
                         <div className="absolute -left-10 bottom-0 w-10 h-10 rounded-full bg-horizontalGradient border-8 border-solid border-background flex justify-center items-center text-smMax font-bold flex-shrink-0 z-10">

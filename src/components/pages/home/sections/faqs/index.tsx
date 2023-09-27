@@ -26,15 +26,15 @@ const FAQs = () => {
             </div>
             <div className="flex flex-col space-y-5 leading-relaxed text-smMax lg:text-smMd">
               {faqs.map((item, index) => (
-                <div key={index} className="flex flex-col space-y-2">
+                <div key={index}>
                   <AnimateOnScroll>
-                    <>
+                    <div className="flex flex-col space-y-2">
                       <div className="flex justify-between items-end lg:items-center space-x-4">
                         <p className="font-medium text-left">{item.question}</p>
                         <span className="text-primary text-mdMax leading-none">+</span>
                       </div>
                       <hr className="text-primary" />
-                    </>
+                    </div>
                   </AnimateOnScroll>
                 </div>
               ))}
