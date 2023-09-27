@@ -3,11 +3,13 @@ import { motion, useInView, useAnimation } from 'framer-motion';
 
 interface Props {
   children: JSX.Element;
+  delay?: number;
+  margin?: string;
 }
 
-export const AnimateOnScroll = ({ children }: Props) => {
+export const AnimateOnScroll = ({ children, delay = 0.2, margin = '-100px' }: Props) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin });
   const mainControls = useAnimation();
 
   useEffect(() => {
@@ -25,7 +27,7 @@ export const AnimateOnScroll = ({ children }: Props) => {
         }}
         initial="hidden"
         animate={mainControls}
-        transition={{ duration: 0.55, delay: 0.2, ease: 'easeOut' }}
+        transition={{ duration: 0.55, delay, ease: 'easeOut' }}
       >
         {children}
       </motion.div>

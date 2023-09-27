@@ -20,7 +20,7 @@ const Hero = () => {
       <div className="lg:mx-12 w-full">
         <div className="w-full h-full max-w-desktop mx-auto">
           <div className="flex w-fit mx-auto relative justify-center lg:mx-0 lg:ml-auto lg:-mr-10 mt-8">
-            <AnimateOnScroll>
+            <AnimateOnScroll margin="0px">
               <i className="text-base lg:text-lgMd font-bold whitespace-nowrap">
                 Igniting a Revolution in HR Innovation
               </i>
@@ -34,19 +34,19 @@ const Hero = () => {
           <div className="relative h-full">
             <div className="self-start space-y-4 lg:space-y-16 lg:w-[70%] mt-12 lg:mt-20 flex flex-col items-center lg:items-start lg:pb-[70px]">
               <div className="space-y-7 lg:space-y-10 flex flex-col items-center lg:items-start ">
-                <div className="flex flex-col items-center lg:items-start space-y-1 text-center lg:text-left">
-                  <div className="-space-y-1 lg:-space-y-6">
+                <div className="flex flex-col items-center lg:items-start space-y-1">
+                  <div className="-space-y-1 lg:-space-y-6 text-center lg:text-left">
                     <div className="relative">
                       <img
                         alt="bulb"
                         src={images['bulb']}
                         className="absolute w-5 lg:w-auto right-[47px] -top-[12px] lg:-top-[36px] lg:right-[149px]"
                       />
-                      <AnimateOnScroll>
+                      <AnimateOnScroll margin="0px" delay={0.35}>
                         <h1 className="font-bold text-lgMd lg:text-2xl ">getlinked Tech</h1>
                       </AnimateOnScroll>
                     </div>
-                    <AnimateOnScroll>
+                    <AnimateOnScroll margin="0px" delay={0.5}>
                       <div className="flex items-end space-x-2">
                         <h1 className="flex items-end font-bold text-lgMd lg:text-2xl ">
                           Hackathon
@@ -69,13 +69,13 @@ const Hero = () => {
                       </div>
                     </AnimateOnScroll>
                   </div>
-                  <AnimateOnScroll>
-                    <p className="text-smMax lg:text-mdMd w-[80%] max-w-[40ch] leading-loose">
+                  <AnimateOnScroll margin="0px" delay={0.65}>
+                    <p className="text-smMax lg:text-mdMd w-[80%] max-w-[40ch] text-center lg:text-left mx-auto lg:mx-0 leading-loose">
                       Participate in getlinked tech Hackathon 2023 stand a chance to win a Big prize
                     </p>
                   </AnimateOnScroll>
                 </div>
-                <AnimateOnScroll>
+                <AnimateOnScroll margin="0px" delay={0.8}>
                   <Button
                     onClick={() => navigate('/register')}
                     size={`${isDesktop ? 'large' : 'medium'}`}
@@ -84,7 +84,7 @@ const Hero = () => {
                   </Button>
                 </AnimateOnScroll>
               </div>
-              <AnimateOnScroll>
+              <AnimateOnScroll margin="0px" delay={0.95}>
                 <div className="flex space-x-7">
                   <div className="flex items-end">
                     <p className="font-unicaOne text-xlMd lg:text-xlMax">{hours}</p>

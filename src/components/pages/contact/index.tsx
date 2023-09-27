@@ -7,6 +7,7 @@ import images from 'assets/images/index.json';
 import TextField from 'components/text-field';
 import { socials } from 'data/static/socials';
 import { Alert, CircularProgress, Dialog, DialogContent } from '@mui/material';
+import AnimateOnScroll from 'components/animate-on-scroll';
 
 const validationSchema = yup.object().shape({
   message: yup.string().required('Enter your message'),
@@ -50,46 +51,74 @@ const Contact = () => {
       <div className="mx-12">
         <div className="max-w-tablet lg:max-w-desktop mx-auto flex justify-center gap-5 lg:gap-10">
           <div className="hidden lg:block w-[40%] mt-10">
-            <h1 className="text-lgMd text-primary font-semibold mb-3">Get in touch</h1>
+            <AnimateOnScroll>
+              <h1 className="text-lgMd text-primary font-semibold mb-3">Get in touch</h1>
+            </AnimateOnScroll>
             <div className="space-y-5 mb-7">
               <div>
-                <p className="font-medium">Contact</p>
-                <p>Information</p>
+                <AnimateOnScroll margin="0px" delay={0.35}>
+                  <p className="font-medium">Contact</p>
+                </AnimateOnScroll>
+                <AnimateOnScroll margin="0px" delay={0.5}>
+                  <p>Information</p>
+                </AnimateOnScroll>
               </div>
               <div>
-                <p className="font-medium">27,Alara Street</p>
-                <p className="font-medium">Yaba 100012</p>
-                <p className="font-medium">Lagos State</p>
+                <AnimateOnScroll margin="0px" delay={0.65}>
+                  <p className="font-medium">27,Alara Street</p>
+                </AnimateOnScroll>
+                <AnimateOnScroll margin="0px" delay={0.8}>
+                  <p className="font-medium">Yaba 100012</p>
+                </AnimateOnScroll>
+                <AnimateOnScroll margin="0px" delay={0.95}>
+                  <p className="font-medium">Lagos State</p>
+                </AnimateOnScroll>
               </div>
-              <p className="font-medium">Call Us : 07067981819</p>
+              <AnimateOnScroll margin="0px" delay={1.1}>
+                <p className="font-medium">Call Us : 07067981819</p>
+              </AnimateOnScroll>
               <div>
-                <p className="font-medium">we are open from Monday-Friday</p>
-                <p className="font-medium">08:00am - 05:00pm</p>
+                <AnimateOnScroll margin="0px" delay={1.25}>
+                  <p className="font-medium">we are open from Monday-Friday</p>
+                </AnimateOnScroll>
+                <AnimateOnScroll margin="0px" delay={1.4}>
+                  <p className="font-medium">08:00am - 05:00pm</p>
+                </AnimateOnScroll>
               </div>
             </div>
             <div className="flex flex-col space-y-2">
-              <p className="text-primary font-medium">Share on</p>
-              <div className="flex items-center space-x-3">
-                {socials.map((social) => (
-                  <a href={social.link} target="_blank" rel="noopener noreferrer">
-                    <social.icon className="hover:text-primary cursor-pointer transition-all duration-100 hover:scale-125" />
-                  </a>
-                ))}
-              </div>
+              <AnimateOnScroll margin="0px" delay={1.55}>
+                <p className="text-primary font-medium">Share on</p>
+              </AnimateOnScroll>
+              <AnimateOnScroll margin="0px" delay={1.7}>
+                <div className="flex items-center space-x-3">
+                  {socials.map((social) => (
+                    <a href={social.link} target="_blank" rel="noopener noreferrer">
+                      <social.icon className="hover:text-primary cursor-pointer transition-all duration-100 hover:scale-125" />
+                    </a>
+                  ))}
+                </div>
+              </AnimateOnScroll>
             </div>
           </div>
           <div className="w-full max-w-tablet lg:max-w-none lg:w-[60%] rounded-xl lg:bg-white/[.03] lg:p-12 lg:pt-8 lgMax:p-20 lgMax:pt-14">
             <div className="space-y-1 mb-6 lg:mb-10">
-              <h1 className="lg:block text-mdMd text-primary font-semibold">
-                Questions or need assistance?
-              </h1>
-              <h1 className="lg:block text-mdMd text-primary font-semibold">
-                Let us know about it!
-              </h1>
+              <AnimateOnScroll>
+                <h1 className="lg:block text-mdMd text-primary font-semibold">
+                  Questions or need assistance?
+                </h1>
+              </AnimateOnScroll>
+              <AnimateOnScroll margin="0px" delay={0.35}>
+                <h1 className="lg:block text-mdMd text-primary font-semibold">
+                  Let us know about it!
+                </h1>
+              </AnimateOnScroll>
             </div>
-            <p className="lg:hidden text-xs mb-10">
-              Email us below to any question related to our event
-            </p>
+            <AnimateOnScroll margin="0px" delay={0.5}>
+              <p className="lg:hidden text-xs mb-10">
+                Email us below to any question related to our event
+              </p>
+            </AnimateOnScroll>
             <div>
               <Formik
                 initialValues={{
@@ -126,77 +155,91 @@ const Contact = () => {
                       </Alert>
                     )}
                     <div className="flex flex-col space-y-8">
-                      <TextField
-                        type="text"
-                        name="first_name"
-                        label="First Name"
-                        handleChange={handleChange}
-                        handleBlur={handleBlur}
-                        touched={touched}
-                        values={values}
-                        errors={errors}
-                        shrinkLabel
-                      />
-                      <TextField
-                        type="tel"
-                        name="phone_number"
-                        label="Phone Number"
-                        handleChange={handleChange}
-                        handleBlur={handleBlur}
-                        touched={touched}
-                        values={values}
-                        errors={errors}
-                        shrinkLabel
-                      />
-                      <TextField
-                        type="email"
-                        name="email"
-                        label="Email"
-                        handleChange={handleChange}
-                        handleBlur={handleBlur}
-                        touched={touched}
-                        values={values}
-                        errors={errors}
-                        shrinkLabel
-                      />
-                      <TextField
-                        type="text"
-                        name="message"
-                        label="Message"
-                        handleChange={handleChange}
-                        handleBlur={handleBlur}
-                        touched={touched}
-                        values={values}
-                        errors={errors}
-                        shrinkLabel
-                        multiline
-                      />
+                      <AnimateOnScroll margin="0px" delay={0.65}>
+                        <TextField
+                          type="text"
+                          name="first_name"
+                          label="First Name"
+                          handleChange={handleChange}
+                          handleBlur={handleBlur}
+                          touched={touched}
+                          values={values}
+                          errors={errors}
+                          shrinkLabel
+                        />
+                      </AnimateOnScroll>
+                      <AnimateOnScroll margin="0px" delay={0.8}>
+                        <TextField
+                          type="tel"
+                          name="phone_number"
+                          label="Phone Number"
+                          handleChange={handleChange}
+                          handleBlur={handleBlur}
+                          touched={touched}
+                          values={values}
+                          errors={errors}
+                          shrinkLabel
+                        />
+                      </AnimateOnScroll>
+                      <AnimateOnScroll margin="0px" delay={0.95}>
+                        <TextField
+                          type="email"
+                          name="email"
+                          label="Email"
+                          handleChange={handleChange}
+                          handleBlur={handleBlur}
+                          touched={touched}
+                          values={values}
+                          errors={errors}
+                          shrinkLabel
+                        />
+                      </AnimateOnScroll>
+                      <AnimateOnScroll margin="0px" delay={1.1}>
+                        <TextField
+                          type="text"
+                          name="message"
+                          label="Message"
+                          handleChange={handleChange}
+                          handleBlur={handleBlur}
+                          touched={touched}
+                          values={values}
+                          errors={errors}
+                          shrinkLabel
+                          multiline
+                        />
+                      </AnimateOnScroll>
                     </div>
                     <div className="flex justify-center mt-8">
-                      <Button
-                        size="large"
-                        type="submit"
-                        disabled={isSubmitting || !isValid || !dirty}
-                      >
-                        {isSubmitting ? (
-                          <>
-                            <CircularProgress color="inherit" className="text-white" size={22} />
-                            <span className="sr-only">Submitting</span>
-                          </>
-                        ) : (
-                          'Submit'
-                        )}
-                      </Button>
+                      <AnimateOnScroll margin="0px" delay={1.25}>
+                        <Button
+                          size="large"
+                          type="submit"
+                          disabled={isSubmitting || !isValid || !dirty}
+                        >
+                          {isSubmitting ? (
+                            <>
+                              <CircularProgress color="inherit" className="text-white" size={22} />
+                              <span className="sr-only">Submitting</span>
+                            </>
+                          ) : (
+                            'Submit'
+                          )}
+                        </Button>
+                      </AnimateOnScroll>
                     </div>
                     <div className="flex flex-col items-center space-y-2 mt-10 lg:hidden">
-                      <p className="text-primary font-medium text-smMd">Share on</p>{' '}
-                      <div className="flex items-center space-x-3">
-                        {socials.map((social) => (
-                          <a href={social.link} target="_blank" rel="noopener noreferrer">
-                            <social.icon className="hover:text-primary cursor-pointer transition-all duration-100 hover:scale-125" />
-                          </a>
-                        ))}
-                      </div>
+                      <AnimateOnScroll margin="0px" delay={1.4}>
+                        <p className="text-primary font-medium text-smMd">Share on</p>
+                      </AnimateOnScroll>
+                      <AnimateOnScroll margin="0px" delay={1.55}>
+                        <div className="flex items-center space-x-3">
+                          {socials.map((social) => (
+                            <a href={social.link} target="_blank" rel="noopener noreferrer">
+                              <social.icon className="hover:text-primary cursor-pointer transition-all duration-100 hover:scale-125" />
+                            </a>
+                          ))}
+                        </div>
+                      </AnimateOnScroll>
                     </div>
                   </form>
                 )}

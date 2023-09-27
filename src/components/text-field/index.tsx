@@ -59,7 +59,7 @@ const TextField = ({
           name={name}
           type={type}
           value={values[name]}
-          className={`block text-smMax lg:text-smMd text-white w-full h-14 px-3 border outline-none rounded caret-white bg-transparent peer secondary-scrollbar ${
+          className={`block text-smMax lg:text-smMd text-white w-full h-14 px-3 border outline-none rounded caret-white bg-transparent peer secondary-scrollbar mt-2 ${
             hasError
               ? 'border-error/[.7] hover:border-error focus:border-error'
               : 'border-white/[.7] hover:border-white focus:border-white'
