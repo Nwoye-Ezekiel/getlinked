@@ -6,7 +6,7 @@ const Prizes = () => {
   const isDesktop = useMediaQuery('(min-width: 1024px)');
 
   return (
-    <div className="relative lg:pt-6 pb-2 lg:pb-14">
+    <div className="relative border-t border-t-solid border-t-transparent lg:pt-6 pb-2 lg:pb-14">
       <div className="absolute top-0 left-0 w-full h-full bg-black/[.2] -z-10"></div>
       <div className="m-12">
         <div className="max-w-tablet lg:max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-24">

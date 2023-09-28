@@ -301,9 +301,9 @@ const Register = () => {
                         </i>
                       </AnimateOnScroll>
                     </div>
-                    <div className="flex items-center mb-3">
+                    <div>
                       <AnimateOnScroll refIndex={12}>
-                        <>
+                        <div className="flex items-center mb-3">
                           <Checkbox
                             checked={privacyPolicyAccepted}
                             checkedIcon={<CheckBox className="text-pink w-4 h-4" />}
@@ -313,7 +313,7 @@ const Register = () => {
                           <span className="text-xsMd lg:text-xs font-medium">
                             I agreed with the event terms and conditions and privacy policy
                           </span>
-                        </>
+                        </div>
                       </AnimateOnScroll>
                     </div>
                     <AnimateOnScroll refIndex={13}>
