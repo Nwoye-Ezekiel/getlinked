@@ -43,7 +43,7 @@ const Footer = () => {
                 <div>
                   <AnimateOnScroll>
                     <ScrollLink to="overview" spy={true} smooth={true} duration={500}>
-                      <p className="text-xs font-medium cursor-pointer hover:text-primary transition-all duration-100 w-fit">
+                      <p className="text-xs font-medium cursor-pointer bg-white bg-clip-text text-transparent lg:hover:bg-horizontalGradient transition-all duration-100 w-fit">
                         Overview
                       </p>
                     </ScrollLink>
@@ -52,7 +52,7 @@ const Footer = () => {
                 <div>
                   <AnimateOnScroll>
                     <ScrollLink to="timeline" spy={true} smooth={true} duration={500}>
-                      <p className="text-xs font-medium cursor-pointer hover:text-primary transition-all duration-100 w-fit">
+                      <p className="text-xs font-medium cursor-pointer bg-white bg-clip-text text-transparent lg:hover:bg-horizontalGradient transition-all duration-100 w-fit">
                         Timeline
                       </p>
                     </ScrollLink>
@@ -61,7 +61,7 @@ const Footer = () => {
                 <div>
                   <AnimateOnScroll>
                     <ScrollLink to="faqs" spy={true} smooth={true} duration={500}>
-                      <p className="text-xs font-medium cursor-pointer hover:text-primary transition-all duration-100 w-fit">
+                      <p className="text-xs font-medium cursor-pointer bg-white bg-clip-text text-transparent lg:hover:bg-horizontalGradient transition-all duration-100 w-fit">
                         FAQs
                       </p>
                     </ScrollLink>
@@ -70,7 +70,7 @@ const Footer = () => {
                 <div>
                   <AnimateOnScroll>
                     <Link to="/register">
-                      <p className="text-xs font-medium cursor-pointer hover:text-primary transition-all duration-100 w-fit">
+                      <p className="text-xs font-medium cursor-pointer bg-white bg-clip-text text-transparent lg:hover:bg-horizontalGradient transition-all duration-100 w-fit">
                         Register
                       </p>
                     </Link>
@@ -99,7 +99,7 @@ const Footer = () => {
                   <PhoneIcon />
                   <a
                     href="tel:+2346707653444"
-                    className="font-medium hover:text-primary transition-all duration-100"
+                    className="font-medium bg-white bg-clip-text text-transparent lg:hover:bg-horizontalGradient transition-all duration-100"
                   >
                     +234 6707653444
                   </a>
@@ -108,7 +108,7 @@ const Footer = () => {
               <AnimateOnScroll>
                 <p className="text-xs flex items-center space-x-3">
                   <LocationIcon />
-                  <span className="font-medium max-w-[12ch] hover:text-primary transition-all duration-100 cursor-default">
+                  <span className="font-medium max-w-[12ch] bg-white bg-clip-text text-transparent lg:hover:bg-horizontalGradient transition-all duration-100 cursor-default">
                     27,Alara Street Yaba 100012 Lagos State
                   </span>
                 </p>

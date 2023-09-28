@@ -58,7 +58,7 @@ const NavigationLinks = ({ closeMenu }: { closeMenu?: () => void }) => {
               }}
             >
               <span
-                className={`text-base font-inter lg:font-montserrat cursor-pointer lg:p-2 lg:rounded transition-all duration-100 lg:hover:text-primary text-white`}
+                className={`text-base font-inter lg:font-montserrat cursor-pointer lg:p-2 lg:rounded transition-all duration-100 bg-white bg-clip-text text-transparent lg:hover:bg-horizontalGradient`}
               >
                 {link}
               </span>
@@ -73,8 +73,8 @@ const NavigationLinks = ({ closeMenu }: { closeMenu?: () => void }) => {
             }}
           >
             <span
-              className={`text-base font-inter lg:font-montserrat lg:p-2 lg:rounded transition-all duration-100 lg:hover:text-primary ${
-                activeLink === '/contact' ? 'text-primary' : 'text-white'
+              className={`text-base font-inter lg:font-montserrat lg:p-2 lg:rounded transition-all duration-100 bg-clip-text text-transparent lg:hover:bg-horizontalGradient ${
+                activeLink === '/contact' ? 'bg-horizontalGradient' : 'bg-white'
               }`}
             >
               Contact
