@@ -146,7 +146,7 @@ const Navigation = () => {
             },
           }}
           PaperProps={{
-            className: 'py-8 px-12 gap-14 flex flex-col w-full max-w-[270px]',
+            className: 'py-8 px-12 gap-14 flex flex-col w-full max-w-[300px]',
           }}
         >
           <div className="flex justify-end">
