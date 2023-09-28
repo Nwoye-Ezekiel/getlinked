@@ -87,7 +87,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Navigation />
-          <Suspense fallback={<Loader />}>
+          <Suspense fallback={<Loader headerAdjust />}>
             <Routes>
               <Route element={<Layout />}>
                 <Route path="/" element={<Home />} />
