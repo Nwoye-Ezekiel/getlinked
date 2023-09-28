@@ -15,6 +15,7 @@ import { useCategories } from 'data/dynamic';
 import images from 'assets/images/index.json';
 import TextField from 'components/text-field';
 import { registerUser } from 'apis/registration';
+import AnimateOnScroll from 'components/animate-on-scroll';
 import { CheckBox, CheckBoxOutlineBlankOutlined, KeyboardArrowDown } from '@mui/icons-material';
 
 const validationSchema = yup.object().shape({
@@ -62,8 +63,8 @@ const Register = () => {
     const navigationElement = document.getElementById('navigation');
     if (layoutElement && navigationElement) {
       const opacity = showSuccessModal ? '0.1' : '1';
-      layoutElement.style.opacity = opacity;
       navigationElement.style.opacity = opacity;
+      layoutElement.style.opacity = opacity;
     }
   }, [showSuccessModal]);
 
@@ -71,9 +72,11 @@ const Register = () => {
     <div className="pt-5 pb-16 lg:pt-5 lg:pb-20">
       <div className="mx-12">
         <div className="max-w-tablet lg:max-w-desktop mx-auto flex flex-col lg:flex-row justify-center items-center gap-5 lg:gap-10">
-          <h1 className="lg:hidden max-w-tablet mr-auto text-primary font-semibold mb-5">
-            Register
-          </h1>
+          <div className="mr-auto">
+            <AnimateOnScroll refIndex={0}>
+              <h1 className="lg:hidden text-primary font-semibold mb-5">Register</h1>
+            </AnimateOnScroll>
+          </div>
           <div className="w-full lg:w-[40%] max-w-sm mx-auto lg:max-w-none">
             <img
               src={images['man_sitting']}
@@ -83,19 +86,27 @@ const Register = () => {
           </div>
           <div className="w-full max-w-tablet lg:max-w-none lg:w-[60%] rounded-xl lg:bg-white/[.03] lg:p-12 lg:pt-8 lgMax:p-20 lgMax:pt-14">
             <div className="mb-6">
-              <h1 className="hidden lg:block text-lgMd text-primary font-semibold mb-5">
-                Register
-              </h1>
+              <AnimateOnScroll refIndex={1}>
+                <h1 className="hidden lg:block text-lgMd text-primary font-semibold mb-5">
+                  Register
+                </h1>
+              </AnimateOnScroll>
               <div className="flex items-end space-x-1 mb-3">
-                <p className="text-xs lg:text-smMd">Be part of this movement!</p>
-                <div className="w-24 border-b border-dashed border-primary mb-1 flex justify-center">
-                  <img
-                    src={images['man_and_woman_walking_emoji']}
-                    alt="man and woman walking emoji"
-                  />
-                </div>
+                <AnimateOnScroll refIndex={2}>
+                  <p className="text-xs lg:text-smMd">Be part of this movement!</p>
+                </AnimateOnScroll>
+                <AnimateOnScroll refIndex={3}>
+                  <div className="w-24 border-b border-dashed border-primary mb-1 flex justify-center">
+                    <img
+                      src={images['man_and_woman_walking_emoji']}
+                      alt="man and woman walking emoji"
+                    />
+                  </div>
+                </AnimateOnScroll>
               </div>
-              <p className="text-mdMd lg:text-mdMax font-semibold">CREATE YOUR ACCOUNT</p>
+              <AnimateOnScroll refIndex={4}>
+                <p className="text-mdMd lg:text-mdMax font-semibold">CREATE YOUR ACCOUNT</p>
+              </AnimateOnScroll>
             </div>
             <div>
               <Formik
@@ -137,155 +148,191 @@ const Register = () => {
                     )}
                     <div className="flex flex-col space-y-4 lg:space-y-6">
                       <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
-                        <TextField
-                          type="text"
-                          name="team_name"
-                          label="Team's Name"
-                          placeholder="Enter the name of your group"
-                          handleChange={handleChange}
-                          handleBlur={handleBlur}
-                          touched={touched}
-                          values={values}
-                          errors={errors}
-                        />
-                        <TextField
-                          type="tel"
-                          name="phone"
-                          label="Phone"
-                          placeholder="Enter your phone number"
-                          handleChange={handleChange}
-                          handleBlur={handleBlur}
-                          touched={touched}
-                          values={values}
-                          errors={errors}
-                        />
-                      </div>
-                      <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
-                        <TextField
-                          type="email"
-                          name="email"
-                          label="Email"
-                          placeholder="Enter your email address"
-                          handleChange={handleChange}
-                          handleBlur={handleBlur}
-                          touched={touched}
-                          values={values}
-                          errors={errors}
-                        />
-                        <TextField
-                          type="text"
-                          name="project_topic"
-                          label="Project Topic"
-                          placeholder="What is your group project topic"
-                          handleChange={handleChange}
-                          handleBlur={handleBlur}
-                          touched={touched}
-                          values={values}
-                          errors={errors}
-                        />
-                      </div>
-                      <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
-                        <div className="space-y-2 w-full">
-                          <label className="text-smMax lg:text-smMd font-medium">Category</label>
-                          <Autocomplete
-                            fullWidth
-                            value={values.category}
-                            popupIcon={<KeyboardArrowDown />}
-                            placeholder="Select your category"
-                            classes={{
-                              listbox: 'bg-horizontalGradient',
-                            }}
-                            options={categories?.map((category) => category.name) ?? []}
-                            onChange={(_, value) => {
-                              setFieldValue('category', value);
-                            }}
-                            renderInput={(params) => (
-                              <div>
-                                <MUITextField
-                                  {...params}
-                                  variant="outlined"
-                                  placeholder="Select your category"
-                                  error={touched.category && !!errors.category}
-                                  helperText={touched.category ? errors.category : ''}
-                                />
-                                {isLoadingCategories && (
-                                  <div className="text-white/[.5] text-smMax mt-1 animate-pulse">
-                                    Fetching categories...
-                                  </div>
-                                )}
-                                {loadingCategoriesError && (
-                                  <div className="flex space-x-1 text-xs mt-1">
-                                    <span className="text-white/[.5]">An error occurred.</span>
-                                    <span
-                                      className="text-error font-medium cursor-pointer"
-                                      onClick={() => refetchCategories()}
-                                    >
-                                      Retry
-                                    </span>
-                                  </div>
-                                )}
-                              </div>
-                            )}
-                          />
+                        <div className="w-full">
+                          <AnimateOnScroll refIndex={5}>
+                            <TextField
+                              type="text"
+                              name="team_name"
+                              label="Team's Name"
+                              placeholder="Enter the name of your group"
+                              handleChange={handleChange}
+                              handleBlur={handleBlur}
+                              touched={touched}
+                              values={values}
+                              errors={errors}
+                            />
+                          </AnimateOnScroll>
                         </div>
-                        <div className="space-y-2 w-full">
-                          <label className="text-smMax lg:text-smMd font-medium">Group Size</label>
-                          <Autocomplete
-                            fullWidth
-                            value={values.group_size}
-                            popupIcon={<KeyboardArrowDown />}
-                            classes={{
-                              listbox: 'bg-horizontalGradient',
-                            }}
-                            placeholder="Select your group size"
-                            options={['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']}
-                            onChange={(_, value) => {
-                              setFieldValue('group_size', value);
-                            }}
-                            renderInput={(params) => (
-                              <MUITextField
-                                {...params}
-                                variant="outlined"
-                                placeholder="Select your group size"
-                                error={touched.group_size && !!errors.group_size}
-                                helperText={touched.group_size ? errors.group_size : ''}
+                        <div className="w-full">
+                          <AnimateOnScroll refIndex={6}>
+                            <TextField
+                              type="tel"
+                              name="phone"
+                              label="Phone"
+                              placeholder="Enter your phone number"
+                              handleChange={handleChange}
+                              handleBlur={handleBlur}
+                              touched={touched}
+                              values={values}
+                              errors={errors}
+                            />
+                          </AnimateOnScroll>
+                        </div>
+                      </div>
+                      <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
+                        <div className="w-full">
+                          <AnimateOnScroll refIndex={7}>
+                            <TextField
+                              type="email"
+                              name="email"
+                              label="Email"
+                              placeholder="Enter your email address"
+                              handleChange={handleChange}
+                              handleBlur={handleBlur}
+                              touched={touched}
+                              values={values}
+                              errors={errors}
+                            />
+                          </AnimateOnScroll>
+                        </div>
+                        <div className="w-full">
+                          <AnimateOnScroll refIndex={8}>
+                            <TextField
+                              type="text"
+                              name="project_topic"
+                              label="Project Topic"
+                              placeholder="What is your group project topic"
+                              handleChange={handleChange}
+                              handleBlur={handleBlur}
+                              touched={touched}
+                              values={values}
+                              errors={errors}
+                            />
+                          </AnimateOnScroll>
+                        </div>
+                      </div>
+                      <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
+                        <div className="w-full">
+                          <AnimateOnScroll refIndex={9}>
+                            <div className="space-y-2 w-full">
+                              <label className="text-smMax lg:text-smMd font-medium">
+                                Category
+                              </label>
+                              <Autocomplete
+                                fullWidth
+                                value={values.category}
+                                popupIcon={<KeyboardArrowDown />}
+                                placeholder="Select your category"
+                                classes={{
+                                  listbox: 'bg-horizontalGradient',
+                                }}
+                                options={categories?.map((category) => category.name) ?? []}
+                                onChange={(_, value) => {
+                                  setFieldValue('category', value);
+                                }}
+                                renderInput={(params) => (
+                                  <div>
+                                    <MUITextField
+                                      {...params}
+                                      variant="outlined"
+                                      placeholder="Select your category"
+                                      error={touched.category && !!errors.category}
+                                      helperText={touched.category ? errors.category : ''}
+                                    />
+                                    {isLoadingCategories && (
+                                      <div className="text-white/[.5] text-smMax mt-1 animate-pulse">
+                                        Fetching categories...
+                                      </div>
+                                    )}
+                                    {loadingCategoriesError && (
+                                      <div className="flex space-x-1 text-xs mt-1">
+                                        <span className="text-white/[.5]">An error occurred.</span>
+                                        <span
+                                          className="text-error font-medium cursor-pointer"
+                                          onClick={() => refetchCategories()}
+                                        >
+                                          Retry
+                                        </span>
+                                      </div>
+                                    )}
+                                  </div>
+                                )}
                               />
-                            )}
-                          />
+                            </div>
+                          </AnimateOnScroll>
+                        </div>
+                        <div className="w-full">
+                          <AnimateOnScroll refIndex={10}>
+                            <div className="space-y-2 w-full">
+                              <label className="text-smMax lg:text-smMd font-medium">
+                                Group Size
+                              </label>
+                              <Autocomplete
+                                fullWidth
+                                value={values.group_size}
+                                popupIcon={<KeyboardArrowDown />}
+                                classes={{
+                                  listbox: 'bg-horizontalGradient',
+                                }}
+                                placeholder="Select your group size"
+                                options={['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']}
+                                onChange={(_, value) => {
+                                  setFieldValue('group_size', value);
+                                }}
+                                renderInput={(params) => (
+                                  <MUITextField
+                                    {...params}
+                                    variant="outlined"
+                                    placeholder="Select your group size"
+                                    error={touched.group_size && !!errors.group_size}
+                                    helperText={touched.group_size ? errors.group_size : ''}
+                                  />
+                                )}
+                              />
+                            </div>
+                          </AnimateOnScroll>
                         </div>
                       </div>
                     </div>
                     <div className="mt-2 lg:mt-4">
-                      <i className="text-xsMax lg:text-xs text-pink">
-                        Please review your registration details before submitting
-                      </i>
+                      <AnimateOnScroll refIndex={11}>
+                        <i className="text-xsMax lg:text-xs text-pink">
+                          Please review your registration details before submitting
+                        </i>
+                      </AnimateOnScroll>
                     </div>
                     <div className="flex items-center mb-3">
-                      <Checkbox
-                        checked={privacyPolicyAccepted}
-                        checkedIcon={<CheckBox className="text-pink w-4 h-4" />}
-                        onChange={(e) => setPrivacyPolicyAccepted(e.target.checked)}
-                        icon={<CheckBoxOutlineBlankOutlined className="text-white w-4 h-4" />}
-                      />
-                      <span className="text-xsMd lg:text-xs font-medium">
-                        I agreed with the event terms and conditions and privacy policy
-                      </span>
-                    </div>
-                    <Button
-                      fullWidth
-                      size="large"
-                      type="submit"
-                      disabled={isSubmitting || !isValid || !dirty || !privacyPolicyAccepted}
-                    >
-                      {isSubmitting ? (
+                      <AnimateOnScroll refIndex={12}>
                         <>
-                          <CircularProgress color="inherit" className="text-white" size={22} />
-                          <span className="sr-only">Submitting</span>
+                          <Checkbox
+                            checked={privacyPolicyAccepted}
+                            checkedIcon={<CheckBox className="text-pink w-4 h-4" />}
+                            onChange={(e) => setPrivacyPolicyAccepted(e.target.checked)}
+                            icon={<CheckBoxOutlineBlankOutlined className="text-white w-4 h-4" />}
+                          />
+                          <span className="text-xsMd lg:text-xs font-medium">
+                            I agreed with the event terms and conditions and privacy policy
+                          </span>
                         </>
-                      ) : (
-                        'Register Now'
-                      )}
-                    </Button>
+                      </AnimateOnScroll>
+                    </div>
+                    <AnimateOnScroll refIndex={13}>
+                      <Button
+                        fullWidth
+                        size="large"
+                        type="submit"
+                        disabled={isSubmitting || !isValid || !dirty || !privacyPolicyAccepted}
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <CircularProgress color="inherit" className="text-white" size={22} />
+                            <span className="sr-only">Submitting</span>
+                          </>
+                        ) : (
+                          'Register Now'
+                        )}
+                      </Button>
+                    </AnimateOnScroll>
                   </form>
                 )}
               </Formik>

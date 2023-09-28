@@ -20,7 +20,7 @@ const Hero = () => {
       <div className="lg:mx-12 w-full">
         <div className="w-full h-full max-w-desktop mx-auto">
           <div className="flex w-fit mx-auto relative justify-center lg:mx-0 lg:ml-auto lg:-mr-10 mt-8">
-            <AnimateOnScroll margin="0px">
+            <AnimateOnScroll refIndex={0}>
               <i className="text-base lg:text-lgMd font-bold whitespace-nowrap">
                 Igniting a Revolution in HR Innovation
               </i>
@@ -42,11 +42,11 @@ const Hero = () => {
                         src={images['bulb']}
                         className="absolute w-5 lg:w-auto right-[47px] -top-[12px] lg:-top-[36px] lg:right-[149px]"
                       />
-                      <AnimateOnScroll margin="0px" delay={0.35}>
+                      <AnimateOnScroll refIndex={1}>
                         <h1 className="font-bold text-lgMd lg:text-2xl ">getlinked Tech</h1>
                       </AnimateOnScroll>
                     </div>
-                    <AnimateOnScroll margin="0px" delay={0.5}>
+                    <AnimateOnScroll refIndex={2}>
                       <div className="flex items-end space-x-2">
                         <h1 className="flex items-end font-bold text-lgMd lg:text-2xl ">
                           Hackathon
@@ -69,13 +69,13 @@ const Hero = () => {
                       </div>
                     </AnimateOnScroll>
                   </div>
-                  <AnimateOnScroll margin="0px" delay={0.65}>
+                  <AnimateOnScroll refIndex={3}>
                     <p className="text-smMax lg:text-mdMd w-[80%] max-w-[40ch] text-center lg:text-left mx-auto lg:mx-0 leading-loose">
                       Participate in getlinked tech Hackathon 2023 stand a chance to win a Big prize
                     </p>
                   </AnimateOnScroll>
                 </div>
-                <AnimateOnScroll margin="0px" delay={0.8}>
+                <AnimateOnScroll refIndex={4}>
                   <Button
                     onClick={() => navigate('/register')}
                     size={`${isDesktop ? 'large' : 'medium'}`}
@@ -84,7 +84,7 @@ const Hero = () => {
                   </Button>
                 </AnimateOnScroll>
               </div>
-              <AnimateOnScroll margin="0px" delay={0.95}>
+              <AnimateOnScroll refIndex={5}>
                 <div className="flex space-x-7">
                   <div className="flex items-end">
                     <p className="font-unicaOne text-xlMd lg:text-xlMax">{hours}</p>

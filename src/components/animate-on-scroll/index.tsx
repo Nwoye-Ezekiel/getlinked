@@ -1,16 +1,36 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, useInView, useAnimation } from 'framer-motion';
 
 interface Props {
+  refIndex?: number;
   children: JSX.Element;
-  delay?: number;
-  margin?: string;
+  lastElement?: boolean;
 }
 
-export const AnimateOnScroll = ({ children, delay = 0.2, margin = '-100px' }: Props) => {
+const AnimateOnScroll = ({ children, refIndex, lastElement }: Props) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin });
+  const defaultDelay = 0.2;
+  const additionalDelay = 0.17;
   const mainControls = useAnimation();
+  const [isInInitialView, setIsInInitialView] = useState(false);
+  const isInView = useInView(ref, {
+    once: true,
+    margin: isInInitialView ? '0px' : lastElement ? '-50px' : '-100px',
+  });
+
+  useEffect(() => {
+    const checkInView = () => {
+      if (ref.current) {
+        const element = ref.current as HTMLElement;
+        const rect = element.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const offset = rect.top;
+        const isInInitialView = offset >= 0 && offset <= windowHeight;
+        setIsInInitialView(isInInitialView);
+      }
+    };
+    checkInView();
+  }, []);
 
   useEffect(() => {
     if (isInView) {
@@ -27,7 +47,15 @@ export const AnimateOnScroll = ({ children, delay = 0.2, margin = '-100px' }: Pr
         }}
         initial="hidden"
         animate={mainControls}
-        transition={{ duration: 0.55, delay, ease: 'easeOut' }}
+        transition={{
+          duration: 0.55,
+          delay: refIndex
+            ? isInInitialView
+              ? defaultDelay + additionalDelay * refIndex
+              : defaultDelay
+            : defaultDelay,
+          ease: 'easeOut',
+        }}
       >
         {children}
       </motion.div>

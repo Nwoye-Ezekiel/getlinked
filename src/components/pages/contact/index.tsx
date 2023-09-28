@@ -6,8 +6,8 @@ import { useEffect, useState } from 'react';
 import images from 'assets/images/index.json';
 import TextField from 'components/text-field';
 import { socials } from 'data/static/socials';
-import { Alert, CircularProgress, Dialog, DialogContent } from '@mui/material';
 import AnimateOnScroll from 'components/animate-on-scroll';
+import { Alert, CircularProgress, Dialog, DialogContent } from '@mui/material';
 
 const validationSchema = yup.object().shape({
   message: yup.string().required('Enter your message'),
@@ -41,8 +41,8 @@ const Contact = () => {
     const navigationElement = document.getElementById('navigation');
     if (layoutElement && navigationElement) {
       const opacity = showSuccessModal ? '0.1' : '1';
-      layoutElement.style.opacity = opacity;
       navigationElement.style.opacity = opacity;
+      layoutElement.style.opacity = opacity;
     }
   }, [showSuccessModal]);
 
@@ -51,46 +51,46 @@ const Contact = () => {
       <div className="mx-12">
         <div className="max-w-tablet lg:max-w-desktop mx-auto flex justify-center gap-5 lg:gap-10">
           <div className="hidden lg:block w-[40%] mt-10">
-            <AnimateOnScroll>
+            <AnimateOnScroll refIndex={0}>
               <h1 className="text-lgMd text-primary font-semibold mb-3">Get in touch</h1>
             </AnimateOnScroll>
             <div className="space-y-5 mb-7">
               <div>
-                <AnimateOnScroll margin="0px" delay={0.35}>
+                <AnimateOnScroll refIndex={1}>
                   <p className="font-medium">Contact</p>
                 </AnimateOnScroll>
-                <AnimateOnScroll margin="0px" delay={0.5}>
+                <AnimateOnScroll refIndex={2}>
                   <p>Information</p>
                 </AnimateOnScroll>
               </div>
               <div>
-                <AnimateOnScroll margin="0px" delay={0.65}>
+                <AnimateOnScroll refIndex={3}>
                   <p className="font-medium">27,Alara Street</p>
                 </AnimateOnScroll>
-                <AnimateOnScroll margin="0px" delay={0.8}>
+                <AnimateOnScroll refIndex={4}>
                   <p className="font-medium">Yaba 100012</p>
                 </AnimateOnScroll>
-                <AnimateOnScroll margin="0px" delay={0.95}>
+                <AnimateOnScroll refIndex={5}>
                   <p className="font-medium">Lagos State</p>
                 </AnimateOnScroll>
               </div>
-              <AnimateOnScroll margin="0px" delay={1.1}>
+              <AnimateOnScroll refIndex={6}>
                 <p className="font-medium">Call Us : 07067981819</p>
               </AnimateOnScroll>
               <div>
-                <AnimateOnScroll margin="0px" delay={1.25}>
+                <AnimateOnScroll refIndex={7}>
                   <p className="font-medium">we are open from Monday-Friday</p>
                 </AnimateOnScroll>
-                <AnimateOnScroll margin="0px" delay={1.4}>
+                <AnimateOnScroll refIndex={8}>
                   <p className="font-medium">08:00am - 05:00pm</p>
                 </AnimateOnScroll>
               </div>
             </div>
             <div className="flex flex-col space-y-2">
-              <AnimateOnScroll margin="0px" delay={1.55}>
+              <AnimateOnScroll refIndex={9}>
                 <p className="text-primary font-medium">Share on</p>
               </AnimateOnScroll>
-              <AnimateOnScroll margin="0px" delay={1.7}>
+              <AnimateOnScroll refIndex={10}>
                 <div className="flex items-center space-x-3">
                   {socials.map((social) => (
                     <a href={social.link} target="_blank" rel="noopener noreferrer">
@@ -103,18 +103,18 @@ const Contact = () => {
           </div>
           <div className="w-full max-w-tablet lg:max-w-none lg:w-[60%] rounded-xl lg:bg-white/[.03] lg:p-12 lg:pt-8 lgMax:p-20 lgMax:pt-14">
             <div className="space-y-1 mb-6 lg:mb-10">
-              <AnimateOnScroll>
+              <AnimateOnScroll refIndex={0}>
                 <h1 className="lg:block text-mdMd text-primary font-semibold">
                   Questions or need assistance?
                 </h1>
               </AnimateOnScroll>
-              <AnimateOnScroll margin="0px" delay={0.35}>
+              <AnimateOnScroll refIndex={1}>
                 <h1 className="lg:block text-mdMd text-primary font-semibold">
                   Let us know about it!
                 </h1>
               </AnimateOnScroll>
             </div>
-            <AnimateOnScroll margin="0px" delay={0.5}>
+            <AnimateOnScroll refIndex={2}>
               <p className="lg:hidden text-xs mb-10">
                 Email us below to any question related to our event
               </p>
@@ -155,7 +155,7 @@ const Contact = () => {
                       </Alert>
                     )}
                     <div className="flex flex-col space-y-8">
-                      <AnimateOnScroll margin="0px" delay={0.65}>
+                      <AnimateOnScroll refIndex={3}>
                         <TextField
                           type="text"
                           name="first_name"
@@ -168,7 +168,7 @@ const Contact = () => {
                           shrinkLabel
                         />
                       </AnimateOnScroll>
-                      <AnimateOnScroll margin="0px" delay={0.8}>
+                      <AnimateOnScroll refIndex={4}>
                         <TextField
                           type="tel"
                           name="phone_number"
@@ -181,7 +181,7 @@ const Contact = () => {
                           shrinkLabel
                         />
                       </AnimateOnScroll>
-                      <AnimateOnScroll margin="0px" delay={0.95}>
+                      <AnimateOnScroll refIndex={5}>
                         <TextField
                           type="email"
                           name="email"
@@ -194,7 +194,7 @@ const Contact = () => {
                           shrinkLabel
                         />
                       </AnimateOnScroll>
-                      <AnimateOnScroll margin="0px" delay={1.1}>
+                      <AnimateOnScroll refIndex={6}>
                         <TextField
                           type="text"
                           name="message"
@@ -210,7 +210,7 @@ const Contact = () => {
                       </AnimateOnScroll>
                     </div>
                     <div className="flex justify-center mt-8">
-                      <AnimateOnScroll margin="0px" delay={1.25}>
+                      <AnimateOnScroll refIndex={7}>
                         <Button
                           size="large"
                           type="submit"
@@ -228,10 +228,10 @@ const Contact = () => {
                       </AnimateOnScroll>
                     </div>
                     <div className="flex flex-col items-center space-y-2 mt-10 lg:hidden">
-                      <AnimateOnScroll margin="0px" delay={1.4}>
+                      <AnimateOnScroll lastElement>
                         <p className="text-primary font-medium text-smMd">Share on</p>
                       </AnimateOnScroll>
-                      <AnimateOnScroll margin="0px" delay={1.55}>
+                      <AnimateOnScroll lastElement>
                         <div className="flex items-center space-x-3">
                           {socials.map((social) => (
                             <a href={social.link} target="_blank" rel="noopener noreferrer">

@@ -116,7 +116,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <AnimateOnScroll margin="0px">
+        <AnimateOnScroll lastElement>
           <p className="text-xs font-medium">All rights reserved. © getlinked Ltd.</p>
         </AnimateOnScroll>
       </div>
