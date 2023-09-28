@@ -1,15 +1,17 @@
-import { Drawer } from '@mui/material';
+import { Drawer, useMediaQuery } from '@mui/material';
 import Button from 'components/button';
 import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { ReactComponent as CloseIcon } from 'assets/icons/close.svg';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
+import AnimateOnScroll from 'components/animate-on-scroll';
 
 const NavigationLinks = ({ closeMenu }: { closeMenu?: () => void }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [activeLink, setActiveLink] = useState('');
+  const isDesktop = useMediaQuery('(min-width: 1024px)');
   const navigationLinks = ['Timeline', 'Overview', 'FAQs'];
 
   const scrollToSection = (sectionId: string) => {
@@ -45,42 +47,50 @@ const NavigationLinks = ({ closeMenu }: { closeMenu?: () => void }) => {
   return (
     <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 lgMd:gap-20 lg:items-center">
       <div className="flex flex-col lg:flex-row gap-5 lg:gap-8 lgMd:gap-12 w-fit">
-        {navigationLinks.map((link) => (
-          <NavLink
-            key={link}
-            to={link.toLowerCase()}
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavigation(link);
+        {navigationLinks.map((link, index) => (
+          <AnimateOnScroll key={link} refIndex={isDesktop ? index + 1 : index}>
+            <NavLink
+              key={link}
+              to={link.toLowerCase()}
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavigation(link);
+              }}
+            >
+              <span
+                className={`text-base font-inter lg:font-montserrat cursor-pointer lg:p-2 lg:rounded transition-all duration-100 lg:hover:text-primary text-white`}
+              >
+                {link}
+              </span>
+            </NavLink>
+          </AnimateOnScroll>
+        ))}
+        <AnimateOnScroll refIndex={isDesktop ? navigationLinks.length + 1 : navigationLinks.length}>
+          <Link
+            to="/contact"
+            onClick={() => {
+              closeMenu?.();
             }}
           >
             <span
-              className={`text-base font-inter lg:font-montserrat cursor-pointer lg:p-2 lg:rounded transition-all duration-100 lg:hover:text-primary text-white`}
+              className={`text-base font-inter lg:font-montserrat lg:p-2 lg:rounded transition-all duration-100 lg:hover:text-primary ${
+                activeLink === '/contact' ? 'text-primary' : 'text-white'
+              }`}
             >
-              {link}
+              Contact
             </span>
-          </NavLink>
-        ))}
-        <Link
-          to="/contact"
-          onClick={() => {
-            closeMenu?.();
-          }}
-        >
-          <span
-            className={`text-base font-inter lg:font-montserrat lg:p-2 lg:rounded transition-all duration-100 lg:hover:text-primary ${
-              activeLink === '/contact' ? 'text-primary' : 'text-white'
-            }`}
-          >
-            Contact
-          </span>
-        </Link>
+          </Link>
+        </AnimateOnScroll>
       </div>
-      <Link to="/register" className="w-fit" onClick={() => closeMenu?.()}>
-        <Button size="large" variant={activeLink === '/register' ? 'secondary' : 'primary'}>
-          Register
-        </Button>
-      </Link>
+      <AnimateOnScroll
+        refIndex={isDesktop ? navigationLinks.length + 3 : navigationLinks.length + 2}
+      >
+        <Link to="/register" className="w-fit" onClick={() => closeMenu?.()}>
+          <Button size="large" variant={activeLink === '/register' ? 'secondary' : 'primary'}>
+            Register
+          </Button>
+        </Link>
+      </AnimateOnScroll>
     </div>
   );
 };
@@ -106,11 +116,13 @@ const Navigation = () => {
     <div id="navigation">
       <div className="mx-12">
         <div className="flex justify-between items-center mx-auto pt-6 pb-5 lg:pt-10 lg:pb-8 max-w-desktop">
-          <Link to="/">
-            <h1 className="lg:text-lgMax font-bold">
-              get<span className="text-primary font-clashDisplay font-bold">linked</span>
-            </h1>
-          </Link>
+          <AnimateOnScroll refIndex={0}>
+            <Link to="/">
+              <h1 className="lg:text-lgMax font-bold">
+                get<span className="text-primary font-clashDisplay font-bold">linked</span>
+              </h1>
+            </Link>
+          </AnimateOnScroll>
           <div className="lg:hidden" onClick={() => setOpenMenu(true)}>
             <div className="flex flex-col space-y-0.5 w-5">
               <span className="bg-white w-1/2 h-[3px] rounded-full mr-auto"></span>
