@@ -3,7 +3,7 @@ import AnimateOnScroll from 'components/animate-on-scroll';
 
 const Partners = () => {
   return (
-    <div className="border-t border-t-solid border-t-white/[0.18] lg:pt-10 lg:pb-20">
+    <div className="lg:pt-10 lg:pb-20">
       <div className="m-12">
         <div className="max-w-tablet lg:max-w-6xl mx-auto flex flex-col justify-center space-y-10 lg:space-y-20">
           <div className="flex flex-col justify-center items-center text-center space-y-3">
