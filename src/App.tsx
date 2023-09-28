@@ -1,3 +1,4 @@
+import images from 'assets/images/index.json';
 import FontFaceObserver from 'fontfaceobserver';
 import { HelmetProvider } from 'react-helmet-async';
 import animations from 'assets/animations/index.json';
@@ -17,7 +18,18 @@ const PageNotFound = lazy(() => import('components/pages/page-not-found'));
 
 function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
-  const [showHomePage, setShowHomePage] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [animationCompleted, setAnimationCompleted] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimationCompleted(true);
+    }, 3500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
 
   useEffect(() => {
     async function preloadFonts() {
@@ -40,21 +52,34 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowHomePage(true);
-    }, 3500);
-
-    return () => {
-      clearTimeout(timer);
-    };
+    async function preloadImages(imageUrls: { [key: string]: string }) {
+      try {
+        const promises = Object.values(imageUrls).map(async (imageUrl) => {
+          const img = new Image();
+          img.src = imageUrl;
+          await img.decode();
+        });
+        await Promise.all(promises);
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error('Error preloading images:', error);
+      } finally {
+        setImagesLoaded(true);
+      }
+    }
+    preloadImages(images);
   }, []);
 
-  if (!fontsLoaded || !showHomePage) {
+  if (!animationCompleted) {
     return (
       <div className="flex flex-col items-center justify-center h-screen bg-background">
         <Player src={animations['linked']} autoplay={true} loop={false} speed={0.8} />
       </div>
     );
+  }
+
+  if (!fontsLoaded || !imagesLoaded) {
+    return <Loader />;
   }
 
   return (
