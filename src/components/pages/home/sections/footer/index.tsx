@@ -12,7 +12,7 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto flex flex-col items-center space-y-16">
         <div className="flex flex-col md:flex-row w-full gap-10">
           <div className="md:w-[60%] space-y-10 lg:space-y-16">
-            <div className="flex flex-col space-y-1">
+            <div className="flex flex-col space-y-3">
               <AnimateOnScroll>
                 <h1 className="text-mdMd lg:text-lg font-bold">
                   get<span className="text-primary font-clashDisplay font-bold">linked</span>
