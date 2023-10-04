@@ -64,9 +64,28 @@ body,
   height: 100%;
 }
 
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
 body {
   height: 100%;
-  overflow-x: hidden;
   scroll-behavior: smooth;
   color: var(--color-white);
   background-color: var(--color-background);
@@ -107,20 +126,19 @@ input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-@keyframes fade-in {
-  to {
-    opacity: 0.5;
-    visibility: visible;
-  }
+.bg-hero {
+  position: absolute;
+  background: url('assets/flare.png'), #150e28;
+  background-position: -184.527px 3.278px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: hard-light;
 }
 
-@keyframes fade-out {
-  from {
-    opacity: 0.5;
-    visibility: visible;
-  }
-  to {
-    opacity: 0;
-    visibility: hidden;
-  }
+.flare {
+  background: url('assets/flare.png'), var(--color-background);
+  background-blend-mode: hard-light;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
 }

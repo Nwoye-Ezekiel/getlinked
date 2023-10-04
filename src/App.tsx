@@ -1,3 +1,4 @@
+import Lenis from '@studio-freight/lenis';
 import images from 'assets/images/index.json';
 import FontFaceObserver from 'fontfaceobserver';
 import { HelmetProvider } from 'react-helmet-async';
@@ -68,6 +69,15 @@ function App() {
       }
     }
     preloadImages(images);
+  }, []);
+
+  useEffect(() => {
+    const lenis = new Lenis();
+    function raf(time: number) {
+      lenis.raf(time / 2);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
   }, []);
 
   if (!animationCompleted) {
