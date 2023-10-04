@@ -11,10 +11,7 @@ const Hero = () => {
   const { hours, minutes, seconds } = useCountdown(new Date('2023-09-30T12:00:00Z'));
 
   return (
-    <div className="relative flex border-t border-t-solid border-white/[.18]">
-      <div className="absolute top-0 left-0 w-full h-full">
-        <div className="flare -top-[260px] -left-[120px] -z-10 w-full h-full"></div>
-      </div>
+    <div className="relative flex border-t border-t-solid border-white/[.18] overflow-hidden">
       <img
         alt="pattern"
         src={images['pattern']}
